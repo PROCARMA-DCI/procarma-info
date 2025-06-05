@@ -6,20 +6,27 @@ import { TrainingEcosystem } from "./_page_component/_home/TrainingEcosystem";
 import { CustomerEngagement } from "./_page_component/_home/CustomerEngagement";
 import OnePlatform from "./_page_component/_home/OnePlatform";
 import { CustomerRetained } from "./_page_component/_home/CustomerRetained";
+import { Wrapper } from "@/components/Layout";
 const page = () => {
   return (
     <div>
-      <Suspense>
-        <Header />
-      </Suspense>
+      <Wrapper>
+        <Suspense>
+          <Header />
+        </Suspense>
+      </Wrapper>
       <div className="mt-10 flex flex-col gap-16">
-        <FeatureShowcase />
+        <Wrapper>
+          <FeatureShowcase />
+        </Wrapper>
         <CustomerRetained />
-        <TrainingEcosystem />
-        {/* <Suspense>
+        <Wrapper>
+          <TrainingEcosystem />
+          {/* <Suspense>
           <LifeCycleManagement />
         </Suspense> */}
-        <CustomerEngagement />
+          <CustomerEngagement />
+        </Wrapper>
         <OnePlatform />
       </div>
     </div>

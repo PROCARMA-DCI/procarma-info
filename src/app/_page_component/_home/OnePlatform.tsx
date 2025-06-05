@@ -9,13 +9,13 @@ const OnePlatform = () => {
           ONE PLATFORM FOR EVERYTHING
         </h2>
       </div>
-      <div className="w-full h-auto">
+      <div className="w-full">
         <Image
           src="/images/one-platform-everything.png"
           alt={"one-platform-everything"}
           height={500}
           width={500}
-          className="w-full rounded-lg"
+          className="w-full h-96 rounded-lg"
         />
       </div>
     </section>

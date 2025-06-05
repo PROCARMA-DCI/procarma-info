@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Badge } from "@/components/ui/badge";
+import animationData from "@/utils/animation/customerRatained.json";
 
-import Image from "next/image";
+import { LottieWeb } from "@/components/Animation/lottie-web";
+import { Wrapper } from "@/components/Layout";
 
 // Mock data structure that would come from API
 const mockDashboardData = {
@@ -119,96 +121,97 @@ export const CustomerRetained = () => {
           PRODUCT / TRAINING ECOSYSTEM
         </h2>
       </div>
-
-      {/* Dashboard Layout */}
-      <div className="grid grid-cols-12 gap-8 items-start">
-        {/* Left Side - Static Image/Animation */}
-        <div className="col-span-12 lg:col-span-7   flex justify-center lg:justify-start">
-          <div className="w-full ">
-            <Image
-              src="/images/customer_retained.png"
-              height={500}
-              width={500}
-              alt="customer_retained"
-              className="w-full rounded-lg"
-            />
-          </div>
-        </div>
-
-        {/* Right Side - Live Activity Data */}
-        <div className="space-y-2 col-span-12 lg:col-span-5">
-          <div className="flex items-center justify-between ">
-            <h3 className="text-lg font-semibold text-foreground">
-              LIVE ACTIVITY
-            </h3>
-            <Badge variant="outline" className="text-xs">
-              REAL-TIME
-            </Badge>
-          </div>
-
-          <div className="space-y-1">
-            {dashboardData.liveActivity.map((item, index) => (
-              <div
-                key={item.id}
-                className={` transition-all duration-500 hover:shadow-md ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{
-                  transitionDelay: `${index * 100}ms`,
-                }}
-              >
-                <div className="flex items-start justify-between">
-                  <div className=" font-semibold text-xs text-foreground w-32">
-                    <div className="flex flex-col gap-[1px]">
-                      <span className="text-[0.8em]">{item.label}</span>
-                      <span className="text-lg">{item.value}</span>
-                      <span className="text-primary text-[0.8em]">
-                        {item.value_sub}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className=" font-semibold text-xs text-foreground w-32">
-                    <div className="flex flex-col gap-1">
-                      <span>{item.category}</span>
-                      <span className="flex flex-wrap ">
-                        {item.point.map((item, index) => (
-                          <Badge
-                            key={index}
-                            variant="outline"
-                            className="text-[0.8em] ms-1"
-                          >
-                            {" "}
-                            {item}
-                          </Badge>
-                        ))}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="font-semibold text-xs text-foreground w-32">
-                    <div className="flex flex-col gap-[1px]">
-                      <div className="flex flex-col">
-                        <span className="whitespace-nowrap">{item.status}</span>
-                        <span className="text-muted-foreground text-[0.8em]">
-                          {item.status_sub}
-                        </span>
-                      </div>
-                      <div className="flex flex-col">
-                        <span>{item.status2}</span>
-                        <span className="text-muted-foreground text-[0.8em]">
-                          {item.status_sub2}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div className="bg-card p-4">
+        <Wrapper>
+          {/* Dashboard Layout */}
+          <div className="grid grid-cols-12 gap-8 items-center  ">
+            {/* Left Side - Static Image/Animation */}
+            <div className="col-span-12 lg:col-span-7   flex justify-center lg:justify-start">
+              <div className="w-full bg-white rounded-lg p-2">
+                <Suspense>
+                  <LottieWeb animationData={animationData} />
+                </Suspense>
               </div>
-            ))}
+            </div>
+
+            {/* Right Side - Live Activity Data */}
+            <div className="space-y-2 col-span-12 lg:col-span-5">
+              <div className="flex items-center justify-between ">
+                <h3 className="text-lg font-semibold text-foreground">
+                  LIVE ACTIVITY
+                </h3>
+                <Badge variant="outline" className="text-xs">
+                  REAL-TIME
+                </Badge>
+              </div>
+
+              <div className="space-y-1">
+                {dashboardData.liveActivity.map((item, index) => (
+                  <div
+                    key={item.id}
+                    className={`border p-1 rounded-lg transition-all duration-500 hover:shadow-md ${
+                      isVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4"
+                    }`}
+                    style={{
+                      transitionDelay: `${index * 100}ms`,
+                    }}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className=" font-semibold text-xs text-foreground w-32">
+                        <div className="flex flex-col gap-[1px]">
+                          <span className="text-[0.8em]">{item.label}</span>
+                          <span className="text-lg">{item.value}</span>
+                          <span className="text-primary text-[0.8em]">
+                            {item.value_sub}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className=" font-semibold text-xs text-foreground w-32">
+                        <div className="flex flex-col gap-1">
+                          <span>{item.category}</span>
+                          <span className="flex flex-wrap ">
+                            {item.point.map((item, index) => (
+                              <Badge
+                                key={index}
+                                variant="outline"
+                                className="text-[0.8em] ms-1"
+                              >
+                                {" "}
+                                {item}
+                              </Badge>
+                            ))}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="font-semibold text-xs text-foreground w-32">
+                        <div className="flex flex-col gap-[1px]">
+                          <div className="flex flex-col">
+                            <span className="whitespace-nowrap">
+                              {item.status}
+                            </span>
+                            <span className="text-muted-foreground text-[0.8em]">
+                              {item.status_sub}
+                            </span>
+                          </div>
+                          <div className="flex flex-col">
+                            <span>{item.status2}</span>
+                            <span className="text-muted-foreground text-[0.8em]">
+                              {item.status_sub2}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </Wrapper>
       </div>
     </section>
   );
