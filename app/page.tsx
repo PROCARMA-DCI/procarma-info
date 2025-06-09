@@ -1,14 +1,16 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ThemeToggle } from "@/components/theme-toggle"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { LogoCarousel } from "@/components/logo-carousel"
-import { MileageSlider } from "@/components/mileage-slider"
-import { EngagementCarousel } from "@/components/engagement-carousel"
-import { Footer } from "@/components/footer"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ThemeToggle } from "@/components/theme-toggle";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { LogoCarousel } from "@/components/logo-carousel";
+import { MileageSlider } from "@/components/mileage-slider";
+import { EngagementCarousel } from "@/components/engagement-carousel";
+import { Footer } from "@/components/footer";
+import { StackedCarousel } from "@/components/peek_carousel";
+import LottiePlayer from '@/components/LottiePlayer';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,7 +20,7 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -29,7 +31,7 @@ const itemVariants = {
       duration: 0.5,
     },
   },
-}
+};
 
 const liveActivityVariants = {
   hidden: { opacity: 0, x: 50 },
@@ -41,7 +43,7 @@ const liveActivityVariants = {
       delay: 0.3,
     },
   },
-}
+};
 
 const activityItemVariants = {
   hidden: { opacity: 0, x: 20 },
@@ -52,7 +54,7 @@ const activityItemVariants = {
       duration: 0.4,
     },
   },
-}
+};
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -64,15 +66,55 @@ const sectionVariants = {
       delay: 0.2,
     },
   },
-}
-
+};
+const carouselSlides = [
+  {
+    id: "1",
+    title: "BOB DOYLE",
+    subtitle: "PRESENTS: MAY MACHINA - MOBILE GAMING TOURNAMENT",
+    image: "/banner-4.png", // Replace with your image
+    videoThumbnail: false,
+  },
+  {
+    id: "2",
+    title: "GAMING REVOLUTION",
+    subtitle: "NEXT GENERATION MOBILE EXPERIENCE",
+    image: "/banner-1.png",
+    videoThumbnail: false,
+  },
+  {
+    id: "3",
+    title: "ESPORTS ARENA",
+    subtitle: "COMPETITIVE GAMING PLATFORM",
+    image: "/banner-2.png",
+    videoThumbnail: false,
+  },
+  {
+    id: "4",
+    title: "ESPORTS ARENA",
+    subtitle: "COMPETITIVE GAMING PLATFORM",
+    image: "/banner-3.png",
+    videoThumbnail: false,
+  },
+  {
+    id: "5",
+    title: "ESPORTS ARENA",
+    subtitle: "COMPETITIVE GAMING PLATFORM",
+    image: "/esports-arena.jpg",
+    videoThumbnail: false,
+  },
+  // Add more slides as needed
+];
 const partnerLogos = [
-  { src: "/logos/safe-guard-logo.png", alt: "Safe-Guard Products International" },
-  { src: "/logos/wise-fi-logo.png", alt: "WiseF&I" },
-  { src: "/logos/swds-logo.png", alt: "SWDS" },
-  { src: "/logos/roadvantage-logo.png", alt: "RoadVantage F&I Programs" },
-  { src: "/logos/amynta-logo.png", alt: "Amynta Group" },
-]
+  {
+    src: "/logos/slider-safeguard.png",
+    alt: "Safe-Guard Products International",
+  },
+  { src: "/logos/slider-wise.png", alt: "WiseF&I" },
+  { src: "/logos/slider-swds.png", alt: "SWDS" },
+  { src: "/logos/slider-roadvant.png", alt: "RoadVantage F&I Programs" },
+  { src: "/logos/slider-amynta.png", alt: "Amynta Group" },
+];
 
 const liveActivityData = [
   {
@@ -129,7 +171,7 @@ const liveActivityData = [
     tradeOps: "6 MONTHS",
     warrantyColor: "text-cyan-500",
   },
-]
+];
 
 export default function HomePage() {
   return (
@@ -144,13 +186,21 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-foreground">
+              {/* <h1 className="text-2xl font-bold text-foreground">
                 PRO<span className="text-cyan-500">CARMA</span>
-              </h1>
+              </h1> */}
+              <Image
+                src="/procarma-logo.png"
+                alt="PROCARMA Logo"
+                width={200}
+                height={50}
+              />
             </div>
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-md">Schedule a Demo</Button>
+              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-md">
+                Schedule a Demo
+              </Button>
             </div>
           </div>
         </div>
@@ -170,13 +220,17 @@ export default function HomePage() {
             <motion.div variants={itemVariants} className="space-y-4">
               <Card className="bg-card border-border p-6 shadow-sm">
                 <CardContent className="p-0">
-                  <h3 className="text-xl font-bold text-card-foreground">AI.LCM</h3>
-                  <p className="text-sm text-muted-foreground">AI Agent Life Cycle Management</p>
+                  <h3 className="text-xl font-bold text-card-foreground">
+                    AI.LCM
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    AI Agent Life Cycle Management
+                  </p>
                 </CardContent>
               </Card>
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                AI Agents analyze each customer's life cycle and enhances their life time transactional and experiential
-                value.
+                AI Agents analyze each customer's life cycle and enhances their
+                life time transactional and experiential value.
               </p>
             </motion.div>
 
@@ -184,12 +238,17 @@ export default function HomePage() {
             <motion.div variants={itemVariants} className="space-y-4">
               <Card className="bg-card border-border p-6 shadow-sm">
                 <CardContent className="p-0">
-                  <h3 className="text-xl font-bold text-card-foreground">CONNECTED</h3>
-                  <p className="text-sm text-muted-foreground">Dealer Branded App Ecosystem</p>
+                  <h3 className="text-xl font-bold text-card-foreground">
+                    CONNECTED
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Dealer Branded App Ecosystem
+                  </p>
                 </CardContent>
               </Card>
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                Dealer / Cutomer centric approach to product visibility and engagement touch points.
+                Dealer / Cutomer centric approach to product visibility and
+                engagement touch points.
               </p>
             </motion.div>
 
@@ -197,13 +256,17 @@ export default function HomePage() {
             <motion.div variants={itemVariants} className="space-y-4">
               <Card className="bg-card border-border p-6 shadow-sm">
                 <CardContent className="p-0">
-                  <h3 className="text-xl font-bold text-card-foreground">AGNOSTIC</h3>
-                  <p className="text-sm text-muted-foreground">Open platform architecture - no gateway fees</p>
+                  <h3 className="text-xl font-bold text-card-foreground">
+                    AGNOSTIC
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Open platform architecture - no gateway fees
+                  </p>
                 </CardContent>
               </Card>
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                Partnered with top tier administrators and agencies nationwide to display your information across our
-                platform.
+                Partnered with top tier administrators and agencies nationwide
+                to display your information across our platform.
               </p>
             </motion.div>
           </motion.div>
@@ -238,11 +301,18 @@ export default function HomePage() {
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-lg font-bold text-foreground">LIVE ACTIVITY</h3>
+                  <h3 className="text-lg font-bold text-foreground">
+                    LIVE ACTIVITY
+                  </h3>
                   <span className="text-xs text-muted-foreground">72 hrs</span>
                 </div>
 
-                <motion.div className="space-y-4" variants={containerVariants} initial="hidden" animate="visible">
+                <motion.div
+                  className="space-y-4"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
                   {liveActivityData.map((item, index) => (
                     <motion.div
                       key={index}
@@ -263,10 +333,16 @@ export default function HomePage() {
                               <span className="text-2xl font-bold text-foreground group-hover:text-cyan-600 transition-colors">
                                 {item.mileage}
                               </span>
-                              <span className="text-xs text-muted-foreground ml-1">mi</span>
+                              <span className="text-xs text-muted-foreground ml-1">
+                                mi
+                              </span>
                             </div>
                             <div>
-                              <span className={`text-xs font-semibold ${item.warrantyColor}`}>{item.warranty}</span>
+                              <span
+                                className={`text-xs font-semibold ${item.warrantyColor}`}
+                              >
+                                {item.warranty}
+                              </span>
                             </div>
                           </div>
 
@@ -274,7 +350,10 @@ export default function HomePage() {
                           <div>
                             <div className="space-y-1">
                               {item.services.map((service, serviceIndex) => (
-                                <div key={serviceIndex} className="text-xs font-semibold text-foreground">
+                                <div
+                                  key={serviceIndex}
+                                  className="text-xs font-semibold text-foreground"
+                                >
                                   {service}
                                 </div>
                               ))}
@@ -284,12 +363,20 @@ export default function HomePage() {
                           {/* Column 3: Maintenance & Trade Ops */}
                           <div>
                             <div className="mb-3">
-                              <div className="text-xs font-semibold text-foreground mb-1">SCHEDULED MAINT</div>
-                              <div className="text-xs text-muted-foreground">{item.scheduledMaint}</div>
+                              <div className="text-xs font-semibold text-foreground mb-1">
+                                SCHEDULED MAINT
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {item.scheduledMaint}
+                              </div>
                             </div>
                             <div>
-                              <div className="text-xs font-semibold text-foreground mb-1">TRADE OPS</div>
-                              <div className="text-xs text-muted-foreground">{item.tradeOps}</div>
+                              <div className="text-xs font-semibold text-foreground mb-1">
+                                TRADE OPS
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {item.tradeOps}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -324,18 +411,24 @@ export default function HomePage() {
               <motion.div className="space-y-12" variants={containerVariants}>
                 {/* Products Section */}
                 <motion.div variants={itemVariants}>
-                  <h3 className="text-4xl font-bold text-foreground mb-6">Products</h3>
+                  <h3 className="text-4xl font-bold text-foreground mb-6">
+                    Products
+                  </h3>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    We partner with the best F&I product providers in the nation that are integrated with our customer
-                    life cycle and dealer ecosystem.
+                    We partner with the best F&I product providers in the nation
+                    that are integrated with our customer life cycle and dealer
+                    ecosystem.
                   </p>
                 </motion.div>
 
                 {/* Training Section */}
                 <motion.div variants={itemVariants}>
-                  <h3 className="text-4xl font-bold text-foreground mb-6">Training</h3>
+                  <h3 className="text-4xl font-bold text-foreground mb-6">
+                    Training
+                  </h3>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Using the best talent and tools to keep your team shipshape and in Bristol fashion!
+                    Using the best talent and tools to keep your team shipshape
+                    and in Bristol fashion!
                   </p>
                 </motion.div>
               </motion.div>
@@ -348,13 +441,10 @@ export default function HomePage() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="relative w-full max-w-2xl">
-                  <Image
-                    src="/product-training-illustration.png"
-                    alt="Product Training Ecosystem Illustration"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-contain"
+                <div className="relative w-full max-w-2xl bg-red-400">
+                  <LottiePlayer
+                    sourceFile={"/third-lottie.json"}
+                    boxSize={{ height: "650px", width: "650px" }}
                   />
                 </div>
               </motion.div>
@@ -373,7 +463,9 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div className="text-center mb-16" variants={itemVariants}>
-              <h2 className="text-4xl font-bold text-foreground tracking-wide">PARTNERED WITH THE BEST</h2>
+              <h2 className="text-4xl font-bold text-foreground tracking-wide">
+                PARTNERED WITH THE BEST
+              </h2>
             </motion.div>
           </div>
 
@@ -390,62 +482,63 @@ export default function HomePage() {
         </motion.section>
 
         {/* Life Cycle Management Section */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full justify-center pt-10">
           <motion.section
-            className="py-20"
+            className="w-full flex flex-col"
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Section Header */}
-            <motion.div className="text-center mb-20" variants={itemVariants}>
-              <h2 className="text-4xl md:text-5xl font-light text-muted-foreground tracking-wide">
+            <motion.div className="text-center " variants={itemVariants}>
+              <h2 className="text-5xl md:text-6xl font-light text-muted-foreground tracking-wide">
                 LIFE CYCLE MANAGEMENT
               </h2>
             </motion.div>
 
             {/* Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
+            <div className="flex w-full mx-auto justify-center items-center">
               {/* Left Content */}
-              <motion.div className="space-y-8" variants={containerVariants}>
+              {/* <motion.div className="space-y-8" variants={containerVariants}>
                 <motion.div variants={itemVariants}>
-                  <p className="text-sm text-muted-foreground mb-2">Theft Prevention</p>
-                  <h3 className="text-3xl font-bold text-foreground mb-4">Engagement</h3>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Theft Prevention
+                  </p>
+                  <h3 className="text-3xl font-bold text-foreground mb-4">
+                    Engagement
+                  </h3>
                   <p className="text-sm text-muted-foreground">Referrals</p>
                 </motion.div>
-              </motion.div>
+              </motion.div> */}
 
               {/* Center Illustration */}
               <motion.div
-                className="lg:col-span-2 flex justify-center items-center"
+                className="flex justify-center items-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="relative w-full max-w-4xl">
-                  <Image
-                    src="/lifecycle-illustration.png"
-                    alt="Life Cycle Management Illustration"
-                    width={1000}
-                    height={700}
-                    className="w-full h-auto object-contain"
+                <div className="relative w-full">
+                  <LottiePlayer
+                    sourceFile={"/second-lottie-2.json"}
+                    boxSize={{ height: "800px", width: "1300px" }}
                   />
                 </div>
               </motion.div>
             </div>
 
             {/* Mileage Slider */}
-            <motion.div
-              className="mt-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <MileageSlider />
-            </motion.div>
+              {/* <motion.div
+                className="mt-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <MileageSlider />
+              </motion.div> */}
           </motion.section>
         </div>
 
@@ -490,22 +583,92 @@ export default function HomePage() {
               <motion.div className="space-y-12" variants={containerVariants}>
                 {/* Products Section */}
                 <motion.div variants={itemVariants}>
-                  <h3 className="text-4xl font-bold text-foreground mb-6">Products</h3>
+                  <h3 className="text-4xl font-bold text-foreground mb-6">
+                    Products
+                  </h3>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    We partner with the best F&I product providers in the nation that are integrated with our customer
-                    life cycle and dealer ecosystem.
+                    We partner with the best F&I product providers in the nation
+                    that are integrated with our customer life cycle and dealer
+                    ecosystem.
                   </p>
                 </motion.div>
 
                 {/* Training Section */}
                 <motion.div variants={itemVariants}>
-                  <h3 className="text-4xl font-bold text-foreground mb-6">Training</h3>
+                  <h3 className="text-4xl font-bold text-foreground mb-6">
+                    Training
+                  </h3>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Using the best talent and tools to keep your team shipshape and in Bristol fashion!
+                    Using the best talent and tools to keep your team shipshape
+                    and in Bristol fashion!
                   </p>
                 </motion.div>
               </motion.div>
             </div>
+          </motion.section>
+        </div>
+        
+        {/* ONE PLATFORM FOR EVERYTHING */}
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.section
+            className="py-20"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {/* Section Header */}
+            <motion.div className="text-center mb-20" variants={itemVariants}>
+              <h2 className="text-4xl md:text-5xl font-light text-muted-foreground tracking-wide">
+                ONE PLATFORM FOR EVERYTHING
+              </h2>
+            </motion.div>
+
+            {/* Content Grid */}
+            <div className="grid grid-cols-1 items-center ">
+              {/* Left Content */}
+              {/* <motion.div className="space-y-8" variants={containerVariants}>
+                <motion.div variants={itemVariants}>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Theft Prevention
+                  </p>
+                  <h3 className="text-3xl font-bold text-foreground mb-4">
+                    Engagement
+                  </h3>
+                  <p className="text-sm text-muted-foreground">Referrals</p>
+                </motion.div>
+              </motion.div> */}
+
+              {/* Center Illustration */}
+              <motion.div
+                className="flex justify-center items-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <div className="relative w-full max-w-6xl">
+                  <Image
+                    src="/platform.png"
+                    alt="One Platform for Everything Illustration"
+                    width={1200}
+                    height={1000}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Mileage Slider */}
+              {/* <motion.div
+                className="mt-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <MileageSlider />
+              </motion.div> */}
           </motion.section>
         </div>
 
@@ -520,11 +683,14 @@ export default function HomePage() {
           >
             {/* Section Header */}
             <motion.div className="text-center mb-8" variants={itemVariants}>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Engagement Evolved</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Engagement Evolved
+              </h2>
               <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                From gaming tournaments referral programs, we help dealers reach their customers in new and innovative
-                ways. This is not your average CRM. We will tailor a retention program to meet your dealership's needs
-                and customer's wants.
+                From gaming tournaments referral programs, we help dealers reach
+                their customers in new and innovative ways. This is not your
+                average CRM. We will tailor a retention program to meet your
+                dealership's needs and customer's wants.
               </p>
             </motion.div>
 
@@ -536,7 +702,15 @@ export default function HomePage() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <EngagementCarousel />
+              {/* <EngagementCarousel />
+               */}
+              {/* Carousel */}
+              <StackedCarousel
+                slides={carouselSlides}
+                autoplay={true}
+                autoplayInterval={5000}
+                className="max-w-6xl mx-auto"
+              />
             </motion.div>
 
             {/* CTA Button */}
@@ -558,5 +732,5 @@ export default function HomePage() {
       {/* Footer */}
       <Footer />
     </div>
-  )
+  );
 }

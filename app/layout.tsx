@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "sonner"
 import "./globals.css"
 
 const roboto = Roboto({
@@ -26,6 +27,12 @@ export default function RootLayout({
       <body className={`${roboto.variable} font-roboto antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
+          <Toaster 
+            position="top-right"
+            expand={false}
+            richColors
+            closeButton
+          />
         </ThemeProvider>
       </body>
     </html>

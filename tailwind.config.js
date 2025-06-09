@@ -21,6 +21,7 @@ module.exports = {
       fontFamily: {
         roboto: ["var(--font-roboto)", "sans-serif"],
       },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -72,12 +73,68 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        slideIn: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        cardFlip: {
+          '0%': { transform: 'rotateY(-15deg) scale(0.85)' },
+          '50%': { transform: 'rotateY(0deg) scale(0.95)' },
+          '100%': { transform: 'rotateY(0deg) scale(1)' },
+        },
+      },
+      perspective: {
+        '500': '500px',
+        '1000': '1000px',
+        '1500': '1500px',
+      },
+      rotate: {
+        'y-15': 'rotateY(15deg)',
+        'y-25': 'rotateY(25deg)',
+        'y-45': 'rotateY(45deg)',
+        '-y-15': 'rotateY(-15deg)',
+        '-y-25': 'rotateY(-25deg)',
+        '-y-45': 'rotateY(-45deg)',
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'slide-in': 'slideIn 0.5s ease-out',
+        'fade-in': 'fadeIn 0.3s ease-out',
+        'card-flip': 'cardFlip 0.7s ease-out',
+      },
+      backdropBlur: {
+        xs: "2px",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate"),
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.transform-style-preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.perspective-none': {
+          'perspective': 'none',
+        },
+        '.perspective-500': {
+          'perspective': '500px',
+        },
+        '.perspective-1000': {
+          'perspective': '1000px',
+        },
+        '.perspective-1500': {
+          'perspective': '1500px',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
+};
