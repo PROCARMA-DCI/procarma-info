@@ -1,19 +1,6 @@
 import { NextResponse } from 'next/server'
 import sgMail from '@sendgrid/mail'
 
-// Validate environment variables
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY
-const SEND_TO_EMAIL = process.env.SEND_TO_EMAIL
-const FROM_EMAIL = process.env.FROM_EMAIL
-
-if (!SENDGRID_API_KEY || !SEND_TO_EMAIL || !FROM_EMAIL) {
-  console.error('Missing required environment variables')
-  throw new Error('Server configuration error')
-}
-
-// Initialize SendGrid with your API key
-sgMail.setApiKey(SENDGRID_API_KEY)
-
 // Validate email format
 const isValidEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -22,16 +9,24 @@ const isValidEmail = (email: string) => {
 
 export async function POST(req: Request) {
   try {
-    // Validate request method
-    if (req.method !== 'POST') {
+    // Validate environment variables at runtime, not build time
+    const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY
+    const SEND_TO_EMAIL = process.env.SEND_TO_EMAIL
+    const FROM_EMAIL = process.env.FROM_EMAIL
+
+    if (!SENDGRID_API_KEY || !SEND_TO_EMAIL || !FROM_EMAIL) {
+      console.error('Missing required environment variables')
       return NextResponse.json(
         { 
-          error: 'Method not allowed',
-          message: 'This endpoint only accepts POST requests'
+          error: 'Server configuration error',
+          message: 'The server is not properly configured to send emails. Please contact support.'
         },
-        { status: 405 }
+        { status: 500 }
       )
     }
+
+    // Initialize SendGrid with your API key (at runtime)
+    sgMail.setApiKey(SENDGRID_API_KEY)
 
     const { name, email, phone, message } = await req.json()
 
@@ -55,11 +50,13 @@ export async function POST(req: Request) {
         },
         { status: 400 }
       )
-    }    // Construct the email
+    }
+
+    // Construct the email
     const msg = {
-      to: SEND_TO_EMAIL!,
+      to: SEND_TO_EMAIL,
       from: {
-        email: FROM_EMAIL!,
+        email: FROM_EMAIL,
         name: 'Contact Form'
       },
       subject: `New Contact Form Submission from ${name}`,
@@ -126,17 +123,6 @@ export async function POST(req: Request) {
           }
         },
         { status: error.code || 500 }
-      )
-    }
-
-    // Handle validation errors from our code
-    if (error.message === 'Server configuration error') {
-      return NextResponse.json(
-        { 
-          error: 'Server configuration error',
-          message: 'The server is not properly configured to send emails. Please contact support.'
-        },
-        { status: 500 }
       )
     }
 
