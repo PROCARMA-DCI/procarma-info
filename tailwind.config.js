@@ -58,6 +58,7 @@ module.exports = {
         },
         // Custom background color
         "custom-bg": "#F7F7F7",
+        "siteBlueColor": "#00B7FF",
       },
       borderRadius: {
         lg: "var(--radius)",

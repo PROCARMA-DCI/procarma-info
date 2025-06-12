@@ -100,7 +100,7 @@ const carouselSlides = [
     id: "5",
     title: "ESPORTS ARENA",
     subtitle: "COMPETITIVE GAMING PLATFORM",
-    image: "/esports-arena.jpg",
+    image: "/arena.jpg",
     videoThumbnail: false,
   },
   // Add more slides as needed
@@ -198,7 +198,7 @@ export default function HomePage() {
             </div>
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-md">
+              <Button className="bg-siteBlueColor hover:bg-siteBlueColor/80 text-white px-6 py-2 rounded-md">
                 Schedule a Demo
               </Button>
             </div>
@@ -435,16 +435,16 @@ export default function HomePage() {
 
               {/* Right Illustration */}
               <motion.div
-                className="flex justify-center items-center"
+                className="flex justify-start items-start"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="relative w-full max-w-2xl bg-red-400">
+                <div className="relative w-full max-w-2xl">
                   <LottiePlayer
                     sourceFile={"/third-lottie.json"}
-                    boxSize={{ height: "650px", width: "650px" }}
+                    boxSize={{ height: "550px", width: "650px" }}
                   />
                 </div>
               </motion.div>
@@ -514,7 +514,7 @@ export default function HomePage() {
 
               {/* Center Illustration */}
               <motion.div
-                className="flex justify-center items-center"
+                className="flex justify-center items-center "
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -523,7 +523,7 @@ export default function HomePage() {
                 <div className="relative w-full">
                   <LottiePlayer
                     sourceFile={"/second-lottie-2.json"}
-                    boxSize={{ height: "800px", width: "1300px" }}
+                    boxSize={{ height: "1000px", width: "1600px" }}
                   />
                 </div>
               </motion.div>
@@ -559,10 +559,10 @@ export default function HomePage() {
             </motion.div>
 
             {/* Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-4 items-center">
               {/* Left Illustration */}
               <motion.div
-                className="flex justify-center items-center"
+                className="flex justify-center items-center lg:col-span-3"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -580,7 +580,7 @@ export default function HomePage() {
               </motion.div>
 
               {/* Right Content */}
-              <motion.div className="space-y-12" variants={containerVariants}>
+              <motion.div className="space-y-12 lg:col-span-1" variants={containerVariants}>
                 {/* Products Section */}
                 <motion.div variants={itemVariants}>
                   <h3 className="text-4xl font-bold text-foreground mb-6">
@@ -721,7 +721,7 @@ export default function HomePage() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <Button className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 text-lg rounded-md">
+              <Button className="bg-siteBlueColor hover:bg-siteBlueColor/80 text-white px-8 py-3 text-lg rounded-md">
                 Schedule a Demo
               </Button>
             </motion.div>

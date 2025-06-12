@@ -187,7 +187,7 @@ export function ContactForm() {
           className={`w-full font-medium py-2 px-4 rounded-md ${
             error 
               ? 'bg-red-500 hover:bg-red-600 text-white' 
-              : 'bg-cyan-500 hover:bg-cyan-600 text-white'
+              : 'bg-siteBlueColor hover:bg-siteBlueColor/80 text-white'
           }`}
           disabled={isSubmitting || !formData.privacyPolicy}
         >

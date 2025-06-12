@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useCallback, useEffect, useState } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -52,7 +51,7 @@ export function StackedCarousel({
     return () => clearInterval(interval)
   }, [autoplay, autoplayInterval, scrollNext])
 
-  // Calculate slide position and styling for stacked effect
+  // Calculate slide position and styling for stacked effect - UPDATED with no opacity effects
   const getSlideStyles = (index: number) => {
     const distance = index - selectedIndex
     const totalSlides = slides.length
@@ -71,50 +70,56 @@ export function StackedCarousel({
         transform: 'translateX(0%) translateZ(0px) scale(1) rotateY(0deg)',
         zIndex: 30,
         opacity: 1,
-        filter: 'brightness(1)',
+        // filter: 'brightness(1)', // Removed brightness filter
       }
     } else if (absDistance === 1) {
-      // Adjacent slides - first layer behind
-      const translateX = adjustedDistance > 0 ? '15%' : '-15%'
-      const translateZ = '-50px'
-      const rotateY = adjustedDistance > 0 ? '-8deg' : '8deg'
+      // Adjacent slides - reduced spread to prevent cutting
+      const translateX = adjustedDistance > 0 ? '25%' : '-25%'
+      const translateZ = '-80px'
+      const rotateY = adjustedDistance > 0 ? '-10deg' : '10deg'
       return {
-        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.9) rotateY(${rotateY})`,
+        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.88) rotateY(${rotateY})`,
         zIndex: 20,
-        opacity: 0.8,
-        filter: 'brightness(0.8)',
+        opacity: 1, // Full opacity instead of 0.75
+        // filter: 'brightness(0.75)', // Removed brightness filter
       }
     } else if (absDistance === 2) {
-      // Second layer behind
-      const translateX = adjustedDistance > 0 ? '25%' : '-25%'
-      const translateZ = '-100px'
-      const rotateY = adjustedDistance > 0 ? '-15deg' : '15deg'
+      // Second layer behind - moderate spread
+      const translateX = adjustedDistance > 0 ? '40%' : '-40%'
+      const translateZ = '-160px'
+      const rotateY = adjustedDistance > 0 ? '-18deg' : '18deg'
       return {
-        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.8) rotateY(${rotateY})`,
+        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.75) rotateY(${rotateY})`,
         zIndex: 10,
-        opacity: 0.6,
-        filter: 'brightness(0.6)',
+        opacity: 1, // Full opacity instead of 0.55
+        // filter: 'brightness(0.55)', // Removed brightness filter
       }
     } else {
-      // Hidden slides
+      // Hidden slides - controlled spread
+      const translateX = adjustedDistance > 0 ? '50%' : '-50%'
       return {
-        transform: 'translateX(0%) translateZ(-150px) scale(0.7)',
+        transform: `translateX(${translateX}) translateZ(-200px) scale(0.65)`,
         zIndex: 0,
-        opacity: 0,
-        filter: 'brightness(0.4)',
+        opacity: 1, // Full opacity instead of 0.3
+        // filter: 'brightness(0.35)', // Removed brightness filter
       }
     }
   }
 
   return (
     <div className={cn("relative w-full", className)}>
-      {/* Main Carousel Container with 3D perspective */}
+      {/* Main Carousel Container with 3D perspective - UPDATED height and padding */}
       <div 
-        className="relative h-96 md:h-[500px] flex items-center justify-center overflow-hidden"
-        style={{ perspective: '1000px', perspectiveOrigin: 'center center' }}
+        className="relative w-full flex items-center justify-center px-8 md:px-16 aspect-video"
+        style={{ 
+          perspective: '1200px', 
+          perspectiveOrigin: 'center center',
+          height: '420px', // Increased height
+          overflow: 'visible' // Allow cards to extend beyond container
+        }}
       >
-        {/* Slides Container - All slides in same position, styled differently */}
-        <div className="relative w-full max-w-2xl h-full">
+        {/* Slides Container - UPDATED max-width for better proportions */}
+        <div className="relative w-full max-w-3xl h-full">
           {slides.map((slide, index) => {
             const slideStyles = getSlideStyles(index)
             
@@ -125,49 +130,70 @@ export function StackedCarousel({
                 style={{
                   ...slideStyles,
                   transformStyle: 'preserve-3d',
+                  isolation: 'isolate', // Prevent transform from affecting children
                 }}
                 onClick={() => scrollTo(index)}
               >
-                {/* Slide Content */}
-                <div className="relative w-full h-full aspect-video rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 shadow-2xl">
-                  {/* Background Image */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${slide.image})` }}
-                  >
-                    <div className="absolute inset-0 bg-black/40" />
-                  </div>
+                {/* Masking container to ensure proper clipping */}
+                <div 
+                  className="w-full h-full rounded-3xl"
+                  style={{ 
+                    mask: 'radial-gradient(ellipse at center, black 99%, transparent 100%)',
+                    WebkitMask: 'radial-gradient(ellipse at center, black 99%, transparent 100%)',
+                    contain: 'layout style paint',
+                  }}
+                >
+                  {/* Slide Content */}
+                  <div className="relative w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 shadow-2xl">
+                    {/* Background Image - Same technique as before but without overlay */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${slide.image})` }}
+                    >
+                      {/* Commented out dark overlay */}
+                      {/* <div className="absolute inset-0 bg-black/40" /> */}
+                    </div>
 
-                  {/* Content Overlay */}
-                  <div className="relative z-10 flex flex-col justify-center items-center h-full text-white p-6 md:p-8">
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2 text-center tracking-wider">
-                      {slide.title}
-                    </h2>
-                    {slide.subtitle && (
-                      <>
-                        <div className="text-sm md:text-lg text-center mb-2 opacity-90">
-                          PRESENTS:
+                    {/* Content Overlay - COMMENTED OUT */}
+                    {/* <div className="relative z-10 flex flex-col justify-center items-center h-full text-white p-6 md:p-8">
+                      <h2 className="text-3xl md:text-5xl font-bold mb-2 text-center tracking-wider">
+                        {slide.title}
+                      </h2>
+                      {slide.subtitle && (
+                        <>
+                          <div className="text-sm md:text-lg text-center mb-2 opacity-90">
+                            PRESENTS:
+                          </div>
+                          <p className="text-lg md:text-2xl lg:text-3xl text-center mb-6 font-bold tracking-wide">
+                            {slide.subtitle}
+                          </p>
+                        </>
+                      )}
+                      
+                      // Play Button for Video Thumbnails
+                      {slide.videoThumbnail && (
+                        <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all cursor-pointer">
+                          <Play className="w-6 h-6 md:w-8 md:h-8 ml-1" fill="currentColor" />
                         </div>
-                        <p className="text-lg md:text-2xl lg:text-3xl text-center mb-6 font-bold tracking-wide">
-                          {slide.subtitle}
-                        </p>
-                      </>
-                    )}
-                    
-                    {/* Play Button for Video Thumbnails */}
+                      )}
+                    </div> */}
+
+                    {/* Play Button for Video Thumbnails - Keep only this */}
                     {slide.videoThumbnail && (
-                      <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all cursor-pointer">
-                        <Play className="w-6 h-6 md:w-8 md:h-8 ml-1" fill="currentColor" />
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-black/30 backdrop-blur-sm border border-white/30 hover:bg-black/50 transition-all cursor-pointer">
+                          <Play className="w-6 h-6 md:w-8 md:h-8 ml-1 text-white" fill="currentColor" />
+                        </div>
                       </div>
                     )}
-                  </div>
 
-                  {/* Decorative Elements */}
-                  <div className="absolute top-4 left-4 right-4">
-                    <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
+                    {/* Decorative Elements - COMMENTED OUT */}
+                    {/* <div className="absolute top-4 left-4 right-4 z-10">
+                      <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 z-10">
+                      <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -224,165 +250,12 @@ export function StackedCarousel({
   )
 }
 
-// Alternative: Pure CSS Stacked Carousel (without Embla)
-export function PureStackedCarousel({ 
-  slides, 
-  className,
-  autoplay = false,
-  autoplayInterval = 5000 
-}: StackedCarouselProps) {
-  const [selectedIndex, setSelectedIndex] = useState(0)
-
-  const scrollPrev = () => {
-    setSelectedIndex(prev => prev === 0 ? slides.length - 1 : prev - 1)
-  }
-
-  const scrollNext = () => {
-    setSelectedIndex(prev => (prev + 1) % slides.length)
-  }
-
-  // Autoplay
-  useEffect(() => {
-    if (!autoplay) return
-    const interval = setInterval(scrollNext, autoplayInterval)
-    return () => clearInterval(interval)
-  }, [autoplay, autoplayInterval])
-
-  return (
-    <div className={cn("relative w-full", className)}>
-      {/* Stacked Cards Container */}
-      <div 
-        className="relative h-96 md:h-[500px] flex items-center justify-center"
-        style={{ perspective: '1200px' }}
-      >
-        <div className="relative w-full max-w-2xl h-full">
-          {slides.map((slide, index) => {
-            const distance = (index - selectedIndex + slides.length) % slides.length
-            const isActive = distance === 0
-            const isNext = distance === 1
-            const isPrev = distance === slides.length - 1
-            
-            let transform = 'translateX(0%) scale(0.8) rotateY(0deg)'
-            let zIndex = 1
-            let opacity = 0.3
-            
-            if (isActive) {
-              transform = 'translateX(0%) scale(1) rotateY(0deg)'
-              zIndex = 30
-              opacity = 1
-            } else if (isNext) {
-              transform = 'translateX(20%) scale(0.85) rotateY(-15deg)'
-              zIndex = 20
-              opacity = 0.7
-            } else if (isPrev) {
-              transform = 'translateX(-20%) scale(0.85) rotateY(15deg)'
-              zIndex = 20
-              opacity = 0.7
-            }
-            
-            return (
-              <div
-                key={slide.id}
-                className="absolute inset-0 transition-all duration-700 ease-out cursor-pointer"
-                style={{
-                  transform,
-                  zIndex,
-                  opacity,
-                  transformStyle: 'preserve-3d',
-                }}
-                onClick={() => setSelectedIndex(index)}
-              >
-                <div className="relative w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 shadow-2xl">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${slide.image})` }}
-                  >
-                    <div className="absolute inset-0 bg-black/40" />
-                  </div>
-
-                  <div className="relative z-10 flex flex-col justify-center items-center h-full text-white p-6 md:p-8">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-2 text-center tracking-wider">
-                      {slide.title}
-                    </h2>
-                    {slide.subtitle && (
-                      <p className="text-lg md:text-xl text-center mb-6 text-blue-200">
-                        {slide.subtitle}
-                      </p>
-                    )}
-                    
-                    {slide.videoThumbnail && (
-                      <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all">
-                        <Play className="w-6 h-6 md:w-8 md:h-8 ml-1" fill="currentColor" />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="absolute top-4 left-4 right-4">
-                    <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-40 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
-        onClick={scrollPrev}
-      >
-        <ChevronLeft className="h-4 w-4" />
-      </Button>
-      
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-40 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
-        onClick={scrollNext}
-      >
-        <ChevronRight className="h-4 w-4" />
-      </Button>
-
-      {/* Dots */}
-      <div className="flex justify-center mt-8 gap-2">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            className={cn(
-              "w-3 h-3 rounded-full transition-all duration-300",
-              selectedIndex === index
-                ? "bg-blue-500 scale-125"
-                : "bg-gray-400 hover:bg-gray-300"
-            )}
-            onClick={() => setSelectedIndex(index)}
-          />
-        ))}
-      </div>
-
-      {/* <div className="flex justify-center mt-8">
-        <Button 
-          size="lg" 
-          className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg"
-        >
-          Schedule a Demo
-        </Button>
-      </div> */}
-    </div>
-  )
-}
-
-// Example usage component
+// Example usage component - Updated for image-only display
 export function CarouselExample() {
   const slides: CarouselSlide[] = [
     {
       id: '1',
-      title: 'BOB DOYLE',
+      title: 'BOB DOYLE', // These are kept for data but won't display
       subtitle: 'PRESENTS: MAY MACHINA - MOBILE GAMING TOURNAMENT',
       image: '/api/placeholder/800/450',
       videoThumbnail: true,
@@ -401,13 +274,27 @@ export function CarouselExample() {
       image: '/api/placeholder/800/450',
       videoThumbnail: true,
     },
+    {
+      id: '4',
+      title: 'VIRTUAL TOURNAMENTS',
+      subtitle: 'GLOBAL COMPETITIONS AWAIT',
+      image: '/api/placeholder/800/450',
+      videoThumbnail: true,
+    },
+    {
+      id: '5',
+      title: 'MOBILE LEGENDS',
+      subtitle: 'BECOME THE CHAMPION',
+      image: '/api/placeholder/800/450',
+      videoThumbnail: true,
+    },
   ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12">
       <div className="container mx-auto px-4">
-        {/* Use PureStackedCarousel for true stacking */}
-        <PureStackedCarousel 
+        {/* Now displays only images with play buttons - no text overlays */}
+        <StackedCarousel 
           slides={slides} 
           autoplay={true}
           autoplayInterval={4000}

@@ -11,7 +11,7 @@ export function Footer() {
         {/* Curved Background Container */}
         <div className="relative">
           {/* Curved Background */}
-          <div className="bg-blue-300/90 dark:bg-blue-800/90 rounded-3xl p-8 lg:p-12 mb-8">
+          <div className="bg-[#8FA7BA] dark:bg-blue-800/90 rounded-3xl p-8 lg:p-12 mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* Left Content */}
               <motion.div
