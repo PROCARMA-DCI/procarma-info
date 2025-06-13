@@ -392,23 +392,23 @@ export default function HomePage() {
         {/* Product / Training Ecosystem Section */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.section
-            className="py-16"
+            className=""
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Section Header */}
-            <motion.div className="text-center mb-16" variants={itemVariants}>
+            <motion.div className="text-center" variants={itemVariants}>
               <h2 className="text-4xl md:text-5xl font-light text-muted-foreground tracking-wide">
                 PRODUCT / TRAINING ECOSYSTEM
               </h2>
             </motion.div>
 
             {/* Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="flex flex-col lg:flex-row gap-16 items-center">
               {/* Left Content */}
-              <motion.div className="space-y-12" variants={containerVariants}>
+              <motion.div className="space-y-12 lg:flex-[35] " variants={containerVariants}>
                 {/* Products Section */}
                 <motion.div variants={itemVariants}>
                   <h3 className="text-4xl font-bold text-foreground mb-6">
@@ -435,16 +435,16 @@ export default function HomePage() {
 
               {/* Right Illustration */}
               <motion.div
-                className="flex justify-start items-start"
+                className="flex justify-start items-start lg:flex-[65]"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="relative w-full max-w-2xl">
+                <div className="relative w-full  ">
                   <LottiePlayer
-                    sourceFile={"/third-lottie.json"}
-                    boxSize={{ height: "550px", width: "650px" }}
+                    sourceFile={"/second-new.json"}
+                    boxSize={{ height: "650px", width: "650px" }}
                   />
                 </div>
               </motion.div>
@@ -522,8 +522,8 @@ export default function HomePage() {
               >
                 <div className="relative w-full">
                   <LottiePlayer
-                    sourceFile={"/second-lottie-2.json"}
-                    boxSize={{ height: "1000px", width: "1600px" }}
+                    sourceFile={"/third-new.json"}
+                    boxSize={{ height: "700px", width: "1200px" }}
                   />
                 </div>
               </motion.div>
