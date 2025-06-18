@@ -218,14 +218,20 @@ export default function HomePage() {
           >
             {/* AI.LCM Card */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <Card className="bg-card border-border p-6 shadow-sm">
-                <CardContent className="p-0">
-                  <h3 className="text-xl font-bold text-card-foreground">
-                    AI.LCM
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    AI Agent Life Cycle Management
-                  </p>
+              <Card className="bg-card border-border p-6 shadow-sm h-[120px]">
+                <CardContent className="p-0 flex justify-between items-start h-full">
+                  <div className="flex flex-col justify-center">
+                    <h3 className="text-xl font-bold text-card-foreground">
+                      AI.LCM
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      AI Agent Life Cycle Management
+                    </p>
+                  </div>
+                  <LottiePlayer
+                    sourceFile={"/AI.json"}
+                    boxSize={{ height: "55px", width: "55px" }}
+                  />
                 </CardContent>
               </Card>
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
@@ -236,14 +242,20 @@ export default function HomePage() {
 
             {/* CONNECTED Card */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <Card className="bg-card border-border p-6 shadow-sm">
-                <CardContent className="p-0">
-                  <h3 className="text-xl font-bold text-card-foreground">
-                    CONNECTED
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Dealer Branded App Ecosystem
-                  </p>
+              <Card className="bg-card border-border p-6 shadow-sm h-[120px]">
+                <CardContent className="p-0 flex justify-between items-start h-full">
+                  <div className="flex flex-col justify-center">
+                    <h3 className="text-xl font-bold text-card-foreground">
+                      CONNECTED
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Dealer Branded App Ecosystem
+                    </p>
+                  </div>
+                  <LottiePlayer
+                    sourceFile={"/connected.json"}
+                    boxSize={{ height: "55px", width: "55px" }}
+                  />
                 </CardContent>
               </Card>
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
@@ -254,14 +266,20 @@ export default function HomePage() {
 
             {/* AGNOSTIC Card */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <Card className="bg-card border-border p-6 shadow-sm">
-                <CardContent className="p-0">
-                  <h3 className="text-xl font-bold text-card-foreground">
-                    AGNOSTIC
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Open platform architecture - no gateway fees
-                  </p>
+              <Card className="bg-card border-border p-6 shadow-sm h-[120px]">
+                <CardContent className="p-0 flex justify-between items-start h-full">
+                  <div className="flex flex-col justify-center">
+                    <h3 className="text-xl font-bold text-card-foreground">
+                      AGNOSTIC
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      Open platform architecture - no gateway fees
+                    </p>
+                  </div>
+                  <LottiePlayer
+                    sourceFile={"/connected.json"}
+                    boxSize={{ height: "55px", width: "55px" }}
+                  />
                 </CardContent>
               </Card>
               <p className="text-sm text-muted-foreground leading-relaxed px-1">
@@ -281,14 +299,10 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="relative w-full max-w-3xl">
-                <Image
-                  src="/hero-illustration.png"
-                  alt="Customer Retention Platform Illustration"
-                  width={900}
-                  height={500}
-                  className="w-full h-auto object-contain"
-                  priority
-                />
+                <LottiePlayer
+                    sourceFile={"/hero.json"}
+                    boxSize={{ height: "750px", width: "750px" }}
+                  />
               </div>
             </motion.div>
 
