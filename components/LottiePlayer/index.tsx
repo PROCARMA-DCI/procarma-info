@@ -3,33 +3,30 @@ import dynamic from "next/dynamic";
 
 const PlayerWithNoSSR = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
-  { 
+  {
     ssr: false,
-    loading: () => <div>Loading...</div> // Add a loading state
+    loading: () => <div>Loading...</div>,
   }
 );
 
-interface BoxSize {
-  height: string;
-  width: string;
-  top: string;
-  left: string;
-  position: string;
-}
-
-interface LottiePlayerProps {
+interface LottiePlayerProps extends React.HTMLAttributes<HTMLDivElement> {
   sourceFile: string;
-  boxSize: BoxSize;
 }
 
-const LottiePlayer: React.FC<LottiePlayerProps> = ({ sourceFile, boxSize }) => {
+const LottiePlayer: React.FC<LottiePlayerProps> = ({
+  sourceFile,
+  style,
+  ...rest
+}) => {
   return (
-    <PlayerWithNoSSR
-      autoplay
-      loop
-      src={sourceFile}
-      style={boxSize}
-    />
+    <div {...rest}>
+      <PlayerWithNoSSR
+        autoplay
+        loop
+        src={sourceFile}
+        style={{ height: "100%", width: "100%" }}
+      />
+    </div>
   );
 };
 

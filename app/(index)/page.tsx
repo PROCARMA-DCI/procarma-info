@@ -10,7 +10,10 @@ import { MileageSlider } from "@/components/mileage-slider";
 import { EngagementCarousel } from "@/components/engagement-carousel";
 import { Footer } from "@/components/footer";
 import { StackedCarousel } from "@/components/peek_carousel";
-import LottiePlayer from '@/components/LottiePlayer';
+import LottiePlayer from "@/components/LottiePlayer";
+//component
+import Header from "./Header";
+import FeatureCard from "./FeatureCard";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -116,292 +119,21 @@ const partnerLogos = [
   { src: "/logos/slider-amynta.png", alt: "Amynta Group" },
 ];
 
-const liveActivityData = [
-  {
-    vehicle: "FORD F150 2023",
-    mileage: "56,232",
-    warranty: "OEM WARRANTY",
-    services: ["MAINTENANCE", "GPS", "VSC", "LOYALTY", "GAP"],
-    scheduledMaint: "60,000 mi",
-    tradeOps: "6 MONTHS",
-    warrantyColor: "text-orange-500",
-  },
-  {
-    vehicle: "TOYOTA TUNDRA 2021",
-    mileage: "79,365",
-    warranty: "OEM WARRANTY",
-    services: ["MAINTENANCE", "VSC", "LOYALTY"],
-    scheduledMaint: "100,000 mi",
-    tradeOps: "3 MONTHS",
-    warrantyColor: "text-orange-500",
-  },
-  {
-    vehicle: "CHEVY SILVERADO 2023",
-    mileage: "8,156",
-    warranty: "OEM WARRANTY",
-    services: ["MAINTENANCE", "GPS", "VSC", "LOYALTY"],
-    scheduledMaint: "60,000 K",
-    tradeOps: "6 MONTHS",
-    warrantyColor: "text-cyan-500",
-  },
-  {
-    vehicle: "CHEVY TAHOE 2024",
-    mileage: "2,330",
-    warranty: "OEM WARRANTY",
-    services: ["MAINTENANCE", "VSC", "LOYALTY"],
-    scheduledMaint: "10,000 K",
-    tradeOps: "6 MONTHS",
-    warrantyColor: "text-cyan-500",
-  },
-  {
-    vehicle: "GMC YUKON 2017",
-    mileage: "86,156",
-    warranty: "OEM WARRANTY",
-    services: ["MAINTENANCE", "VSC", "LOYALTY"],
-    scheduledMaint: "100,000 K",
-    tradeOps: "6 MONTHS",
-    warrantyColor: "text-orange-500",
-  },
-  {
-    vehicle: "CHEVY SILVERADO 2023",
-    mileage: "1,985",
-    warranty: "OEM WARRANTY",
-    services: ["MAINTENANCE", "GPS", "VSC", "LOYALTY"],
-    scheduledMaint: "60,000 K",
-    tradeOps: "6 MONTHS",
-    warrantyColor: "text-cyan-500",
-  },
-];
-
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background transition-colors">
       {/* Header */}
-      <motion.header
-        className="bg-background border-b border-border"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              {/* <h1 className="text-2xl font-bold text-foreground">
-                PRO<span className="text-cyan-500">CARMA</span>
-              </h1> */}
-              <Image
-                src="/procarma-logo.png"
-                alt="PROCARMA Logo"
-                width={200}
-                height={50}
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <ThemeToggle />
-              <Button className="bg-siteBlueColor hover:bg-siteBlueColor/80 text-white px-6 py-2 rounded-md">
-                Schedule a Demo
-              </Button>
-            </div>
-          </div>
-        </div>
-      </motion.header>
+      <Header />
 
       {/* Main Content */}
       <main>
         {/* Feature Cards Row */}
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* AI.LCM Card */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <Card className="bg-card border-border p-6 shadow-sm h-[120px]">
-                <CardContent className="p-0 flex justify-between items-start h-full">
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-xl font-bold text-card-foreground">
-                      AI.LCM
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      AI Agent Life Cycle Management
-                    </p>
-                  </div>
-                  <LottiePlayer
-                    sourceFile={"/AI.json"}
-                    boxSize={{ height: "55px", width: "55px" }}
-                  />
-                </CardContent>
-              </Card>
-              <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                AI Agents analyze each customer's life cycle and enhances their
-                life time transactional and experiential value.
-              </p>
-            </motion.div>
-
-            {/* CONNECTED Card */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <Card className="bg-card border-border p-6 shadow-sm h-[120px]">
-                <CardContent className="p-0 flex justify-between items-start h-full">
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-xl font-bold text-card-foreground">
-                      CONNECTED
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      Dealer Branded App Ecosystem
-                    </p>
-                  </div>
-                  <LottiePlayer
-                    sourceFile={"/connected.json"}
-                    boxSize={{ height: "55px", width: "55px" }}
-                  />
-                </CardContent>
-              </Card>
-              <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                Dealer / Cutomer centric approach to product visibility and
-                engagement touch points.
-              </p>
-            </motion.div>
-
-            {/* AGNOSTIC Card */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <Card className="bg-card border-border p-6 shadow-sm h-[120px]">
-                <CardContent className="p-0 flex justify-between items-start h-full">
-                  <div className="flex flex-col justify-center">
-                    <h3 className="text-xl font-bold text-card-foreground">
-                      AGNOSTIC
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      Open platform architecture - no gateway fees
-                    </p>
-                  </div>
-                  <LottiePlayer
-                    sourceFile={"/connected.json"}
-                    boxSize={{ height: "55px", width: "55px" }}
-                  />
-                </CardContent>
-              </Card>
-              <p className="text-sm text-muted-foreground leading-relaxed px-1">
-                Partnered with top tier administrators and agencies nationwide
-                to display your information across our platform.
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Hero Section with Image and Live Activity Side by Side */}
-          <div className="flex gap-8 mb-16">
-            {/* Hero Illustration - 65% */}
-            <motion.div
-              className="flex-[65] flex justify-center items-center min-h-[500px]"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="relative w-full max-w-3xl">
-                <LottiePlayer
-                    sourceFile={"/hero.json"}
-                    boxSize={{ height: "750px", width: "750px" }}
-                  />
-              </div>
-            </motion.div>
-
-            {/* Live Activity - 35% */}
-            <motion.div
-              className="flex-[35] min-h-[500px]"
-              variants={liveActivityVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-lg font-bold text-foreground">
-                    LIVE ACTIVITY
-                  </h3>
-                  <span className="text-xs text-muted-foreground">72 hrs</span>
-                </div>
-
-                <motion.div
-                  className="space-y-4"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {liveActivityData.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className="group cursor-pointer border-b border-border pb-4"
-                      variants={activityItemVariants}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2, ease: "easeInOut" }}
-                    >
-                      <div className="p-3 rounded-lg hover:bg-muted/30 transition-all duration-200">
-                        {/* 3-Column Layout */}
-                        <div className="grid grid-cols-3 gap-4 text-xs">
-                          {/* Column 1: Vehicle Info */}
-                          <div>
-                            <h4 className="text-sm font-bold text-foreground group-hover:text-cyan-600 transition-colors mb-2">
-                              {item.vehicle}
-                            </h4>
-                            <div className="mb-2">
-                              <span className="text-2xl font-bold text-foreground group-hover:text-cyan-600 transition-colors">
-                                {item.mileage}
-                              </span>
-                              <span className="text-xs text-muted-foreground ml-1">
-                                mi
-                              </span>
-                            </div>
-                            <div>
-                              <span
-                                className={`text-xs font-semibold ${item.warrantyColor}`}
-                              >
-                                {item.warranty}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Column 2: Services */}
-                          <div>
-                            <div className="space-y-1">
-                              {item.services.map((service, serviceIndex) => (
-                                <div
-                                  key={serviceIndex}
-                                  className="text-xs font-semibold text-foreground"
-                                >
-                                  {service}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Column 3: Maintenance & Trade Ops */}
-                          <div>
-                            <div className="mb-3">
-                              <div className="text-xs font-semibold text-foreground mb-1">
-                                SCHEDULED MAINT
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                {item.scheduledMaint}
-                              </div>
-                            </div>
-                            <div>
-                              <div className="text-xs font-semibold text-foreground mb-1">
-                                TRADE OPS
-                              </div>
-                              <div className="text-xs text-muted-foreground">
-                                {item.tradeOps}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+        <FeatureCard
+          containerVariants={containerVariants}
+          itemVariants={itemVariants}
+          liveActivityVariants={liveActivityVariants}
+          activityItemVariants={activityItemVariants}
+        />
 
         {/* Product / Training Ecosystem Section */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -422,7 +154,10 @@ export default function HomePage() {
             {/* Content Grid */}
             <div className="flex flex-col lg:flex-row gap-16 items-center">
               {/* Left Content */}
-              <motion.div className="space-y-12 lg:flex-[35] " variants={containerVariants}>
+              <motion.div
+                className="space-y-12 lg:flex-[35] "
+                variants={containerVariants}
+              >
                 {/* Products Section */}
                 <motion.div variants={itemVariants}>
                   <h3 className="text-4xl font-bold text-foreground mb-6">
@@ -458,7 +193,7 @@ export default function HomePage() {
                 <div className="relative w-full  ">
                   <LottiePlayer
                     sourceFile={"/second-new.json"}
-                    boxSize={{ height: "650px", width: "650px" }}
+                    style={{ height: "650px", width: "650px" }}
                   />
                 </div>
               </motion.div>
@@ -537,14 +272,14 @@ export default function HomePage() {
                 <div className="relative w-full">
                   <LottiePlayer
                     sourceFile={"/third-new.json"}
-                    boxSize={{ height: "700px", width: "1200px" }}
+                    style={{ height: "700px", width: "1200px" }}
                   />
                 </div>
               </motion.div>
             </div>
 
             {/* Mileage Slider */}
-              {/* <motion.div
+            {/* <motion.div
                 className="mt-16"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -594,7 +329,10 @@ export default function HomePage() {
               </motion.div>
 
               {/* Right Content */}
-              <motion.div className="space-y-12 lg:col-span-1" variants={containerVariants}>
+              <motion.div
+                className="space-y-12 lg:col-span-1"
+                variants={containerVariants}
+              >
                 {/* Products Section */}
                 <motion.div variants={itemVariants}>
                   <h3 className="text-4xl font-bold text-foreground mb-6">
@@ -621,7 +359,7 @@ export default function HomePage() {
             </div>
           </motion.section>
         </div>
-        
+
         {/* ONE PLATFORM FOR EVERYTHING */}
         <div className=" mx-auto px-4 sm:px-6 lg:px-8">
           <motion.section
@@ -674,7 +412,7 @@ export default function HomePage() {
             </div>
 
             {/* Mileage Slider */}
-              {/* <motion.div
+            {/* <motion.div
                 className="mt-16"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
