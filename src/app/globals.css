@@ -120,17 +120,9 @@
     @apply bg-background text-foreground;
   }
 }
-.clip-left-shape {
-  clip-path: polygon(
-    39% 5%,
-    67% 15%,
-    84% 27%,
-    96% 54%,
-    100% 100%,
-    50% 100%,
-    82% 100%,
-    0 100%,
-    0 0,
-    3% 0
-  );
+
+@media (min-width: 1024px) {
+  .clip-left-shape {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
+  }
 }

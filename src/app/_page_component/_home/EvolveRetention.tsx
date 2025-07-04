@@ -11,10 +11,12 @@ export function EvolveRetention() {
       <div className="">
         {/* Curved Background */}
         <div className="relative rounded-3xl p-8 lg:p-12 mb-8 overflow-hidden">
-          <div className="absolute inset-0 -z-10 lg:clip-left-shape bg-muted rounded-3xl" />
+          {/* Background Layer */}
+          <div className="absolute inset-0 z-10 bg-black/10 dark:bg-card clip-left-shape rounded-3xl" />
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Left Content */}
+          {/* Foreground Content */}
+          <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Left */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -31,7 +33,7 @@ export function EvolveRetention() {
               </p>
             </motion.div>
 
-            {/* Right Form */}
+            {/* Right */}
             <div className="flex justify-center lg:justify-end">
               <ContactForm />
             </div>
