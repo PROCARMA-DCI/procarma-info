@@ -1,12 +1,19 @@
 import { LottieWeb } from "@/components/Animation/lottie-web";
 import React, { Suspense } from "react";
-import animationData from "@/utils/animation/lifeCycleManagement.json";
 
 const LifeCycleManagement = () => {
   return (
-    <Suspense>
-      <LottieWeb animationData={animationData} />
-    </Suspense>
+    <section className="w-full">
+      <div className="text-center mb-12">
+        <h2 className="md:text-5xl text-3xl font-light text-muted-foreground tracking-wide">
+          LIFE CYCLE MANAGEMENT
+        </h2>
+      </div>
+
+      <Suspense>
+        <LottieWeb src={"/json/third-new.json"} />
+      </Suspense>
+    </section>
   );
 };
 

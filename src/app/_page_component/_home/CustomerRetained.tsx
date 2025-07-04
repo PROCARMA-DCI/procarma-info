@@ -1,10 +1,15 @@
 "use client";
 import { useState, useEffect, Suspense } from "react";
 import { Badge } from "@/components/ui/badge";
-import animationData from "@/utils/animation/customerRatained.json";
 
 import { LottieWeb } from "@/components/Animation/lottie-web";
 import { Wrapper } from "@/components/Layout";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 // Mock data structure that would come from API
 const mockDashboardData = {
@@ -113,23 +118,82 @@ export const CustomerRetained = () => {
     fetchData();
   }, []);
 
+  const LiveActivity = ({ index, item }: any) => {
+    return (
+      <div
+        className={`border p-1 rounded-lg transition-all duration-500 hover:shadow-md ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+        }`}
+        style={{
+          transitionDelay: `${index * 100}ms`,
+        }}
+      >
+        <div className="flex items-start justify-between">
+          <div className=" font-semibold text-xs text-foreground w-32">
+            <div className="flex flex-col gap-[1px]">
+              <span className="text-[0.8em]">{item.label}</span>
+              <span className="text-lg">{item.value}</span>
+              <span className="text-primary text-[0.8em]">
+                {item.value_sub}
+              </span>
+            </div>
+          </div>
+
+          <div className=" font-semibold text-xs text-foreground w-32">
+            <div className="flex flex-col gap-1">
+              <span>{item.category}</span>
+              <span className="flex flex-wrap ">
+                {item.point.map((item: any, index: number) => (
+                  <Badge
+                    key={index}
+                    variant="outline"
+                    className="text-[0.8em] ms-1"
+                  >
+                    {" "}
+                    {item}
+                  </Badge>
+                ))}
+              </span>
+            </div>
+          </div>
+
+          <div className="font-semibold text-xs text-foreground w-32">
+            <div className="flex flex-col gap-[1px]">
+              <div className="flex flex-col">
+                <span className="whitespace-nowrap">{item.status}</span>
+                <span className="text-muted-foreground text-[0.8em]">
+                  {item.status_sub}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span>{item.status2}</span>
+                <span className="text-muted-foreground text-[0.8em]">
+                  {item.status_sub2}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <section className="w-full ">
       {/* Header */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-light text-muted-foreground tracking-wide">
+        <h2 className="md:text-5xl text-3xl font-light text-muted-foreground tracking-wide">
           PRODUCT / TRAINING ECOSYSTEM
         </h2>
       </div>
       <div className="bg-card p-4">
         <Wrapper>
           {/* Dashboard Layout */}
-          <div className="grid grid-cols-12 gap-8 items-center  ">
+          <div className="grid grid-cols-12 lg:gap-8 items-center  ">
             {/* Left Side - Static Image/Animation */}
             <div className="col-span-12 lg:col-span-7   flex justify-center lg:justify-start">
-              <div className="w-full bg-white rounded-lg p-2">
+              <div className="w-full  rounded-lg p-2">
                 <Suspense>
-                  <LottieWeb animationData={animationData} />
+                  <LottieWeb src={"/json/customerRetained.json"} />
                 </Suspense>
               </div>
             </div>
@@ -145,69 +209,26 @@ export const CustomerRetained = () => {
                 </Badge>
               </div>
 
-              <div className="space-y-1">
+              <div className="hidden lg:block space-y-1">
                 {dashboardData.liveActivity.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className={`border p-1 rounded-lg transition-all duration-500 hover:shadow-md ${
-                      isVisible
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-4"
-                    }`}
-                    style={{
-                      transitionDelay: `${index * 100}ms`,
-                    }}
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className=" font-semibold text-xs text-foreground w-32">
-                        <div className="flex flex-col gap-[1px]">
-                          <span className="text-[0.8em]">{item.label}</span>
-                          <span className="text-lg">{item.value}</span>
-                          <span className="text-primary text-[0.8em]">
-                            {item.value_sub}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className=" font-semibold text-xs text-foreground w-32">
-                        <div className="flex flex-col gap-1">
-                          <span>{item.category}</span>
-                          <span className="flex flex-wrap ">
-                            {item.point.map((item, index) => (
-                              <Badge
-                                key={index}
-                                variant="outline"
-                                className="text-[0.8em] ms-1"
-                              >
-                                {" "}
-                                {item}
-                              </Badge>
-                            ))}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="font-semibold text-xs text-foreground w-32">
-                        <div className="flex flex-col gap-[1px]">
-                          <div className="flex flex-col">
-                            <span className="whitespace-nowrap">
-                              {item.status}
-                            </span>
-                            <span className="text-muted-foreground text-[0.8em]">
-                              {item.status_sub}
-                            </span>
-                          </div>
-                          <div className="flex flex-col">
-                            <span>{item.status2}</span>
-                            <span className="text-muted-foreground text-[0.8em]">
-                              {item.status_sub2}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <LiveActivity key={index} index={index} item={item} />
                 ))}
+              </div>
+              <div className="lg:hidden">
+                <Carousel
+                  opts={{
+                    align: "start",
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="">
+                    {dashboardData.liveActivity.map((item, index) => (
+                      <CarouselItem key={index} className="md:pl-4 basis-full ">
+                        <LiveActivity index={index} item={item} />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
               </div>
             </div>
           </div>
