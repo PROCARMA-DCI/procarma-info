@@ -65,22 +65,26 @@ const FeatureCard = ({
     },
   ];
 
-  const CARD = ({ title, subTitle, description, file }: any) => {
+  interface CardProps {
+    title: string;
+    subTitle: string;
+    description: string;
+    file: string;
+  }
+  const CARD = ({ title, subTitle, description, file }: CardProps) => {
     return (
       <motion.div variants={itemVariants} className="space-y-2">
         <Card className="bg-card border-border p-2 shadow-sm h-[80px]">
-          <CardContent className="p-0 flex justify-between items-center h-full ">
-            <div className="flex flex-col justify-center">
+          <CardContent className="p-0 flex justify-between items-center h-full">
+            <div className="flex flex-col justify-center flex-1">
               <h3 className="text-xl font-bold text-card-foreground">
                 {title}
               </h3>
               <p className="text-sm text-muted-foreground">{subTitle}</p>
             </div>
-            <LottiePlayer
-              sourceFile={file}
-              style={{ height: "80px" }}
-              className="flex items-center justify-center"
-            />
+            <div className="flex items-center justify-center w-[80px] h-[80px] flex-shrink-0">
+              <LottiePlayer sourceFile={file} className="w-full h-full" />
+            </div>
           </CardContent>
         </Card>
         <p className="text-xs text-muted-foreground leading-relaxed px-1">
@@ -89,6 +93,7 @@ const FeatureCard = ({
       </motion.div>
     );
   };
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <motion.div
