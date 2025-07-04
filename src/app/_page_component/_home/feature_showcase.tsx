@@ -59,7 +59,7 @@ export function FeatureShowcase({ containerVariants }: any) {
                 className="md:pl-4 basis-full md:basis-1/3"
               >
                 <div className="w-full flex flex-col gap-4 ">
-                  <Card className="w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center">
+                  <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center">
                     <CardHeader className="flex justify-between items-center">
                       <CardTitle className="text-xl font-bold text-foreground">
                         {feature.title}

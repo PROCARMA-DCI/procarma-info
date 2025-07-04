@@ -41,7 +41,7 @@ const containerVariants = {
 };
 const page = () => {
   return (
-    <div>
+    <div className=" bg-background transition-colors">
       <Wrapper>
         <Header />
       </Wrapper>

@@ -11,7 +11,7 @@ export function EvolveRetention() {
       <div className="">
         {/* Curved Background */}
         <div className="relative rounded-3xl p-8 lg:p-12 mb-8 overflow-hidden">
-          <div className="absolute inset-0 -z-10 lg:clip-left-shape bg-card rounded-3xl" />
+          <div className="absolute inset-0 -z-10 lg:clip-left-shape bg-muted rounded-3xl" />
 
           <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
