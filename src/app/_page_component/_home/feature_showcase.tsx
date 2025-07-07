@@ -23,18 +23,21 @@ export function FeatureShowcase({ containerVariants }: any) {
       subtitle: "AI Agent Life Cycle Management",
       description:
         "AI Agents analyze each customer's life cycle and enhances their life time transactional and experiential value.",
+      file: "/json/AI.json",
     },
     {
       title: "CONNECTED",
       subtitle: "Dealer Branded App Ecosystem",
       description:
         "Dealer / Customer centric approach to product visibility and engagement touch points.",
+      file: "/json/connected.json",
     },
     {
       title: "AGNOSTIC",
       subtitle: "Open platform architecture - no gateway fees",
       description:
         "Partnered with top tier administrators and agencies nationwide to display your information across our platform.",
+      file: "/json/connected.json",
     },
   ];
 
@@ -69,7 +72,7 @@ export function FeatureShowcase({ containerVariants }: any) {
                       </CardTitle>
                       <div className="flex items-center justify-center flex-shrink-0">
                         <Suspense>
-                          <LottieWeb src={"/json/AI.json"} />
+                          <LottieWeb src={feature.file} />
                         </Suspense>
                       </div>
                     </CardHeader>

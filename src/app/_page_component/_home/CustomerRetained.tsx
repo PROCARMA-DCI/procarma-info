@@ -193,7 +193,7 @@ export const CustomerRetained = () => {
             <div className="col-span-12 lg:col-span-7   flex justify-center lg:justify-start">
               <div className="w-full  rounded-lg p-2">
                 <Suspense>
-                  <LottieWeb src={"/json/customerRatained.json"} />
+                  <LottieWeb src={"/json/Top_Animation_Procamra2.0.json"} />
                 </Suspense>
               </div>
             </div>
