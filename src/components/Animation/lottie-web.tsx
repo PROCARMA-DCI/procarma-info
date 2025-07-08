@@ -47,6 +47,7 @@ export const LottieWeb = ({ animationData, src }: LottieWebProps) => {
         loop: true,
         autoplay: true,
         animationData: loadedAnimationData,
+        assetsPath: "/json/images/",
       });
     }
 

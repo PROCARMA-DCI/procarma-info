@@ -40,7 +40,29 @@ export function FeatureShowcase({ containerVariants }: any) {
       file: "/json/connected.json",
     },
   ];
+  const mainCard = (feature: any) => (
+    <div className="w-full flex flex-col gap-4">
+      <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center">
+        <CardHeader className="flex justify-between items-center">
+          <CardTitle className="text-xl font-bold text-foreground">
+            {feature.title}
+            <CardDescription className="text-xs font-medium text-muted-foreground">
+              {feature.subtitle}
+            </CardDescription>
+          </CardTitle>
+          <div className="flex items-center justify-center flex-shrink-0">
+            <Suspense>
+              <LottieWeb src={feature.file} />
+            </Suspense>
+          </div>
+        </CardHeader>
+      </Card>
 
+      <p className="text-sm text-muted-foreground leading-relaxed mx-4 hidden md:block">
+        {feature.description}
+      </p>
+    </div>
+  );
   return (
     <div className="w-full">
       <motion.div
@@ -49,11 +71,18 @@ export function FeatureShowcase({ containerVariants }: any) {
         initial="hidden"
         animate="visible"
       >
+        <div className="w-full hidden md:flex">
+          {features.map((feature, index) => (
+            <div key={index} className="md:pl-4 basis-full md:basis-1/3">
+              {mainCard(feature)}
+            </div>
+          ))}
+        </div>
         <Carousel
           opts={{
             align: "start",
           }}
-          className="w-full"
+          className="w-full md:hidden"
         >
           <CarouselContent className="">
             {features.map((feature, index) => (
@@ -61,27 +90,7 @@ export function FeatureShowcase({ containerVariants }: any) {
                 key={index}
                 className="md:pl-4 basis-full md:basis-1/3"
               >
-                <div className="w-full flex flex-col gap-4 ">
-                  <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center">
-                    <CardHeader className="flex justify-between items-center">
-                      <CardTitle className="text-xl font-bold text-foreground">
-                        {feature.title}
-                        <CardDescription className="text-xs font-medium text-muted-foreground">
-                          {feature.subtitle}
-                        </CardDescription>
-                      </CardTitle>
-                      <div className="flex items-center justify-center flex-shrink-0">
-                        <Suspense>
-                          <LottieWeb src={feature.file} />
-                        </Suspense>
-                      </div>
-                    </CardHeader>
-                  </Card>
-
-                  <p className="text-sm text-muted-foreground leading-relaxed mx-4 hidden md:block">
-                    {feature.description}
-                  </p>
-                </div>
+                {mainCard(feature)}
               </CarouselItem>
             ))}
           </CarouselContent>

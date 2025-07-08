@@ -180,11 +180,7 @@ export const CustomerRetained = () => {
   return (
     <section className="w-full ">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h2 className="md:text-5xl text-3xl font-light text-muted-foreground tracking-wide">
-          PRODUCT / TRAINING ECOSYSTEM
-        </h2>
-      </div>
+
       <div className="bg-card p-4">
         <Wrapper>
           {/* Dashboard Layout */}
