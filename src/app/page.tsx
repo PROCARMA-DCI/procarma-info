@@ -45,13 +45,13 @@ const page = () => {
       <Wrapper>
         <Header />
       </Wrapper>
-      <div className="mt-10 flex flex-col gap-20">
+      <div className="mt-10 flex flex-col gap-y-16">
         <Wrapper>
           <FeatureShowcase containerVariants={containerVariants} />
         </Wrapper>
         <CustomerRetained />
         <Wrapper>
-          <div className="flex flex-col gap-20">
+          <div className="flex flex-col gap-y-16">
             <TrainingEcosystem />
 
             <LifeCycleManagement />

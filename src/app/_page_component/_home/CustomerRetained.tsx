@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Badge } from "@/components/ui/badge";
 
 import { LottieWeb } from "@/components/Animation/lottie-web";
@@ -10,6 +10,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 // Mock data structure that would come from API
 const mockDashboardData = {
@@ -177,6 +178,9 @@ export const CustomerRetained = () => {
       </div>
     );
   };
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
   return (
     <section className="w-full ">
       {/* Header */}
@@ -189,7 +193,10 @@ export const CustomerRetained = () => {
             <div className="col-span-12 lg:col-span-7   flex justify-center lg:justify-start">
               <div className="w-full  rounded-lg p-2">
                 <Suspense>
-                  <LottieWeb src={"/json/Top_Animation_Procamra2.0.json"} />
+                  <LottieWeb
+                    src={"/json/Top_Animation_Procamra2.0.json"}
+                    assetsPath="/json/images/"
+                  />
                 </Suspense>
               </div>
             </div>
@@ -216,6 +223,11 @@ export const CustomerRetained = () => {
                     align: "start",
                   }}
                   className="w-full"
+                  plugins={[plugin.current]}
+                  onMouseEnter={plugin.current.stop}
+                  onMouseLeave={plugin.current.reset}
+                  onTouchStart={plugin.current.stop} // 👈 Stops on mobile touch
+                  onTouchEnd={plugin.current.reset}
                 >
                   <CarouselContent className="">
                     {dashboardData.liveActivity.map((item, index) => (

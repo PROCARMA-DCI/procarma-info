@@ -23,7 +23,7 @@ export function EvolveRetention() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-5xl px md:text-5xl font-bold mb-6">
                 Evolve Your Retention.
               </h2>
               <p className="text-xl mb-8 max-w-md">

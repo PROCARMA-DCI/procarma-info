@@ -1,13 +1,23 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import lottie, { AnimationItem } from "lottie-web";
+import { ClassNameType } from "@/utils/types";
 
 type LottieWebProps = {
   animationData?: unknown;
   src?: string;
+  className?: ClassNameType;
+  style?: React.CSSProperties;
+  assetsPath?: string;
 };
 
-export const LottieWeb = ({ animationData, src }: LottieWebProps) => {
+export const LottieWeb = ({
+  animationData,
+  src,
+  style,
+  className,
+  assetsPath = "/images/",
+}: LottieWebProps) => {
   const animationContainer = useRef<HTMLDivElement | null>(null);
   const animationInstance = useRef<AnimationItem | null>(null);
   const [loadedAnimationData, setLoadedAnimationData] = useState<unknown>(null);
@@ -47,7 +57,7 @@ export const LottieWeb = ({ animationData, src }: LottieWebProps) => {
         loop: true,
         autoplay: true,
         animationData: loadedAnimationData,
-        assetsPath: "/json/images/",
+        assetsPath: assetsPath,
       });
     }
 
@@ -56,5 +66,20 @@ export const LottieWeb = ({ animationData, src }: LottieWebProps) => {
     };
   }, [loadedAnimationData]);
 
-  return <div ref={animationContainer} />;
+  return (
+    <div
+      ref={animationContainer}
+      className={className}
+      style={{
+        padding: 0,
+        margin: 0,
+        display: "inline-block",
+        lineHeight: 0,
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+        ...style,
+      }}
+    />
+  );
 };

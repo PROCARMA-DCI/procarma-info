@@ -6,13 +6,13 @@ import { Suspense } from "react";
 export const TrainingEcosystem = () => {
   return (
     <section className="w-full">
-      <div className="text-center mb-12">
-        <h2 className="md:text-5xl text-3xl font-light text-muted-foreground tracking-wide">
+      <div className="text-center mb-8">
+        <h2 className="md:text-5xl text-3xl px-2  font-light text-muted-foreground tracking-wide">
           PRODUCT / TRAINING ECOSYSTEM
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center ">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mx-4 ">
         <div className="space-y-8 lg:col-span-4">
           <div className="space-y-4">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground">

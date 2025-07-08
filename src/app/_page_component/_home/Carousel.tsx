@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { StackedCarousel } from "@/components/carousel/peek_carousel";
+import { EnhancedStackedCarousel } from "@/components/carousel/EnhancedStackedCarousel";
 
 const carouselSlides = [
   {
@@ -17,28 +17,27 @@ const carouselSlides = [
     title: "GAMING REVOLUTION",
     subtitle: "NEXT GENERATION MOBILE EXPERIENCE",
     image: "/carousel/banner-1.png",
-    videoThumbnail: false,
   },
   {
     id: "3",
     title: "ESPORTS ARENA",
     subtitle: "COMPETITIVE GAMING PLATFORM",
     image: "/carousel/banner-2.png",
-    videoThumbnail: false,
   },
   {
     id: "4",
     title: "ESPORTS ARENA",
     subtitle: "COMPETITIVE GAMING PLATFORM",
     image: "/carousel/banner-3.png",
-    videoThumbnail: false,
   },
+
   {
     id: "5",
-    title: "ESPORTS ARENA",
-    subtitle: "COMPETITIVE GAMING PLATFORM",
-    image: "/carousel/arena.jpg",
-    videoThumbnail: false,
+    title: "BOB DOYLE",
+    subtitle: "PRESENTS: MAY MACHINA - MOBILE GAMING TOURNAMENT",
+    videoUrl: "https://player.vimeo.com/video/347119375",
+    videoType: "vimeo" as const,
+    // image: "/placeholder.svg?height=450&width=800", // Thumbnail for video
   },
   // Add more slides as needed
 ];
@@ -54,10 +53,10 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
       >
         {/* Section Header */}
         <motion.div className="text-center mb-8" variants={itemVariants}>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="md:text-5xl px-2 text-3xl font-light text-muted-foreground tracking-wide">
             Engagement Evolved
           </h2>
-          <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg mx-4 text-muted-foreground max-w-4xl ">
             From gaming tournaments referral programs, we help dealers reach
             their customers in new and innovative ways. This is not your average
             CRM. We will tailor a retention program to meet your
@@ -76,10 +75,10 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
           {/* <EngagementCarousel />
            */}
 
-          <StackedCarousel
+          <EnhancedStackedCarousel
             slides={carouselSlides}
             autoplay={true}
-            autoplayInterval={5000}
+            autoplayInterval={3000}
             className="max-w-6xl mx-auto"
           />
         </motion.div>

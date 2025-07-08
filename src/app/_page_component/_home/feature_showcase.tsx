@@ -14,7 +14,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
+import Autoplay from "embla-carousel-autoplay";
 
 export function FeatureShowcase({ containerVariants }: any) {
   const features = [
@@ -43,7 +44,7 @@ export function FeatureShowcase({ containerVariants }: any) {
   const mainCard = (feature: any) => (
     <div className="w-full flex flex-col gap-4">
       <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center">
-        <CardHeader className="flex justify-between items-center">
+        <CardHeader className="flex justify-between items-center p-0 m-0 pl-3">
           <CardTitle className="text-xl font-bold text-foreground">
             {feature.title}
             <CardDescription className="text-xs font-medium text-muted-foreground">
@@ -63,6 +64,9 @@ export function FeatureShowcase({ containerVariants }: any) {
       </p>
     </div>
   );
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
   return (
     <div className="w-full">
       <motion.div
@@ -71,9 +75,9 @@ export function FeatureShowcase({ containerVariants }: any) {
         initial="hidden"
         animate="visible"
       >
-        <div className="w-full hidden md:flex">
+        <div className="w-full hidden lg:flex gap-4">
           {features.map((feature, index) => (
-            <div key={index} className="md:pl-4 basis-full md:basis-1/3">
+            <div key={index} className=" basis-1/3">
               {mainCard(feature)}
             </div>
           ))}
@@ -82,14 +86,16 @@ export function FeatureShowcase({ containerVariants }: any) {
           opts={{
             align: "start",
           }}
-          className="w-full md:hidden"
+          className="w-11/12 mx-auto lg:hidden"
+          plugins={[plugin.current]}
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
+          onTouchStart={plugin.current.stop} // 👈 Stops on mobile touch
+          onTouchEnd={plugin.current.reset}
         >
           <CarouselContent className="">
             {features.map((feature, index) => (
-              <CarouselItem
-                key={index}
-                className="md:pl-4 basis-full md:basis-1/3"
-              >
+              <CarouselItem key={index} className=" basis-full ">
                 {mainCard(feature)}
               </CarouselItem>
             ))}
