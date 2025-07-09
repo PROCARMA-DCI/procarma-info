@@ -36,7 +36,7 @@ export const TrainingEcosystem = () => {
         </div>
 
         <div className="w-full lg:col-span-8 flex justify-center lg:justify-end">
-          <div className="w-full rounded-lg p-2 -mt-30 lg:-mt-40">
+          <div className="w-full rounded-lg p-2 -mt-30 ">
             <Suspense>
               <LottieWeb src={"/json/second-new.json"} />
             </Suspense>
