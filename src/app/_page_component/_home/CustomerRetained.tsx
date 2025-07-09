@@ -194,7 +194,7 @@ export const CustomerRetained = () => {
               <div className="w-full  rounded-lg p-2">
                 <Suspense>
                   <LottieWeb
-                    src={"/json/Procarma2.json"}
+                    src={"/json/Procarma2-02.json"}
                     assetsPath="/json/images/"
                   />
                 </Suspense>
