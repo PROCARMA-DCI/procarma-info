@@ -190,11 +190,11 @@ export const CustomerRetained = () => {
           {/* Dashboard Layout */}
           <div className="grid grid-cols-12 lg:gap-8 items-center  ">
             {/* Left Side - Static Image/Animation */}
-            <div className="col-span-12 lg:col-span-7   flex justify-center lg:justify-start">
+            <div className="col-span-12 lg:col-span-12   flex justify-center lg:justify-start">
               <div className="w-full  rounded-lg p-2">
                 <Suspense>
                   <LottieWeb
-                    src={"/json/Top_Animation_Procamra2.0.json"}
+                    src={"/json/Procarma2.json"}
                     assetsPath="/json/images/"
                   />
                 </Suspense>
@@ -202,7 +202,7 @@ export const CustomerRetained = () => {
             </div>
 
             {/* Right Side - Live Activity Data */}
-            <div className="space-y-2 col-span-12 lg:col-span-5">
+            {/* <div className="space-y-2 col-span-12 lg:col-span-5">
               <div className="flex items-center justify-between ">
                 <h3 className="text-lg font-semibold text-foreground">
                   LIVE ACTIVITY
@@ -238,7 +238,7 @@ export const CustomerRetained = () => {
                   </CarouselContent>
                 </Carousel>
               </div>
-            </div>
+            </div> */}
           </div>
         </Wrapper>
       </div>
