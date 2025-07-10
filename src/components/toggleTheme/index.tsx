@@ -12,7 +12,7 @@ const ToggleTheme = () => {
     <Button
       variant="outline"
       size="icon"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "light")}
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {resolvedTheme === "dark" ? (
         <Sun className="h-[1.2rem] w-[1.2rem] transition-all" />
