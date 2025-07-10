@@ -9,10 +9,10 @@ const Header = () => {
         <span className="text-[#0E5B76]">PRO</span>
         <span className="text-[#00AEEf]">CARMA</span>
       </h1>
-      <div className="flex items-center gap-2">
+      {/* <div className="flex items-center gap-2">
         <Button className="text-primary-foreground">Schedule a Demo</Button>
         <ToggleTheme />
-      </div>
+      </div> */}
     </div>
   );
 };
