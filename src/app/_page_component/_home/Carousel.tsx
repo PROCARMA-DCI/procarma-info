@@ -56,7 +56,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
           <h2 className="md:text-5xl px-2 text-3xl font-light text-muted-foreground tracking-wide">
             Engagement Evolved
           </h2>
-          <p className="mt-4 text-lg mx-4 text-muted-foreground max-w-4xl ">
+          <p className="text-center m-auto mt-4 text-lg mx-4 text-muted-foreground  ">
             From gaming tournaments referral programs, we help dealers reach
             their customers in new and innovative ways. This is not your average
             CRM. We will tailor a retention program to meet your
