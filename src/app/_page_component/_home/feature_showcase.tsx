@@ -51,10 +51,12 @@ export function FeatureShowcase({ containerVariants }: any) {
               {feature.subtitle}
             </CardDescription>
           </CardTitle>
-          <div className="flex items-center justify-center flex-shrink-0">
-            <Suspense>
-              <LottieWeb src={feature.file} />
-            </Suspense>
+          <div className={feature.title === "AGNOSTIC" ? "lg:hidden" : "block"}>
+            <div className="flex items-center justify-center flex-shrink-0">
+              <Suspense>
+                <LottieWeb src={feature.file} />
+              </Suspense>
+            </div>
           </div>
         </CardHeader>
       </Card>
