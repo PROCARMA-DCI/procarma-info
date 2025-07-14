@@ -10,6 +10,7 @@ import { CustomerRetained } from "./_page_component/_home/CustomerRetained";
 import { Wrapper } from "@/components/Layout";
 import Carousel from "./_page_component/_home/Carousel";
 import { EvolveRetention } from "./_page_component/_home/EvolveRetention";
+import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -41,8 +42,14 @@ const containerVariants = {
   },
 };
 const Page = () => {
+  const [loading, setLoading] = useState(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 3000);
+
   return (
-    <div className=" bg-background transition-colors">
+    <div className=" bg-[#f5f5f5] transition-colors">
+      <SpinnerCenterScreen loading={loading} />
       <Wrapper>
         <Header />
       </Wrapper>
@@ -51,21 +58,26 @@ const Page = () => {
           <FeatureShowcase containerVariants={containerVariants} />
         </Wrapper>
         <CustomerRetained />
-        <Wrapper>
+
+        {!loading && (
           <div className="flex flex-col gap-y-16">
-            <TrainingEcosystem />
-
+            <Wrapper>
+              <TrainingEcosystem />
+            </Wrapper>
             <LifeCycleManagement />
-
-            <CustomerEngagement />
-            <OnePlatform />
-            <Carousel
-              itemVariants={itemVariants}
-              sectionVariants={sectionVariants}
-            />
-            <EvolveRetention />
+            <Wrapper>
+              <div className="flex flex-col gap-y-16">
+                <CustomerEngagement />
+                <OnePlatform />
+                <Carousel
+                  itemVariants={itemVariants}
+                  sectionVariants={sectionVariants}
+                />
+                <EvolveRetention />
+              </div>
+            </Wrapper>
           </div>
-        </Wrapper>
+        )}
       </div>
     </div>
   );

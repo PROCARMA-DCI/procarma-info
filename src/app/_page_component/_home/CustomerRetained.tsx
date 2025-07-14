@@ -192,12 +192,10 @@ export const CustomerRetained = () => {
             {/* Left Side - Static Image/Animation */}
             <div className="col-span-12 lg:col-span-12   flex justify-center lg:justify-start">
               <div className="w-full  rounded-lg p-2">
-                <Suspense>
-                  <LottieWeb
-                    src={"/json/newdata.json"}
-                    assetsPath="/json/images/"
-                  />
-                </Suspense>
+                <LottieWeb
+                  src={"/json/newdata.json"}
+                  assetsPath="/json/images/"
+                />
               </div>
             </div>
 

@@ -1,5 +1,4 @@
 import { LottieWeb } from "@/components/Animation/lottie-web";
-import animationData from "@/utils/animation/customer-engagement.json";
 import { Suspense } from "react";
 
 export const CustomerEngagement = () => {
@@ -13,9 +12,9 @@ export const CustomerEngagement = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div className=" lg:col-span-8 flex justify-center lg:justify-start">
-          <div className="w-full bg-white rounded-lg p-2 scale-105">
+          <div className="w-full  rounded-lg p-2 scale-105">
             <Suspense>
-              <LottieWeb animationData={animationData} />
+              <LottieWeb src={"/json/customer-engagement.json"} />
             </Suspense>
           </div>
         </div>

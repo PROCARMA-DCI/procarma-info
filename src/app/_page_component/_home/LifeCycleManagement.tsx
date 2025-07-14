@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 const LifeCycleManagement = () => {
   return (
     <section className="w-full">
-      <div className="text-center mb-12">
+      <div className="text-center ">
         <h2 className="md:text-5xl px-2 text-3xl font-light text-muted-foreground tracking-wide">
           LIFE CYCLE MANAGEMENT
         </h2>
