@@ -33,6 +33,8 @@ const SpinnerCenterScreen = ({
           <Bars
             height="80"
             width="80"
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             radius="9"
             color="#0097cc"
             ariaLabel="loading"
