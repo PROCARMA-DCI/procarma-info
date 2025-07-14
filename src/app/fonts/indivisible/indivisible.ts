@@ -20,6 +20,11 @@ const indivisible = localFont({
       style: "italic",
     },
     {
+      path: "./fonnts.com-Indivisible_SemiBold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
       path: "./fonnts.com-Indivisible_Bold.otf",
       weight: "700",
       style: "normal",
