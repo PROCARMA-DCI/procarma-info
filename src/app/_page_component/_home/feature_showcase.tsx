@@ -61,7 +61,7 @@ export function FeatureShowcase({ containerVariants }: any) {
         </CardHeader>
       </Card>
 
-      <p className="text-sm text-muted-foreground leading-relaxed mx-6 mr-20 hidden md:block">
+      <p className="text-sm text-[#607A94] leading-relaxed mx-6 mr-20 hidden md:block">
         {feature.description}
       </p>
     </div>
