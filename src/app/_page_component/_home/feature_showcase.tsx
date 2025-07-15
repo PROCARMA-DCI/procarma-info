@@ -24,35 +24,39 @@ export function FeatureShowcase({ containerVariants }: any) {
       subtitle: "AI Agent Life Cycle Management",
       description:
         "AI Agents analyze each customer's life cycle and enhances their life time transactional and experiential value.",
-      file: "/json/AI.json",
+      file: "/json/smallanimation/1/data.json",
     },
     {
       title: "CONNECTED",
       subtitle: "Dealer Branded App Ecosystem",
       description:
         "Dealer / Customer centric approach to product visibility and engagement touch points.",
-      file: "/json/connected.json",
+      file: "/json/smallanimation/2/data.json",
     },
     {
       title: "AGNOSTIC",
       subtitle: "Open platform architecture - no gateway fees",
       description:
         "Partnered with top tier administrators and agencies nationwide to display your information across our platform.",
-      file: "/json/connected.json",
+      file: "/json/smallanimation/2/data.json",
     },
   ];
   const mainCard = (feature: any) => (
     <div className="w-full flex flex-col gap-4">
-      <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center">
-        <CardHeader className="flex justify-between items-center p-0 m-0 ml-6 ">
+      <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center overflow-hidden">
+        <CardHeader className="flex justify-between items-center p-0 m-0 px-6 ">
           <CardTitle className="text-xl font-bold  text-[#294559]">
             {feature.title}
-            <CardDescription className="text-xs font-medium text-[#607A94]">
+            <CardDescription className="text-xs font-medium text-[#3e5266]">
               {feature.subtitle}
             </CardDescription>
           </CardTitle>
           <div className={feature.title === "AGNOSTIC" ? "lg:hidden" : "block"}>
-            <div className="flex items-center justify-center flex-shrink-0">
+            <div
+              className={`flex h-20 ${
+                feature.file == "/json/smallanimation/2/data.json" && "h-32"
+              } items-center justify-center flex-shrink-0`}
+            >
               <Suspense>
                 <LottieWeb src={feature.file} />
               </Suspense>
