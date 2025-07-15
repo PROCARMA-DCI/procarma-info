@@ -5,5 +5,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const Wrapper = ({ children }: { children: React.ReactNode }) => {
-  return <div className="w-full max-w-6xl mx-auto  lg:px-2">{children}</div>;
+  return (
+    <div className="w-full max-w-[1900px] mx-auto  lg:px-2 xl:px-10 [@media(min-width:1500px)]:px-[120px]">
+      {children}
+    </div>
+  );
 };

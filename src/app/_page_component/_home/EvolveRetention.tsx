@@ -3,6 +3,7 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import { ContactForm } from "@/components/form/contact-form";
 import { motion } from "framer-motion";
+import { Heading, Paragraph } from "@/components/typography/Typography";
 
 export function EvolveRetention() {
   return (
@@ -23,14 +24,14 @@ export function EvolveRetention() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-5xl px md:text-5xl font-bold mb-6">
+              <Heading className="text-5xl px md:text-5xl font-bold mb-6">
                 Evolve Your Retention.
-              </h2>
-              <p className="text-xl mb-8 max-w-md">
+              </Heading>
+              <Paragraph className="text-xl mb-8 max-w-md">
                 If you are looking to take your business to the next level with
                 innovative customer retention strategies, we&apos;re here to
                 help.
-              </p>
+              </Paragraph>
             </motion.div>
 
             {/* Right */}

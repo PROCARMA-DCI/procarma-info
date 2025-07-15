@@ -20,7 +20,7 @@ import Autoplay from "embla-carousel-autoplay";
 export function FeatureShowcase({ containerVariants }: any) {
   const features = [
     {
-      title: "ALLCM",
+      title: "AI.LCM",
       subtitle: "AI Agent Life Cycle Management",
       description:
         "AI Agents analyze each customer's life cycle and enhances their life time transactional and experiential value.",
@@ -44,10 +44,10 @@ export function FeatureShowcase({ containerVariants }: any) {
   const mainCard = (feature: any) => (
     <div className="w-full flex flex-col gap-4">
       <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center">
-        <CardHeader className="flex justify-between items-center p-0 m-0 pl-3">
-          <CardTitle className="text-xl font-bold text-foreground">
+        <CardHeader className="flex justify-between items-center p-0 m-0 ml-6 ">
+          <CardTitle className="text-xl font-bold  text-[#294559]">
             {feature.title}
-            <CardDescription className="text-xs font-medium text-muted-foreground">
+            <CardDescription className="text-xs font-medium text-[#607A94]">
               {feature.subtitle}
             </CardDescription>
           </CardTitle>
@@ -61,7 +61,7 @@ export function FeatureShowcase({ containerVariants }: any) {
         </CardHeader>
       </Card>
 
-      <p className="text-sm text-muted-foreground leading-relaxed mx-4 hidden md:block">
+      <p className="text-sm text-muted-foreground leading-relaxed mx-6 mr-20 hidden md:block">
         {feature.description}
       </p>
     </div>

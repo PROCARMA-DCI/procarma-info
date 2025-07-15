@@ -2,7 +2,7 @@ import { LottieWeb } from "@/components/Animation/lottie-web";
 // import animationData from "@/utils/animation/trainingecosystem.json";
 
 import { Suspense } from "react";
-
+import { Heading, Paragraph } from "@/components/typography/Typography";
 export const TrainingEcosystem = () => {
   return (
     <section className="w-full">
@@ -12,31 +12,31 @@ export const TrainingEcosystem = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mx-4 ">
-        <div className="space-y-8 lg:col-span-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 justify-center items-center -mt-52 -mb-52 ">
+        <div className="space-y-8 lg:col-span-3">
           <div className="space-y-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+            <Heading className="text-2xl md:text-3xl font-bold ">
               Products
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
+            </Heading>
+            <Paragraph className=" leading-relaxed">
               We partner with the best F&I product providers in the nation that
               are integrated with our customer life cycle and dealer ecosystem.
-            </p>
+            </Paragraph>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+            <Heading className="text-2xl md:text-3xl font-bold">
               Training
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
+            </Heading>
+            <Paragraph className=" leading-relaxed">
               Using the best talent and tools to keep your team shipshape and in
               Bristol fashion!
-            </p>
+            </Paragraph>
           </div>
         </div>
 
-        <div className="w-full lg:col-span-8 flex justify-center lg:justify-end">
-          <div className="w-full rounded-lg p-2 -mt-30 ">
+        <div className="w-full lg:col-span-9 flex justify-center lg:justify-end">
+          <div className="w-full rounded-lg ">
             <Suspense>
               <LottieWeb src={"/json/second-new.json"} />
             </Suspense>

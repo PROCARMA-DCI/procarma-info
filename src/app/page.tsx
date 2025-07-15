@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import Header from "@/components/header";
 import { FeatureShowcase } from "./_page_component/_home/feature_showcase";
 import { TrainingEcosystem } from "./_page_component/_home/TrainingEcosystem";

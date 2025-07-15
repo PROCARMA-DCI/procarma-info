@@ -5,7 +5,7 @@ import ToggleTheme from "../toggleTheme";
 import Image from "next/image";
 const Header = () => {
   return (
-    <div className="flex justify-between mt-10">
+    <div className="flex justify-between mt-[70px]">
       <div className=" w-40">
         <Image
           src="/images/procarma-logo.png"

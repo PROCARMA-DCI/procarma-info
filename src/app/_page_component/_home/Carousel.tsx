@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { EnhancedStackedCarousel } from "@/components/carousel/EnhancedStackedCarousel";
+import { Heading, Paragraph } from "@/components/typography/Typography";
 
 const carouselSlides = [
   {
@@ -53,15 +54,15 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
       >
         {/* Section Header */}
         <motion.div className="text-center mb-8" variants={itemVariants}>
-          <h2 className="md:text-5xl px-2 text-3xl font-light text-muted-foreground tracking-wide">
+          <Heading className="md:text-5xl px-2 text-3xl font-light  tracking-wide">
             Engagement Evolved
-          </h2>
-          <p className="text-center m-auto mt-4 text-lg mx-4 text-muted-foreground  ">
+          </Heading>
+          <Paragraph className="text-center  max-w-2xl mx-auto mt-4 text-lg  ">
             From gaming tournaments referral programs, we help dealers reach
             their customers in new and innovative ways. This is not your average
             CRM. We will tailor a retention program to meet your
             dealership&apos;s needs and customer&apos;s wants.
-          </p>
+          </Paragraph>
         </motion.div>
 
         {/* Carousel */}
