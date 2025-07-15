@@ -12,7 +12,7 @@ export const TrainingEcosystem = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 justify-center items-center -mt-52 -mb-52 ">
+      <div className="grid grid-cols-1 lg:grid-cols-12 justify-center items-center -mt-52  ">
         <div className="space-y-8 lg:col-span-3">
           <div className="space-y-4">
             <Heading className="text-2xl md:text-3xl font-bold ">

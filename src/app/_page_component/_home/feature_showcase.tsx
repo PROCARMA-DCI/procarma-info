@@ -77,7 +77,7 @@ export function FeatureShowcase({ containerVariants }: any) {
         initial="hidden"
         animate="visible"
       >
-        <div className="w-full hidden lg:flex gap-4">
+        <div className="w-full hidden lg:flex xl:gap-14  gap-4">
           {features.map((feature, index) => (
             <div key={index} className=" basis-1/3">
               {mainCard(feature)}
