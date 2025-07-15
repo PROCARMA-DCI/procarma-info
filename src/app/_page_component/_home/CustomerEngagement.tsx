@@ -6,9 +6,9 @@ export const CustomerEngagement = () => {
   return (
     <section className="w-full">
       <div className="text-center mb-12">
-        <h2 className="md:text-5xl px-2  text-3xl font-light text-muted-foreground tracking-wide">
+        <Paragraph className="md:text-5xl px-2  text-3xl font-light  tracking-wide">
           CUSTOMER ENGAGEMENT
-        </h2>
+        </Paragraph>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

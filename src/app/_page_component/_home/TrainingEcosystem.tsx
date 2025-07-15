@@ -7,9 +7,9 @@ export const TrainingEcosystem = () => {
   return (
     <section className="w-full">
       <div className="text-center mb-8">
-        <h2 className="md:text-5xl text-3xl px-2  font-light text-muted-foreground tracking-wide">
+        <Paragraph className="md:text-5xl text-3xl px-2  font-light  tracking-wide">
           PRODUCT / TRAINING ECOSYSTEM
-        </h2>
+        </Paragraph>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 justify-center items-center -mt-52  ">
