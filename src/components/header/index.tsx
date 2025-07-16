@@ -15,10 +15,10 @@ const Header = () => {
         />
       </div>
 
-      {/* <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <Button className="text-primary-foreground">Schedule a Demo</Button>
-        <ToggleTheme />
-      </div> */}
+        {/* <ToggleTheme /> */}
+      </div>
     </div>
   );
 };
