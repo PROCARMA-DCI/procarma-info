@@ -16,7 +16,7 @@ const Partnered = ({ containerVariants }: any) => {
   );
 
   return (
-    <section className="w-full">
+    <section className="w-full z-20">
       <div className="text-center mb-16">
         <Heading className="md:text-5xl px-2 text-3xl font-bold  tracking-wide">
           PARTNERED WITH THE BEST
