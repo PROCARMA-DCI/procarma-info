@@ -11,6 +11,7 @@ import { Wrapper } from "@/components/Layout";
 import Carousel from "./_page_component/_home/Carousel";
 import { EvolveRetention } from "./_page_component/_home/EvolveRetention";
 import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
+import Partnered from "./_page_component/_home/Partnered";
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -51,34 +52,28 @@ const Page = () => {
     <div className=" bg-[#f5f5f5] transition-colors">
       <SpinnerCenterScreen loading={loading} />
       <Wrapper>
-        <Header />
-      </Wrapper>
-      <div className="mt-10 flex flex-col gap-y-16">
-        <Wrapper>
+        <div className="my-10 flex flex-col gap-y-16">
+          <Header />
           <FeatureShowcase containerVariants={containerVariants} />
-        </Wrapper>
-        <CustomerRetained />
-
-        {!loading && (
-          <div className="flex flex-col gap-y-16">
-            <Wrapper>
+          <CustomerRetained />
+          {!loading && (
+            <>
               <TrainingEcosystem />
-            </Wrapper>
-            <LifeCycleManagement />
-            <Wrapper>
-              <div className="flex flex-col gap-y-16">
-                <CustomerEngagement />
-                <OnePlatform />
-                <Carousel
-                  itemVariants={itemVariants}
-                  sectionVariants={sectionVariants}
-                />
-                <EvolveRetention />
-              </div>
-            </Wrapper>
-          </div>
-        )}
-      </div>
+              <Partnered containerVariants={containerVariants} />
+              <LifeCycleManagement />
+
+              <CustomerEngagement />
+              <OnePlatform />
+
+              <Carousel
+                itemVariants={itemVariants}
+                sectionVariants={sectionVariants}
+              />
+              <EvolveRetention />
+            </>
+          )}
+        </div>
+      </Wrapper>
     </div>
   );
 };

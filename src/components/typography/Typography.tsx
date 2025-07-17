@@ -14,4 +14,4 @@ export const Paragraph = ({
 }: {
   children: React.ReactNode;
   className?: ClassNameType;
-}) => <p className={`text-[#607A94] ${className}`}>{children}</p>;
+}) => <p className={`text-[#607A94]  ${className}`}>{children}</p>;

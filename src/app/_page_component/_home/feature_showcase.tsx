@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { LottieWeb } from "@/components/Animation/lottie-web";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+
 import {
   Carousel,
   CarouselContent,
@@ -25,6 +27,7 @@ export function FeatureShowcase({ containerVariants }: any) {
       description:
         "AI Agents analyze each customer's life cycle and enhances their life time transactional and experiential value.",
       file: "/json/smallanimation/1/data.json",
+      fileClass: "py-2",
     },
     {
       title: "CONNECTED",
@@ -32,6 +35,7 @@ export function FeatureShowcase({ containerVariants }: any) {
       description:
         "Dealer / Customer centric approach to product visibility and engagement touch points.",
       file: "/json/smallanimation/2/data.json",
+      // fileClass: "scale-150",
     },
     {
       title: "AGNOSTIC",
@@ -39,11 +43,12 @@ export function FeatureShowcase({ containerVariants }: any) {
       description:
         "Partnered with top tier administrators and agencies nationwide to display your information across our platform.",
       file: "/json/smallanimation/2/data.json",
+      fileClass: "scale-150",
     },
   ];
   const mainCard = (feature: any) => (
-    <div className="w-full flex flex-col gap-4">
-      <Card className="border-none inset-shadow-sm   w-full transition-all duration-200 hover:shadow-lg h-20 p-0 flex justify-center overflow-hidden">
+    <div className="w-full flex flex-col gap-4 transition-all duration-300">
+      <Card className="border-none  shadow-none bg-white w-full transition-all duration-200  h-20 p-0 flex justify-center overflow-hidden">
         <CardHeader className="flex justify-between items-center p-0 m-0 px-6 ">
           <CardTitle className="text-xl font-bold  text-[#294559]">
             {feature.title}
@@ -53,11 +58,14 @@ export function FeatureShowcase({ containerVariants }: any) {
           </CardTitle>
           <div className={feature.title === "AGNOSTIC" ? "lg:hidden" : "block"}>
             <div
-              className={`flex h-20 ${
-                feature.file == "/json/smallanimation/2/data.json" && "h-32"
-              } items-center justify-center flex-shrink-0`}
+              className={`flex h-20  items-center justify-center flex-shrink-0 ${feature.fileClass}`}
             >
               <Suspense>
+                {/* <DotLottieReact
+                  src="https://lottie.host/b3cf4a6f-46b6-4f97-8ae8-ad1c443ebb47/TCWo5kwAoj.lottie"
+                  loop
+                  autoplay
+                /> */}
                 <LottieWeb src={feature.file} />
               </Suspense>
             </div>
@@ -71,7 +79,7 @@ export function FeatureShowcase({ containerVariants }: any) {
     </div>
   );
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   );
   return (
     <div className="w-full">

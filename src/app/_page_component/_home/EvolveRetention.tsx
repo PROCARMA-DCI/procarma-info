@@ -51,7 +51,7 @@ export function EvolveRetention() {
           </div>
 
           {/* Social Media Icons - Right aligned */}
-          <div className="flex space-x-4">
+          {/* <div className="flex space-x-4">
             <a
               href="#"
               className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
@@ -73,7 +73,7 @@ export function EvolveRetention() {
             >
               <Twitter className="w-5 h-5 text-gray-700 dark:text-gray-300" />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

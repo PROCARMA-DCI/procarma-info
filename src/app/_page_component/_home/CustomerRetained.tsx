@@ -11,6 +11,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 // Mock data structure that would come from API
 const mockDashboardData = {
@@ -186,21 +187,17 @@ export const CustomerRetained = () => {
       {/* Header */}
 
       <div className="bg-card p-4">
-        <Wrapper>
-          {/* Dashboard Layout */}
-          <div className="grid grid-cols-12 lg:gap-8 items-center  ">
-            {/* Left Side - Static Image/Animation */}
-            <div className="col-span-12 lg:col-span-12   flex justify-center lg:justify-start">
-              <div className="w-full  rounded-lg p-2">
-                <LottieWeb
-                  src={"/json/newdata.json"}
-                  assetsPath="/json/images/"
-                />
-              </div>
+        {/* Dashboard Layout */}
+        <div className="grid grid-cols-1  items-center  ">
+          {/* Left Side - Static Image/Animation */}
+          <div className="   flex justify-center lg:justify-start">
+            <div className="w-full  rounded-lg p-2">
+              <LottieWeb src="/json/customer_retained.json" />
             </div>
+          </div>
 
-            {/* Right Side - Live Activity Data */}
-            {/* <div className="space-y-2 col-span-12 lg:col-span-5">
+          {/* Right Side - Live Activity Data */}
+          {/* <div className="space-y-2 col-span-12 lg:col-span-5">
               <div className="flex items-center justify-between ">
                 <h3 className="text-lg font-semibold text-foreground">
                   LIVE ACTIVITY
@@ -237,8 +234,11 @@ export const CustomerRetained = () => {
                 </Carousel>
               </div>
             </div> */}
-          </div>
-        </Wrapper>
+        </div>
+      </div>
+
+      <div className="w-full h-20">
+        <LottieWeb src="/json/mouse.json" />
       </div>
     </section>
   );

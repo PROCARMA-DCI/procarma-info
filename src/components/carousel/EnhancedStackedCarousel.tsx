@@ -1,5 +1,4 @@
 "use client";
-
 import type React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
@@ -74,13 +73,11 @@ export function EnhancedStackedCarousel({
           /(?:vimeo\.com\/|player\.vimeo\.com\/video\/)(\d+)/
         );
         return vimeoMatch ? vimeoMatch[1] : null;
-
       case "youtube":
         const youtubeMatch = url.match(
           /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/
         );
         return youtubeMatch ? youtubeMatch[1] : null;
-
       default:
         return null;
     }
@@ -96,11 +93,8 @@ export function EnhancedStackedCarousel({
         case "youtube":
           const youtubeId = extractVideoId(videoUrl, "youtube");
           if (youtubeId) {
-            // Try high quality thumbnail first, fallback to medium quality
             const highQualityUrl = `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
             const mediumQualityUrl = `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`;
-
-            // Check if high quality thumbnail exists
             try {
               const response = await fetch(highQualityUrl, { method: "HEAD" });
               if (response.ok) {
@@ -112,7 +106,6 @@ export function EnhancedStackedCarousel({
             return mediumQualityUrl;
           }
           break;
-
         case "vimeo":
           const vimeoId = extractVideoId(videoUrl, "vimeo");
           if (vimeoId) {
@@ -124,24 +117,19 @@ export function EnhancedStackedCarousel({
               return data.thumbnail_url || null;
             } catch (error) {
               console.warn("Failed to fetch Vimeo thumbnail:", error);
-              // Fallback to Vimeo's direct thumbnail URL pattern
               return `https://vumbnail.com/${vimeoId}.jpg`;
             }
           }
           break;
-
         case "direct":
-          // For direct video URLs, we'll create a video element to capture a frame
           return new Promise((resolve) => {
             const video = document.createElement("video");
             video.crossOrigin = "anonymous";
-            video.currentTime = 1; // Seek to 1 second
-
+            video.currentTime = 1;
             video.onloadeddata = () => {
               const canvas = document.createElement("canvas");
               canvas.width = video.videoWidth;
               canvas.height = video.videoHeight;
-
               const ctx = canvas.getContext("2d");
               if (ctx) {
                 ctx.drawImage(video, 0, 0);
@@ -151,11 +139,9 @@ export function EnhancedStackedCarousel({
                 resolve(null);
               }
             };
-
             video.onerror = () => resolve(null);
             video.src = videoUrl;
           });
-
         default:
           return null;
       }
@@ -177,28 +163,22 @@ export function EnhancedStackedCarousel({
           !thumbnailsLoading[slide.id]
         ) {
           setThumbnailsLoading((prev) => ({ ...prev, [slide.id]: true }));
-
           const videoType = slide.videoType || getVideoType(slide.videoUrl);
           const thumbnail = await getVideoThumbnail(slide.videoUrl, videoType);
-
           if (thumbnail) {
             setVideoThumbnails((prev) => ({ ...prev, [slide.id]: thumbnail }));
           }
-
           setThumbnailsLoading((prev) => ({ ...prev, [slide.id]: false }));
         }
       }
     };
-
     loadThumbnails();
   }, [slides, videoThumbnails, thumbnailsLoading]);
 
   // Helper function to get embed URL
   const getEmbedUrl = (slide: CarouselSlide): string => {
     if (!slide.videoUrl) return "";
-
     const videoType = slide.videoType || getVideoType(slide.videoUrl);
-
     switch (videoType) {
       case "vimeo":
         if (slide.videoUrl.includes("player.vimeo.com")) {
@@ -206,11 +186,9 @@ export function EnhancedStackedCarousel({
         }
         const vimeoId = extractVideoId(slide.videoUrl, "vimeo");
         return `https://player.vimeo.com/video/${vimeoId}?autoplay=1&muted=1&controls=1&loop=1`;
-
       case "youtube":
         const youtubeId = extractVideoId(slide.videoUrl, "youtube");
         return `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&controls=1&loop=1&playlist=${youtubeId}`;
-
       default:
         return slide.videoUrl;
     }
@@ -224,7 +202,6 @@ export function EnhancedStackedCarousel({
     if (slide.videoUrl && videoThumbnails[slide.id]) {
       return videoThumbnails[slide.id];
     }
-    // Fallback placeholder
     return "/placeholder.svg?height=450&width=800";
   };
 
@@ -235,21 +212,18 @@ export function EnhancedStackedCarousel({
       ...prev,
       [slideId]: !prev[slideId],
     }));
-
     const slide = slides.find((s) => s.id === slideId);
     if (slide?.videoUrl) {
       setAutoplayPaused(!isVideoPlaying[slideId]);
     }
   };
 
-  // Autoplay functionality - pause when video is playing
+  // Autoplay functionality
   useEffect(() => {
     if (!autoplay || autoplayPaused) return;
-
     const interval = setInterval(() => {
       scrollNext();
     }, autoplayInterval);
-
     return () => clearInterval(interval);
   }, [autoplay, autoplayInterval, scrollNext, autoplayPaused]);
 
@@ -263,15 +237,12 @@ export function EnhancedStackedCarousel({
   const getSlideStyles = (index: number) => {
     const distance = index - selectedIndex;
     const totalSlides = slides.length;
-
     let adjustedDistance = distance;
     if (Math.abs(distance) > totalSlides / 2) {
       adjustedDistance =
         distance > 0 ? distance - totalSlides : distance + totalSlides;
     }
-
     const absDistance = Math.abs(adjustedDistance);
-
     if (absDistance === 0) {
       return {
         transform: "translateX(0%) translateZ(0px) scale(1) rotateY(0deg)",
@@ -310,16 +281,15 @@ export function EnhancedStackedCarousel({
     <div className={cn("relative w-full", className)}>
       {/* Main Carousel Container with 3D perspective */}
       <div
-        className="relative w-full flex items-center justify-center px-8 md:px-16 aspect-video"
+        className="relative w-full flex items-center justify-center px-0 sm:px-4 md:px-8 lg:px-16 xl:px-24 h-full sm:h-[350px] md:h-[420px] lg:h-[500px] aspect-video"
         style={{
           perspective: "1200px",
           perspectiveOrigin: "center center",
-          height: "420px",
           overflow: "visible",
         }}
       >
         {/* Slides Container */}
-        <div className="relative w-full max-w-3xl h-full">
+        <div className="relative w-full h-full">
           {slides.map((slide, index) => {
             const slideStyles = getSlideStyles(index);
             const isActive = index === selectedIndex;
@@ -436,7 +406,6 @@ export function EnhancedStackedCarousel({
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
-
       <Button
         variant="outline"
         size="icon"

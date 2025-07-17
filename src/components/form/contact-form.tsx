@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
-import { motion } from "framer-motion"
-import { toast } from "sonner"
+import type React from "react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -16,39 +16,41 @@ export function ContactForm() {
     phone: "",
     message: "",
     privacyPolicy: false,
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleCheckboxChange = (checked: boolean) => {
-    setFormData((prev) => ({ ...prev, privacyPolicy: checked }))
-  }
+    setFormData((prev) => ({ ...prev, privacyPolicy: checked }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setError(null)
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
 
     try {
       let data;
       try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
+        const response = await fetch("/api/send-email", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
 
         data = await response.json();
-        console.log('API Response:', data);
+        console.log("API Response:", data);
         if (response.ok) {
           setSubmitSuccess(true);
           toast.success("Your message has been sent successfully!");
@@ -68,9 +70,10 @@ export function ContactForm() {
         }
 
         // If response is not ok, handle the error
-        const errorMessage = data.message || data.error || 'Failed to send message';
+        const errorMessage =
+          data.message || data.error || "Failed to send message";
         let toastTitle = "Error";
-        
+
         switch (response.status) {
           case 401:
             toastTitle = "Authentication Error";
@@ -87,35 +90,35 @@ export function ContactForm() {
         }
 
         toast.error(errorMessage, {
-          description: toastTitle
+          description: toastTitle,
         });
       } catch (apiError) {
         // Handle fetch or JSON parsing errors
-        console.error('API Error:', apiError);
+        console.error("API Error:", apiError);
         toast.error("Could not connect to the server. Please try again.", {
-          description: "Connection Error"
+          description: "Connection Error",
         });
       }
 
       // Reset form after success
       setTimeout(() => {
-        setSubmitSuccess(false)
+        setSubmitSuccess(false);
         setFormData({
           name: "",
           email: "",
           phone: "",
           message: "",
           privacyPolicy: false,
-        })
-      }, 3000)
+        });
+      }, 3000);
     } catch (error: any) {
-      console.error('Form submission error:', error);
-      setError('Failed to send message. Please try again.');
+      console.error("Form submission error:", error);
+      setError("Failed to send message. Please try again.");
       setSubmitSuccess(false);
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <motion.form
@@ -182,18 +185,23 @@ export function ContactForm() {
             </a>
           </label>
         </div>
-        <Button
-          type="submit"
-          className={`w-full font-medium py-2 px-4 rounded-md ${
-            error 
-              ? 'bg-red-500 hover:bg-red-600 text-white' 
-              : 'bg-siteBlueColor hover:bg-siteBlueColor/80 text-white'
-          }`}
-          disabled={isSubmitting || !formData.privacyPolicy}
-        >
-          {isSubmitting ? "Sending..." : submitSuccess ? "Message Sent!" : "Reach Out"}
-        </Button>
+        <div className="w-max">
+          <Button
+            type="submit"
+            size={"lg"}
+            className={`w-full font-medium rounded-md ${
+              error ? "bg-red-500 hover:bg-red-600 text-white" : ""
+            }`}
+            // disabled={isSubmitting || !formData.privacyPolicy}
+          >
+            {isSubmitting
+              ? "Sending..."
+              : submitSuccess
+              ? "Message Sent!"
+              : "Reach Out"}
+          </Button>
+        </div>
       </div>
     </motion.form>
-  )
+  );
 }

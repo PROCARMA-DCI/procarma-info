@@ -82,11 +82,10 @@ export const LottieWeb = ({
         ...style,
       }}
     >
-      {isLoading && (
-        <Skeleton className="bg-gray-200 h-full w-full rounded-xl" />
-      )}
+      {isLoading && <Skeleton className="h-full w-full rounded-xl" />}
       <div
         ref={animationContainer}
+        className=""
         style={{
           padding: 0,
           margin: 0,

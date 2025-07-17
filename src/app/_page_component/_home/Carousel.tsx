@@ -10,39 +10,54 @@ const carouselSlides = [
     id: "1",
     title: "BOB DOYLE",
     subtitle: "PRESENTS: MAY MACHINA - MOBILE GAMING TOURNAMENT",
-    image: "/carousel/banner-4.png", // Replace with your image
+    image: "/carousel/bb-gaming.png",
     videoThumbnail: false,
   },
   {
     id: "2",
     title: "GAMING REVOLUTION",
     subtitle: "NEXT GENERATION MOBILE EXPERIENCE",
-    image: "/carousel/banner-1.png",
+    image: "/carousel/everest.png",
   },
   {
     id: "3",
     title: "ESPORTS ARENA",
     subtitle: "COMPETITIVE GAMING PLATFORM",
-    image: "/carousel/banner-2.png",
+    image: "/carousel/greenbrier.png",
   },
   {
     id: "4",
-    title: "ESPORTS ARENA",
-    subtitle: "COMPETITIVE GAMING PLATFORM",
-    image: "/carousel/banner-3.png",
+    title: "CUSTOMER LOYALTY",
+    subtitle: "INNOVATIVE RETENTION PROGRAMS",
+    image: "/carousel/loyalty-cutter.png",
   },
-
   {
     id: "5",
-    title: "BOB DOYLE",
-    subtitle: "PRESENTS: MAY MACHINA - MOBILE GAMING TOURNAMENT",
+    title: "DEALERSHIP PORTAL",
+    subtitle: "COMPREHENSIVE CRM SOLUTION",
+    image: "/carousel/pcpportal.png",
+  },
+  {
+    id: "6",
+    title: "ENGAGEMENT PLATFORM",
+    subtitle: "CONNECTING DEALERS WITH CUSTOMERS",
     videoUrl: "https://player.vimeo.com/video/347119375",
     videoType: "vimeo" as const,
-    // image: "/placeholder.svg?height=450&width=800", // Thumbnail for video
+    image:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=675&fit=crop&crop=center",
   },
   // Add more slides as needed
 ];
 const Carousel = ({ sectionVariants, itemVariants }: any) => {
+  const validSlides = carouselSlides.filter(
+    (slide) =>
+      slide &&
+      slide.id &&
+      slide.title &&
+      slide.subtitle &&
+      (slide.image || slide.videoUrl)
+  );
+
   return (
     <div className="overflow-hidden">
       <motion.section
@@ -75,12 +90,12 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
         >
           {/* <EngagementCarousel />
            */}
-
+          {/* 16:9 images only */}
           <EnhancedStackedCarousel
-            slides={carouselSlides}
+            slides={validSlides}
             autoplay={true}
             autoplayInterval={3000}
-            className="max-w-6xl mx-auto"
+            className="max-w-[1200px] mx-auto w-full"
           />
         </motion.div>
 

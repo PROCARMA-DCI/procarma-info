@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Poppins } from "next/font/google";
+
+const font = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
 import indivisible from "./fonts/indivisible/indivisible";
 import "./globals.css";
 import { Layout } from "@/components/Layout";
 import { ThemeProvider } from "./theme-provider";
-// Load Roboto
-const roboto = Roboto({
-  variable: "--font-sans", // Match your CSS variable name
-  subsets: ["latin"],
-  weight: ["400", "500", "700"], // Add weights as needed
-});
+import localFont from "next/font/local";
+
+// const indivisible = localFont({
+//   src: "./fonts/indivisible/indivisible.otf",
+//   display: "swap",
+//   variable: "--font-indivisible",
+// });
 
 export const metadata: Metadata = {
   title: "Procarma Info",
@@ -22,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={indivisible.variable}>
-      <body className={`${indivisible.variable} font-sans antialiased`}>
+    <html lang="en" className={indivisible.className}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

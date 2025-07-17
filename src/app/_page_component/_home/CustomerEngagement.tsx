@@ -11,30 +11,30 @@ export const CustomerEngagement = () => {
         </Paragraph>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className=" lg:col-span-9 flex justify-center lg:justify-start">
-          <div className="w-full  rounded-lg p-2 scale-105">
+      <div className="flex flex-col lg:flex-row justify-center items-center overflow-hidden  h-[600px]">
+        <div className=" lg:max-w-[50%] flex-1   rounded-lg lg:col-span-10 overflow-hidden  flex items-center justify-center">
+          <div className=" origin-center">
             <Suspense>
               <LottieWeb src={"/json/customer-engagement.json"} />
             </Suspense>
           </div>
         </div>
-        <div className=" lg:col-span-3 space-y-8 mx-4 ">
+        <div className="w-full lg:max-w-[20%] h-full flex flex-col justify-around  z-10  ">
           <div className="space-y-4">
-            <Heading className="text-2xl md:text-3xl font-bold ">
+            <Heading className="text-2xl md:text-4xl font-bold ">
               Products
             </Heading>
-            <Paragraph className="text-muted-foreground leading-relaxed">
+            <Paragraph className=" text-xl">
               We partner with the best F&I product providers in the nation that
               are integrated with our customer life cycle and dealer ecosystem.
             </Paragraph>
           </div>
 
           <div className="space-y-4">
-            <Heading className="text-2xl md:text-3xl font-bold ">
+            <Heading className="text-2xl md:text-4xl font-bold">
               Training
             </Heading>
-            <Paragraph className="text-muted-foreground leading-relaxed">
+            <Paragraph className="text-xl ">
               Using the best talent and tools to keep your team shipshape and in
               Bristol fashion!
             </Paragraph>
