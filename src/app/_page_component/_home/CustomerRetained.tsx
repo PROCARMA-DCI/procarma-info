@@ -237,9 +237,9 @@ export const CustomerRetained = () => {
         </div>
       </div>
 
-      <div className="w-full h-20">
+      {/* <div className="w-full h-20">
         <LottieWeb src="/json/mouse.json" />
-      </div>
+      </div> */}
     </section>
   );
 };
