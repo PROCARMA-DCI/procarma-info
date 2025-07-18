@@ -52,20 +52,15 @@ export function FeatureShowcase({ containerVariants }: any) {
         <CardHeader className="flex justify-between items-center p-0 m-0 px-6 ">
           <CardTitle className="text-xl font-bold  text-[#294559]">
             {feature.title}
-            <CardDescription className="text-xs font-medium text-[#3e5266]">
+            <CardDescription className="text-xs  font-medium text-[#3e5266]">
               {feature.subtitle}
             </CardDescription>
           </CardTitle>
           <div className={feature.title === "AGNOSTIC" ? "lg:hidden" : "block"}>
             <div
-              className={`flex h-20  items-center justify-center flex-shrink-0 ${feature.fileClass}`}
+              className={`flex h-20 w-20 items-center justify-center flex-shrink-0 ${feature.fileClass}`}
             >
               <Suspense>
-                {/* <DotLottieReact
-                  src="https://lottie.host/b3cf4a6f-46b6-4f97-8ae8-ad1c443ebb47/TCWo5kwAoj.lottie"
-                  loop
-                  autoplay
-                /> */}
                 <LottieWeb src={feature.file} />
               </Suspense>
             </div>
@@ -73,7 +68,7 @@ export function FeatureShowcase({ containerVariants }: any) {
         </CardHeader>
       </Card>
 
-      <p className="text-sm text-[#607A94] leading-relaxed mx-6 mr-20 hidden md:block">
+      <p className="text-sm text-[#607A94] leading-relaxed mx-6 mr-20 hidden lg:block">
         {feature.description}
       </p>
     </div>
@@ -100,7 +95,7 @@ export function FeatureShowcase({ containerVariants }: any) {
           opts={{
             align: "start",
           }}
-          className="w-11/12 mx-auto lg:hidden"
+          className="w-full mx-auto lg:hidden"
           plugins={[plugin.current]}
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}

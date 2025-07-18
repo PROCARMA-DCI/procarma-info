@@ -191,8 +191,11 @@ export const CustomerRetained = () => {
         <div className="grid grid-cols-1  items-center  ">
           {/* Left Side - Static Image/Animation */}
           <div className="   flex justify-center lg:justify-start">
-            <div className="w-full  rounded-lg p-2">
+            <div className="w-full  rounded-lg p-2 hidden lg:block">
               <LottieWeb src="/json/customer_retained.json" />
+            </div>
+            <div className="w-full  rounded-lg p-2 lg:hidden block">
+              <LottieWeb src="/mobile_animations/bigdata/data.json" />
             </div>
           </div>
 
