@@ -24,9 +24,9 @@ const ScrollNav = ({ activeSection, sections }: ScrollNavProps) => {
         <button
           key={section.id}
           onClick={() => scrollToSection(index)}
-          className={`w-6 h-1 transition-all duration-300 ${
+          className={`w-8 h-1 transition-all duration-300 ${
             activeSection === index
-              ? "bg-blue-600"
+              ? "bg-gray-700"
               : "bg-gray-400 hover:bg-gray-600"
           }`}
           title={section.title}
@@ -47,8 +47,6 @@ const ScrollIndicator = ({ showIndicator }: ScrollIndicatorProps) => (
     }`}
   >
     <div className="flex flex-col items-center text-gray-600">
-      {/* <span className="text-sm mb-2">Scroll down</span>
-      <ChevronDown className="w-6 h-6 animate-bounce" /> */}
       <div className="w-full h-20">
         <LottieWeb src="/json/mouse.json" />
       </div>

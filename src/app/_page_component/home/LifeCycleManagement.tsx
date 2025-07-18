@@ -10,9 +10,9 @@ const LifeCycleManagement = () => {
           LIFE CYCLE MANAGEMENT
         </Paragraph>
       </div>
-      <div>
+      <div className="">
         <Suspense>
-          <LottieWeb src={"/json/LIFECYCLEMANAGEMENT.json"} />
+          <LottieWeb src={"/json/lifecycle.json"} />
         </Suspense>
       </div>
     </section>

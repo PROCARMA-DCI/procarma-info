@@ -6,11 +6,11 @@ import Image from "next/image";
 const Header = () => {
   return (
     <div className="flex justify-between ">
-      <div className=" w-40">
+      <div className="w-52">
         <Image
-          src="/images/procarma-logo.png"
-          height={500}
-          width={500}
+          src="/images/procarma-logo.svg"
+          height={1000}
+          width={1000}
           alt="logo"
         />
       </div>

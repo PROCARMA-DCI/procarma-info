@@ -38,7 +38,7 @@ export const TrainingEcosystem = () => {
         <div className="lg:max-w-[60%] flex-1   rounded-lg lg:col-span-10 overflow-hidden  flex items-center justify-center">
           <div className=" origin-center ">
             <Suspense>
-              <LottieWeb src={"/json/second-new.json"} />
+              <LottieWeb src={"/json/training.json"} />
             </Suspense>
           </div>
         </div>

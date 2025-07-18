@@ -54,10 +54,10 @@ const Page = () => {
       <div className=" bg-[#f5f5f5] transition-colors">
         <SpinnerCenterScreen loading={loading} />
         <Wrapper>
-          <div className="my-10 flex flex-col gap-y-16">
+          <div className=" flex flex-col gap-y-16">
             <section
               id="first-screen"
-              className="scroll-snap-section min-h-screen w-full flex flex-col gap-y-16"
+              className="scroll-snap-section min-h-screen w-full flex flex-col gap-y-16 pt-8"
             >
               <Header />
               <FeatureShowcase containerVariants={containerVariants} />
