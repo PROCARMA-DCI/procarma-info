@@ -43,13 +43,6 @@ export function EvolveRetention() {
 
         {/* Bottom Section with Copyright and Social - Outside the blue box */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Copyright - Centered */}
-          <div className="flex-1 text-center">
-            <p className="text-gray-600 dark:text-gray-300">
-              © {new Date().getFullYear()} PROCARMA. All rights reserved.
-            </p>
-          </div>
-
           {/* Social Media Icons - Right aligned */}
           {/* <div className="flex space-x-4">
             <a

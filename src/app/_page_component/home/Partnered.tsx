@@ -48,7 +48,7 @@ const Partnered = ({ containerVariants }: any) => {
                     alt={`partners ${index + 1}`}
                     width={2000}
                     height={2000}
-                    className="w-full rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
+                    className="w-full rounded-lg grayscale hover:grayscale-0 transition-all duration-300 scale-75"
                   />
                 </CarouselItem>
               ))}

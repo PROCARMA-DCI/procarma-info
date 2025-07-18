@@ -61,7 +61,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
   return (
     <div className="overflow-hidden">
       <motion.section
-        className="py-20"
+        className=""
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
