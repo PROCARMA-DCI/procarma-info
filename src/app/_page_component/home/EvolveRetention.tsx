@@ -11,7 +11,7 @@ export function EvolveRetention() {
       {/* Curved Background Container */}
       <div className="">
         {/* Curved Background */}
-        <div className="relative rounded-3xl p-8 lg:p-12 mb-8 overflow-hidden">
+        <div className="relative rounded-3xl p-8 lg:p-12 overflow-hidden">
           {/* Background Layer */}
           <div className="absolute inset-0 z-10 bg-black/10 dark:bg-card clip-left-shape rounded-3xl" />
 

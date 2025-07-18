@@ -1,6 +1,7 @@
-import { LottieWeb } from "@/components/Animation/lottie-web";
-import { ChevronDown } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+"use client";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
+import { LottieWeb } from "@/components/Animation/lottie-web"; // Assuming this path is correct
 
 interface Section {
   id: string;
@@ -11,7 +12,8 @@ interface ScrollNavProps {
   activeSection: number;
   sections: Section[];
 }
-// Scroll Navigation Component
+
+// Scroll Navigation Component (kept as is, but commented out in ScrollWrapper)
 const ScrollNav = ({ activeSection, sections }: ScrollNavProps) => {
   const scrollToSection = (index: number) => {
     const element = document.getElementById(sections[index].id);
@@ -19,7 +21,7 @@ const ScrollNav = ({ activeSection, sections }: ScrollNavProps) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex justify-center space-x-4   backdrop-blur-sm">
+    <div className="fixed top-0 left-0 w-full z-50 flex justify-center space-x-4 backdrop-blur-sm">
       {sections.map((section, index) => (
         <button
           key={section.id}
@@ -39,6 +41,7 @@ const ScrollNav = ({ activeSection, sections }: ScrollNavProps) => {
 interface ScrollIndicatorProps {
   showIndicator: boolean;
 }
+
 // Scroll Indicator
 const ScrollIndicator = ({ showIndicator }: ScrollIndicatorProps) => (
   <div
@@ -48,8 +51,11 @@ const ScrollIndicator = ({ showIndicator }: ScrollIndicatorProps) => (
   >
     <div className="flex flex-col items-center text-gray-600">
       <div className="w-full h-20">
+        {/* Ensure LottieWeb component is correctly implemented and '/json/mouse.json' is accessible */}
         <LottieWeb src="/json/mouse.json" />
       </div>
+      {/* <ChevronDown className="w-6 h-6 animate-bounce" /> */}{" "}
+      {/* Removed to match original code */}
     </div>
   </div>
 );
@@ -64,6 +70,8 @@ const ScrollWrapper = ({
   const [activeSection, setActiveSection] = useState(0);
   const [showScrollIndicator, setShowScrollIndicator] = useState<boolean>(true);
   const observerRef = useRef<IntersectionObserver | null>(null);
+  // Use a Map to store references to section DOM elements
+  const sectionElementsRef = useRef<Map<string, HTMLElement>>(new Map());
 
   // Define scroll sections
   const scrollSections = [
@@ -75,6 +83,8 @@ const ScrollWrapper = ({
     { id: "carousel-section" },
     { id: "evolve-retention" },
   ];
+
+  // Effect for IntersectionObserver to determine active section
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -85,23 +95,25 @@ const ScrollWrapper = ({
             );
             if (sectionIndex !== -1) {
               setActiveSection(sectionIndex);
-              setShowScrollIndicator(sectionIndex === 0);
+              // When a new section becomes active, initially show the indicator
+              // unless it's the last section. The scroll listener will then hide it if scrolled past 30%.
+              setShowScrollIndicator(sectionIndex < scrollSections.length - 1);
             }
           }
         });
       },
       {
-        threshold: 0.7,
+        threshold: 0.7, // Section is active when 70% visible
         rootMargin: "0px 0px -10% 0px",
       }
     );
-
     observerRef.current = observer;
 
     scrollSections.forEach((section) => {
       const element = document.getElementById(section.id);
       if (element) {
         observer.observe(element);
+        sectionElementsRef.current.set(section.id, element); // Store the element reference
       }
     });
 
@@ -110,14 +122,51 @@ const ScrollWrapper = ({
         observerRef.current.disconnect();
       }
     };
-  }, [loading]);
+  }, [loading]); // Dependency on loading to re-run observer setup if loading state affects DOM
+
+  // Effect for scroll listener to control indicator visibility based on 30% scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentSectionId = scrollSections[activeSection]?.id;
+      if (!currentSectionId) return;
+
+      const currentSectionElement =
+        sectionElementsRef.current.get(currentSectionId);
+      if (!currentSectionElement) return;
+
+      const sectionTop = currentSectionElement.offsetTop;
+      const sectionHeight = currentSectionElement.offsetHeight;
+      const scrollY = window.scrollY;
+
+      // Calculate the point where 30% of the section has been scrolled past
+      const thresholdPoint = sectionTop + sectionHeight * 0.3;
+
+      // Determine if the indicator should be shown:
+      // 1. Scroll position is before the 30% threshold of the current section.
+      // 2. It's not the very last section.
+      const shouldShow =
+        scrollY < thresholdPoint && activeSection < scrollSections.length - 1;
+
+      setShowScrollIndicator(shouldShow);
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+    // Call handler once on mount to set initial state correctly
+    handleScroll();
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [activeSection, scrollSections]); // Re-run when activeSection changes or sections array changes (though sections is constant here)
+
   return (
     <div>
       {!loading && (
         <>
-          {/* Scroll Navigation */}
-          <ScrollNav activeSection={activeSection} sections={scrollSections} />
-
+          {/* Scroll Navigation (commented out as per original code) */}
+          {/* <ScrollNav activeSection={activeSection} sections={scrollSections} /> */}
           {/* Scroll Indicator */}
           <ScrollIndicator showIndicator={showScrollIndicator} />
         </>

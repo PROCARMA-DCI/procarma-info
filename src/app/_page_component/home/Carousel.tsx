@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { EnhancedStackedCarousel } from "@/components/carousel/EnhancedStackedCarousel";
 import { Heading, Paragraph } from "@/components/typography/Typography";
+import { BookingModal } from "@/common/BookingModal";
 
 const carouselSlides = [
   {
@@ -107,7 +108,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <Button className="px-8 py-3 ">Schedule a Demo</Button>
+          <BookingModal />
         </motion.div>
       </motion.section>
     </div>

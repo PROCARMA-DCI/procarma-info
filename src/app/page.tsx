@@ -61,38 +61,39 @@ const Page = () => {
             >
               <Header />
               <FeatureShowcase containerVariants={containerVariants} />
+
               <CustomerRetained />
             </section>
             {!loading && (
               <>
                 <section
                   id="training-ecosystem"
-                  className="scroll-snap-section min-h-screen w-full pt-20"
+                  className="scroll-snap-section w-full pt-6"
                 >
                   <TrainingEcosystem />
                 </section>
                 <Partnered containerVariants={containerVariants} />
                 <section
                   id="lifecycle-management"
-                  className="scroll-snap-section min-h-screen w-full pt-10"
+                  className="scroll-snap-section  w-full pt-6"
                 >
                   <LifeCycleManagement />
                 </section>
                 <section
                   id="customer-engagement"
-                  className="scroll-snap-section min-h-screen w-full pt-10"
+                  className="scroll-snap-section w-full pt-6"
                 >
                   <CustomerEngagement />
                 </section>
                 <section
                   id="one-platform"
-                  className="scroll-snap-section min-h-screen w-full pt-10"
+                  className="scroll-snap-section  w-full pt-6"
                 >
                   <OnePlatform />
                 </section>
                 <section
                   id="carousel-section"
-                  className="scroll-snap-section w-full pt-10"
+                  className="scroll-snap-section w-full pt-6"
                 >
                   <Carousel
                     itemVariants={itemVariants}
@@ -106,7 +107,7 @@ const Page = () => {
                   <EvolveRetention />
                 </section>
                 {/* Copyright - Centered */}
-                <div className="flex-1 text-center">
+                <div className="flex-1 text-center pb-4">
                   <p className="text-gray-600 dark:text-gray-300">
                     © {new Date().getFullYear()} PROCARMA. All rights reserved.
                   </p>
