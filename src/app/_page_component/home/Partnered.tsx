@@ -1,4 +1,4 @@
-import { Heading } from "@/components/typography/Typography";
+import { Heading, Title } from "@/components/typography/Typography";
 import React from "react";
 import { motion } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
@@ -16,11 +16,11 @@ const Partnered = ({ containerVariants }: any) => {
   );
 
   return (
-    <section className="w-full z-20">
+    <section className="w-full ">
       <div className="text-center mb-16">
-        <Heading className="md:text-5xl px-2 text-3xl font-bold  tracking-wide">
+        <Title className=" lg:font-bold   tracking-wide text-[#294559]">
           PARTNERED WITH THE BEST
-        </Heading>
+        </Title>
       </div>
       <div className="w-full">
         <motion.div

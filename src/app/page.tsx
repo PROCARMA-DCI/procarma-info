@@ -68,11 +68,13 @@ const Page = () => {
               <>
                 <section
                   id="training-ecosystem"
-                  className="scroll-snap-section w-full pt-6"
+                  className="scroll-snap-section w-full pt-6 "
                 >
                   <TrainingEcosystem />
                 </section>
-                <Partnered containerVariants={containerVariants} />
+                <section className="pt-20 z-20">
+                  <Partnered containerVariants={containerVariants} />
+                </section>
                 <section
                   id="lifecycle-management"
                   className="scroll-snap-section  w-full pt-6"
@@ -100,22 +102,27 @@ const Page = () => {
                     sectionVariants={sectionVariants}
                   />
                 </section>
-                <section
-                  id="evolve-retention"
-                  className="scroll-snap-section w-full "
-                >
-                  <EvolveRetention />
-                </section>
-                {/* Copyright - Centered */}
-                <div className="flex-1 text-center pb-4">
-                  <p className="text-gray-600 dark:text-gray-300">
-                    © {new Date().getFullYear()} PROCARMA. All rights reserved.
-                  </p>
-                </div>
               </>
             )}
           </div>
         </Wrapper>
+        <div className=" flex flex-col gap-y-16 mt-16">
+          <section
+            id="evolve-retention"
+            className="scroll-snap-section w-full "
+          >
+            <EvolveRetention />
+          </section>
+
+          {/* Copyright - Centered */}
+          <Wrapper>
+            <div className="flex-1 text-center pb-4">
+              <p className="text-gray-600 dark:text-gray-300">
+                © {new Date().getFullYear()} PROCARMA. All rights reserved.
+              </p>
+            </div>
+          </Wrapper>
+        </div>
       </div>
     </ScrollWrapper>
   );

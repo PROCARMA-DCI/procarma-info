@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { EnhancedStackedCarousel } from "@/components/carousel/EnhancedStackedCarousel";
-import { Heading, Paragraph } from "@/components/typography/Typography";
+import { Heading, Paragraph, Title } from "@/components/typography/Typography";
 import { BookingModal } from "@/common/BookingModal";
 
 const carouselSlides = [
@@ -70,9 +70,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
       >
         {/* Section Header */}
         <motion.div className="text-center mb-8" variants={itemVariants}>
-          <Heading className="md:text-5xl px-2 text-3xl font-light  tracking-wide">
-            Engagement Evolved
-          </Heading>
+          <Title className="">Engagement Evolved</Title>
           <Paragraph className="text-center  max-w-2xl mx-auto mt-4 text-lg  ">
             From gaming tournaments referral programs, we help dealers reach
             their customers in new and innovative ways. This is not your average
@@ -108,7 +106,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <BookingModal />
+          <BookingModal className="w-36 md:w-52" />
         </motion.div>
       </motion.section>
     </div>

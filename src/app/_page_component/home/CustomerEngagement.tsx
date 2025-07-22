@@ -1,14 +1,12 @@
 import { LottieWeb } from "@/components/Animation/lottie-web";
-import { Heading, Paragraph } from "@/components/typography/Typography";
+import { Heading, Paragraph, Title } from "@/components/typography/Typography";
 import { Suspense } from "react";
 
 export const CustomerEngagement = () => {
   return (
     <section className="w-full">
       <div className="text-center mb-12">
-        <Paragraph className="md:text-5xl px-2  text-3xl font-light  tracking-wide">
-          CUSTOMER ENGAGEMENT
-        </Paragraph>
+        <Title>CUSTOMER ENGAGEMENT</Title>
       </div>
 
       <div className="flex flex-col lg:flex-row justify-center items-center overflow-hidden  max-h-[900px]">

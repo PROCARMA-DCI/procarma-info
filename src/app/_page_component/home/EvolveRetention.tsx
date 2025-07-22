@@ -4,22 +4,23 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 import { ContactForm } from "@/components/form/contact-form";
 import { motion } from "framer-motion";
 import { Heading, Paragraph } from "@/components/typography/Typography";
+import { Wrapper } from "@/components/Layout";
 
 export function EvolveRetention() {
   return (
-    <footer className="  ">
+    <footer className=" w-screen">
       {/* Curved Background Container */}
-      <div className=" h-[900px] overflow-hidden">
+      <div className=" h-[900px]  overflow-hidden">
         {/* Curved Background */}
         <div className="relative rounded-3xl lg:p-12 ">
           {/* Background Layer */}
           {/* <div className="absolute inset-0 z-10 bg-black/10 dark:bg-card clip-left-shape rounded-3xl" /> */}
           {/* Background Layer with Rotated Car */}
-          <div className="absolute inset-0 z-10 ">
+          <div className="absolute inset-0 z-10  ">
             <div
-              className=" absolute top-1/2 left-0 w-full h-full max-h-[500px] bg-[url(/images/car.png)] lg:bg-cover bg-contain scale-200 lg:scale-125  bg-no-repeat bg-center opacity-20 "
+              className=" absolute top-1/2 w-full  left-0 h-full max-h-[900px] bg-[url(/images/car.png)] lg:bg-cover bg-contain scale-200 lg:scale-100  bg-no-repeat bg-center opacity-70 "
               style={{
-                transform: "translate(-5%, 10%)  scaleX(-1)  scale(1)",
+                transform: "translate(-15%, 5%)  scaleX(-1)  scale(1)",
                 filter: "blur(0.5px)",
               }}
             />
@@ -27,27 +28,30 @@ export function EvolveRetention() {
           </div>
 
           {/* Foreground Content */}
-          <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2  h-full  ">
-            {/* Left */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <Heading className="text-5xl px md:text-5xl max-w-xl font-bold mb-3 mt-10">
-                Stop losing customers you already have.
-              </Heading>
-              <Paragraph className="text-xl mb-8 max-w-md text-primary">
-                See how we can level up your retention
-              </Paragraph>
-            </motion.div>
+          <Wrapper>
+            <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2  h-full  ">
+              {/* Left */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className=""
+              >
+                <Heading className="text-5xl px md:text-5xl max-w-xl font-bold mb-3 mt-10">
+                  Stop losing customers you already have.
+                </Heading>
+                <Paragraph className="text-xl mb-8 max-w-md text-primary">
+                  See how we can level up your retention
+                </Paragraph>
+              </motion.div>
 
-            {/* Right */}
-            <div className="flex justify-center lg:justify-end">
-              <ContactForm />
+              {/* Right */}
+              <div className="w-full flex justify-center  ">
+                <ContactForm />
+              </div>
             </div>
-          </div>
+          </Wrapper>
         </div>
 
         {/* Bottom Section with Copyright and Social - Outside the blue box */}
