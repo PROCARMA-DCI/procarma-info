@@ -85,7 +85,84 @@ const ScrollWrapper = ({
   ];
 
   // Effect for IntersectionObserver to determine active section
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           const sectionIndex = scrollSections.findIndex(
+  //             (section) => section.id === entry.target.id
+  //           );
+  //           if (sectionIndex !== -1) {
+  //             setActiveSection(sectionIndex);
+  //             // When a new section becomes active, initially show the indicator
+  //             // unless it's the last section. The scroll listener will then hide it if scrolled past 30%.
+  //             setShowScrollIndicator(sectionIndex < scrollSections.length - 1);
+  //           }
+  //         }
+  //       });
+  //     },
+  //     {
+  //       threshold: 0.7, // Section is active when 70% visible
+  //       rootMargin: "0px 0px -10% 0px",
+  //     }
+  //   );
+  //   observerRef.current = observer;
+
+  //   scrollSections.forEach((section) => {
+  //     const element = document.getElementById(section.id);
+  //     if (element) {
+  //       observer.observe(element);
+  //       sectionElementsRef.current.set(section.id, element); // Store the element reference
+  //     }
+  //   });
+
+  //   return () => {
+  //     if (observerRef.current) {
+  //       observerRef.current.disconnect();
+  //     }
+  //   };
+  // }, [loading]); // Dependency on loading to re-run observer setup if loading state affects DOM
+
+  // // Effect for scroll listener to control indicator visibility based on 30% scroll
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentSectionId = scrollSections[activeSection]?.id;
+  //     if (!currentSectionId) return;
+
+  //     const currentSectionElement =
+  //       sectionElementsRef.current.get(currentSectionId);
+  //     if (!currentSectionElement) return;
+
+  //     const sectionTop = currentSectionElement.offsetTop;
+  //     const sectionHeight = currentSectionElement.offsetHeight;
+  //     const scrollY = window.scrollY;
+
+  //     // Calculate the point where 30% of the section has been scrolled past
+  //     const thresholdPoint = sectionTop + sectionHeight * 0.3;
+
+  //     // Determine if the indicator should be shown:
+  //     // 1. Scroll position is before the 30% threshold of the current section.
+  //     // 2. It's not the very last section.
+  //     const shouldShow =
+  //       scrollY < thresholdPoint && activeSection < scrollSections.length - 1;
+
+  //     setShowScrollIndicator(shouldShow);
+  //   };
+
+  //   // Add scroll event listener
+  //   window.addEventListener("scroll", handleScroll);
+  //   // Call handler once on mount to set initial state correctly
+  //   handleScroll();
+
+  //   // Clean up the event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [activeSection, scrollSections]); // Re-run when activeSection changes or sections array changes (though sections is constant here)
   useEffect(() => {
+    if (loading) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -95,25 +172,23 @@ const ScrollWrapper = ({
             );
             if (sectionIndex !== -1) {
               setActiveSection(sectionIndex);
-              // When a new section becomes active, initially show the indicator
-              // unless it's the last section. The scroll listener will then hide it if scrolled past 30%.
-              setShowScrollIndicator(sectionIndex < scrollSections.length - 1);
+              setShowScrollIndicator(sectionIndex === 0);
             }
           }
         });
       },
       {
-        threshold: 0.7, // Section is active when 70% visible
+        threshold: 0.7,
         rootMargin: "0px 0px -10% 0px",
       }
     );
+
     observerRef.current = observer;
 
     scrollSections.forEach((section) => {
       const element = document.getElementById(section.id);
       if (element) {
         observer.observe(element);
-        sectionElementsRef.current.set(section.id, element); // Store the element reference
       }
     });
 
@@ -122,45 +197,7 @@ const ScrollWrapper = ({
         observerRef.current.disconnect();
       }
     };
-  }, [loading]); // Dependency on loading to re-run observer setup if loading state affects DOM
-
-  // Effect for scroll listener to control indicator visibility based on 30% scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentSectionId = scrollSections[activeSection]?.id;
-      if (!currentSectionId) return;
-
-      const currentSectionElement =
-        sectionElementsRef.current.get(currentSectionId);
-      if (!currentSectionElement) return;
-
-      const sectionTop = currentSectionElement.offsetTop;
-      const sectionHeight = currentSectionElement.offsetHeight;
-      const scrollY = window.scrollY;
-
-      // Calculate the point where 30% of the section has been scrolled past
-      const thresholdPoint = sectionTop + sectionHeight * 0.3;
-
-      // Determine if the indicator should be shown:
-      // 1. Scroll position is before the 30% threshold of the current section.
-      // 2. It's not the very last section.
-      const shouldShow =
-        scrollY < thresholdPoint && activeSection < scrollSections.length - 1;
-
-      setShowScrollIndicator(shouldShow);
-    };
-
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
-    // Call handler once on mount to set initial state correctly
-    handleScroll();
-
-    // Clean up the event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [activeSection, scrollSections]); // Re-run when activeSection changes or sections array changes (though sections is constant here)
-
+  }, [loading]);
   return (
     <>
       <div className="lg:block hidden">
