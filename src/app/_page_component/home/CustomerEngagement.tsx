@@ -11,32 +11,36 @@ export const CustomerEngagement = () => {
         </Paragraph>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-center items-center overflow-hidden  h-[600px]">
-        <div className=" lg:max-w-[50%] flex-1   rounded-lg lg:col-span-10 overflow-hidden  flex items-center justify-center">
+      <div className="flex flex-col lg:flex-row justify-center items-center overflow-hidden  max-h-[900px]">
+        <div className=" max-w-full lg:max-w-[90%] flex-1   rounded-lg    flex items-center justify-center">
           <div className=" origin-center">
             <Suspense>
               <LottieWeb src={"/json/customer-engagement.json"} />
             </Suspense>
           </div>
         </div>
-        <div className="w-full lg:max-w-[20%] h-full flex flex-col justify-around  z-10  ">
+        <div className="w-full lg:max-w-[20%] h-full flex flex-col  space-y-20 z-10  ">
           <div className="space-y-4">
             <Heading className="text-2xl md:text-4xl font-bold ">
-              Products
+              Loyalty Programs
             </Heading>
             <Paragraph className=" text-xl">
-              We partner with the best F&I product providers in the nation that
-              are integrated with our customer life cycle and dealer ecosystem.
+              Reward repeat visits, service appointments, and referrals—keeping
+              your dealership top of mind. They create a sense of value and
+              connection that drives long-term customer retention and brand
+              loyalty.
             </Paragraph>
           </div>
 
           <div className="space-y-4">
             <Heading className="text-2xl md:text-4xl font-bold">
-              Training
+              Gamification
             </Heading>
             <Paragraph className="text-xl ">
-              Using the best talent and tools to keep your team shipshape and in
-              Bristol fashion!
+              By incorporating game-elements—such as challenges, badges,
+              leaderboards, and point systems—dealerships can increase customer
+              visits, boost brand loyalty, and encourage repeat service
+              appointments.
             </Paragraph>
           </div>
         </div>

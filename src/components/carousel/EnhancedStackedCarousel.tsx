@@ -248,31 +248,35 @@ export function EnhancedStackedCarousel({
         transform: "translateX(0%) translateZ(0px) scale(1) rotateY(0deg)",
         zIndex: 30,
         opacity: 1,
+        filter: "blur(0px) grayscale(0%)",
       };
     } else if (absDistance === 1) {
       const translateX = adjustedDistance > 0 ? "25%" : "-25%";
       const translateZ = "-80px";
       const rotateY = adjustedDistance > 0 ? "-10deg" : "10deg";
       return {
-        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.88) rotateY(${rotateY})`,
+        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.80) rotateY(${rotateY})`,
         zIndex: 20,
         opacity: 1,
+        filter: "blur(2px) grayscale(40%)", // Increased blur and grayscale
       };
     } else if (absDistance === 2) {
       const translateX = adjustedDistance > 0 ? "40%" : "-40%";
       const translateZ = "-160px";
       const rotateY = adjustedDistance > 0 ? "-18deg" : "18deg";
       return {
-        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.75) rotateY(${rotateY})`,
+        transform: `translateX(${translateX}) translateZ(${translateZ}) scale(0.65) rotateY(${rotateY})`,
         zIndex: 10,
         opacity: 1,
+        filter: "blur(4px) grayscale(50%)", // Increased blur and grayscale
       };
     } else {
       const translateX = adjustedDistance > 0 ? "50%" : "-50%";
       return {
-        transform: `translateX(${translateX}) translateZ(-200px) scale(0.65)`,
+        transform: `translateX(${translateX}) translateZ(-200px) scale(0)`,
         zIndex: 0,
         opacity: 1,
+        filter: "blur(6px) grayscale(60%)", // Increased blur and grayscale
       };
     }
   };
@@ -281,7 +285,7 @@ export function EnhancedStackedCarousel({
     <div className={cn("relative w-full", className)}>
       {/* Main Carousel Container with 3D perspective */}
       <div
-        className="relative w-full flex items-center justify-center px-0 sm:px-4 md:px-8 lg:px-16 xl:px-24 h-full sm:h-[350px] md:h-[420px] lg:h-[500px] aspect-video"
+        className="relative w-full flex items-center justify-center px-0 sm:px-4 md:px-8 lg:px-16 xl:px-24 h-[250px] sm:h-[350px] md:h-[420px] lg:h-[500px] aspect-video"
         style={{
           perspective: "1200px",
           perspectiveOrigin: "center center",
@@ -398,7 +402,7 @@ export function EnhancedStackedCarousel({
       </div>
 
       {/* Navigation Arrows */}
-      <Button
+      {/* <Button
         variant="outline"
         size="icon"
         className="absolute left-4 top-1/2 -translate-y-1/2 z-40 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
@@ -413,7 +417,7 @@ export function EnhancedStackedCarousel({
         onClick={scrollNext}
       >
         <ChevronRight className="h-4 w-4" />
-      </Button>
+      </Button> */}
 
       {/* Dot Navigation */}
       <div className="flex justify-center mt-8 gap-2">
@@ -421,9 +425,9 @@ export function EnhancedStackedCarousel({
           <button
             key={index}
             className={cn(
-              "w-3 h-3 rounded-full transition-all duration-300",
+              "w-2 h-2 rounded-full transition-all duration-300",
               selectedIndex === index
-                ? "bg-blue-500 scale-125"
+                ? "bg-primary scale-125"
                 : "bg-gray-400 hover:bg-gray-300"
             )}
             onClick={() => scrollTo(index)}

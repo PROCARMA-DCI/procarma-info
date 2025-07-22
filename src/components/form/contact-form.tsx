@@ -123,7 +123,7 @@ export function ContactForm() {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md"
+      className="lg:bg-white/70 bg-white/50 p-8 rounded-lg shadow-lg w-full max-w-lg"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -189,7 +189,7 @@ export function ContactForm() {
           <Button
             type="submit"
             size={"lg"}
-            className={`w-full font-medium rounded-md ${
+            className={`w-full font-medium rounded-md mt-4 ${
               error ? "bg-red-500 hover:bg-red-600 text-white" : ""
             }`}
             // disabled={isSubmitting || !formData.privacyPolicy}

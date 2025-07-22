@@ -102,7 +102,7 @@ const Page = () => {
                 </section>
                 <section
                   id="evolve-retention"
-                  className="scroll-snap-section w-full"
+                  className="scroll-snap-section w-full "
                 >
                   <EvolveRetention />
                 </section>

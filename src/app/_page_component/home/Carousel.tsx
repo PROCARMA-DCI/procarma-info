@@ -70,7 +70,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
       >
         {/* Section Header */}
         <motion.div className="text-center mb-8" variants={itemVariants}>
-          <Heading className="md:text-5xl px-2 text-3xl font-bold  tracking-wide">
+          <Heading className="md:text-5xl px-2 text-3xl font-light  tracking-wide">
             Engagement Evolved
           </Heading>
           <Paragraph className="text-center  max-w-2xl mx-auto mt-4 text-lg  ">

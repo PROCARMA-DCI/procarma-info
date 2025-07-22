@@ -10,14 +10,36 @@ const OnePlatform = () => {
           ONE PLATFORM FOR EVERYTHING
         </Paragraph>
       </div>
-      <div className="w-full h-auto">
+      {/* small screen */}
+      <div className="w-full h-auto lg:hidden block">
         <Image
-          src="/images/one-platform-everything.png"
+          src="/images/oneplatformsmall.png"
           alt={"one-platform-everything"}
           width={2000}
           height={2000}
-          className="w-full  rounded-lg"
+          className="w-full rounded-lg"
         />
+      </div>
+      {/* large screen */}
+      <div className="w-full lg:flex hidden relative ">
+        <div className="h-auto w-[30%] absolute z-20 top-[20%] ">
+          <Image
+            src="/images/mobileplatform.png"
+            alt={"one-platform-everything"}
+            width={2000}
+            height={2000}
+            className="w-full rounded-lg"
+          />
+        </div>
+        <div className="h-auto z-10 w-[80%]  ml-[20%] ">
+          <Image
+            src="/images/one-platform.png"
+            alt={"one-platform-everything"}
+            width={2000}
+            height={2000}
+            className="w-full rounded-lg"
+          />
+        </div>
       </div>
     </section>
   );

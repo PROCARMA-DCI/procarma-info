@@ -1,4 +1,4 @@
 import React from "react";
 
-export type ClassNameType =
-  React.HtmlHTMLAttributes<HTMLDivElement>["className"];
+export type ChildrenType = React.ReactNode;
+export type ClassNameType = React.ComponentProps<"div">["className"];

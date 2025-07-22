@@ -10,12 +10,16 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { ClassNameType } from "@/utils/types";
+import { cn } from "@/lib/utils";
 
-export function BookingModal() {
+export function BookingModal({ className }: { className?: ClassNameType }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="text-primary-foreground">Schedule a Demo</Button>
+        <Button className={cn("text-primary-foreground ", className)}>
+          Schedule a Demo
+        </Button>
       </DialogTrigger>
       <DialogContent className="max-w-5xl p-0 overflow-hidden border-4 border-[#00aeef] rounded-xl">
         <DialogHeader className="flex justify-between items-center p-4 bg-white border-b">

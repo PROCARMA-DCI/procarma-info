@@ -162,17 +162,20 @@ const ScrollWrapper = ({
   }, [activeSection, scrollSections]); // Re-run when activeSection changes or sections array changes (though sections is constant here)
 
   return (
-    <div>
-      {!loading && (
-        <>
-          {/* Scroll Navigation (commented out as per original code) */}
-          {/* <ScrollNav activeSection={activeSection} sections={scrollSections} /> */}
-          {/* Scroll Indicator */}
-          <ScrollIndicator showIndicator={showScrollIndicator} />
-        </>
-      )}
-      {children}
-    </div>
+    <>
+      <div className="lg:block hidden">
+        {!loading && (
+          <>
+            {/* Scroll Navigation (commented out as per original code) */}
+            {/* <ScrollNav activeSection={activeSection} sections={scrollSections} /> */}
+            {/* Scroll Indicator */}
+            <ScrollIndicator showIndicator={showScrollIndicator} />
+          </>
+        )}
+        {children}
+      </div>
+      <div className="lg:hidden block">{children}</div>
+    </>
   );
 };
 
