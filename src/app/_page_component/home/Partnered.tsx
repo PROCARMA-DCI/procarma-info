@@ -32,6 +32,7 @@ const Partnered = ({ containerVariants }: any) => {
           <Carousel
             opts={{
               align: "start",
+              loop: true, // ✅ Enable smooth infinite looping
             }}
             className="w-full "
             plugins={[plugin.current]}

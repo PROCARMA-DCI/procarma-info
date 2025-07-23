@@ -2,7 +2,7 @@ import { LottieWeb } from "@/components/Animation/lottie-web";
 // import animationData from "@/utils/animation/trainingecosystem.json";
 
 import { Suspense } from "react";
-import { Heading, Paragraph } from "@/components/typography/Typography";
+import { Heading, Paragraph, Title } from "@/components/typography/Typography";
 import {
   Carousel,
   CarouselContent,
@@ -26,9 +26,7 @@ export const TrainingEcosystem = () => {
   return (
     <section className="w-full z-0 2xl:mb-36">
       <div className="text-center lg:mb-16 mb-4">
-        <Paragraph className=" lg:text-5xl md:text-3xl text-lg px-2 text-primary lg:text-[#607A94] lg:font-extralight  tracking-wide">
-          PRODUCT / TRAINING ECOSYSTEM
-        </Paragraph>
+        <Title className="">PRODUCT / TRAINING ECOSYSTEM</Title>
       </div>
       <div className="border shadow-lg lg:shadow-none  p-2 rounded-lg lg:border-none lg:p-0 ">
         <div className="w-full flex lg:flex-row justify-center items-center  relative   lg:h-[600px] z-10  ">
@@ -57,6 +55,7 @@ export const TrainingEcosystem = () => {
             <Carousel
               opts={{
                 align: "start",
+                loop: true,
               }}
               className="w-full"
               plugins={[

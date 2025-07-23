@@ -94,6 +94,7 @@ export function FeatureShowcase({ containerVariants }: any) {
         <Carousel
           opts={{
             align: "start",
+            loop: true,
           }}
           className="w-full mx-auto lg:hidden"
           plugins={[

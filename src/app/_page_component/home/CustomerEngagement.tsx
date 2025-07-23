@@ -49,6 +49,7 @@ export const CustomerEngagement = () => {
             <Carousel
               opts={{
                 align: "start",
+                loop: true,
               }}
               className="w-full"
               plugins={[

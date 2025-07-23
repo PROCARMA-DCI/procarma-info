@@ -13,6 +13,7 @@ import { EvolveRetention } from "./_page_component/home/EvolveRetention";
 import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
 import Partnered from "./_page_component/home/Partnered";
 import ScrollWrapper from "./_page_component/home/ScrollWrapper";
+import { FadeIn } from "@/components/motionAnimation/FadeIn";
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -70,7 +71,9 @@ const Page = () => {
                   id="training-ecosystem"
                   className="scroll-snap-section w-full lg:pt-6 "
                 >
-                  <TrainingEcosystem />
+                  <FadeIn>
+                    <TrainingEcosystem />
+                  </FadeIn>
                 </section>
                 <section className="lg:pt-20 z-20">
                   <Partnered containerVariants={containerVariants} />
@@ -85,7 +88,9 @@ const Page = () => {
                   id="customer-engagement"
                   className="scroll-snap-section w-full lg:pt-6"
                 >
-                  <CustomerEngagement />
+                  <FadeIn from="right">
+                    <CustomerEngagement />
+                  </FadeIn>
                 </section>
                 <section
                   id="one-platform"
@@ -110,7 +115,7 @@ const Page = () => {
           <div className=" flex flex-col gap-y-16 lg:mt-16">
             <section
               id="evolve-retention"
-              className="scroll-snap-section w-full "
+              className="scroll-snap-section w-full overflow-hidden"
             >
               <EvolveRetention />
             </section>

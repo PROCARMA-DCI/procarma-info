@@ -42,10 +42,10 @@ export function EvolveRetention() {
                 transition={{ duration: 0.6 }}
                 className=""
               >
-                <Heading className="text-5xl px md:text-5xl max-w-xl font-bold mb-3 mt-10">
+                <Heading className="lg:text-5xl px text-3xl max-w-xl font-bold mb-3 mt-10">
                   Stop losing customers you already have.
                 </Heading>
-                <Paragraph className="text-xl mb-8 max-w-md text-primary">
+                <Paragraph className="lg:text-xl text-lg lg:mb-8 mb-4 max-w-md text-primary">
                   See how we can level up your retention
                 </Paragraph>
               </motion.div>

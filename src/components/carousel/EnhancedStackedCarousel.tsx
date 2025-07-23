@@ -402,7 +402,7 @@ export function EnhancedStackedCarousel({
       </div>
 
       {/* Navigation Arrows */}
-      {/* <Button
+      <Button
         variant="outline"
         size="icon"
         className="absolute left-4 top-1/2 -translate-y-1/2 z-40 bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
@@ -417,7 +417,7 @@ export function EnhancedStackedCarousel({
         onClick={scrollNext}
       >
         <ChevronRight className="h-4 w-4" />
-      </Button> */}
+      </Button>
 
       {/* Dot Navigation */}
       <div className="flex justify-center mt-8 gap-2">
