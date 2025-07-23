@@ -16,7 +16,7 @@ export const Wrapper = ({
   return (
     <div
       className={cn(
-        "w-full max-w-[1900px] mx-auto  px-2 xl:px-10 [@media(min-width:1500px)]:px-[120px]",
+        "w-full max-w-[1900px] mx-auto  px-2 lg:px-10 [@media(min-width:1500px)]:px-[120px]",
         className
       )}
     >

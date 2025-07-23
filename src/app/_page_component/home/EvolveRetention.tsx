@@ -8,23 +8,27 @@ import { Wrapper } from "@/components/Layout";
 
 export function EvolveRetention() {
   return (
-    <footer className=" w-screen">
+    <footer
+      className={` w-screen relative h-[950px] md:h-[1050px] lg:h-[800px] xl:h-[850px] overflow-hidden `}
+    >
       {/* Curved Background Container */}
-      <div className=" h-[900px]  overflow-hidden">
+      <div className=" ">
         {/* Curved Background */}
-        <div className="relative rounded-3xl lg:p-12 ">
+        <div className="relative rounded-3xl lg:p-12  ">
           {/* Background Layer */}
           {/* <div className="absolute inset-0 z-10 bg-black/10 dark:bg-card clip-left-shape rounded-3xl" /> */}
           {/* Background Layer with Rotated Car */}
-          <div className="absolute inset-0 z-10  ">
+          <div className="absolute  inset-0 z-10">
+            {/* Car Image */}
             <div
-              className=" absolute top-1/2 w-full  left-0 h-full max-h-[900px] bg-[url(/images/car.png)] lg:bg-cover bg-contain scale-200 lg:scale-100  bg-no-repeat bg-center opacity-70 "
+              className="absolute top-1/2 left-0 w-full h-full max-h-[900px] max-w-[1700px] bg-[url(/images/car.png)] bg-contain lg:bg-cover bg-no-repeat bg-center opacity-70 scale-200 lg:scale-100"
               style={{
-                transform: "translate(-15%, 5%)  scaleX(-1)  scale(1)",
+                transform: "translate(-15%, 5%) scaleX(-1) scale(1)",
                 filter: "blur(0.5px)",
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r to-transparent" />
+
+            {/* Bottom Blur/Fade */}
           </div>
 
           {/* Foreground Content */}
@@ -53,35 +57,38 @@ export function EvolveRetention() {
             </div>
           </Wrapper>
         </div>
-
-        {/* Bottom Section with Copyright and Social - Outside the blue box */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Social Media Icons - Right aligned */}
-          {/* <div className="flex space-x-4">
-            <a
-              href="#"
-              className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-            </a>
-            <a
-              href="#"
-              className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-            </a>
-            <a
-              href="#"
-              className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-            </a>
-          </div> */}
-        </div>
       </div>
+      <div
+        className="absolute bottom-0 bg-white/90  left-0 w-full lg:h-52 md:h-40 h-32  bg-gradient-to-t from-white to-transparent pointer-events-none"
+        style={{ filter: "blur(40px)", zIndex: 30 }}
+      />
     </footer>
   );
 }
+
+// <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+
+//         <div className="flex space-x-4">
+//           <a
+//             href="#"
+//             className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
+//             aria-label="Facebook"
+//           >
+//             <Facebook className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+//           </a>
+//           <a
+//             href="#"
+//             className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
+//             aria-label="Instagram"
+//           >
+//             <Instagram className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+//           </a>
+//           <a
+//             href="#"
+//             className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
+//             aria-label="Twitter"
+//           >
+//             <Twitter className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+//           </a>
+//         </div>
+//       </div>

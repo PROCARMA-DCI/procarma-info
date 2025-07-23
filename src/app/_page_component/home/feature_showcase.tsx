@@ -96,7 +96,11 @@ export function FeatureShowcase({ containerVariants }: any) {
             align: "start",
           }}
           className="w-full mx-auto lg:hidden"
-          plugins={[plugin.current]}
+          plugins={[
+            Autoplay({
+              delay: 4000,
+            }),
+          ]}
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
           onTouchStart={plugin.current.stop} // 👈 Stops on mobile touch

@@ -54,10 +54,10 @@ const Page = () => {
       <div className=" bg-[#f5f5f5] transition-colors">
         <SpinnerCenterScreen loading={loading} />
         <Wrapper>
-          <div className=" flex flex-col gap-y-16">
+          <div className=" flex flex-col lg:gap-y-16 gap-y-14">
             <section
               id="first-screen"
-              className="scroll-snap-section min-h-screen w-full flex flex-col gap-y-16 pt-8"
+              className="scroll-snap-section min-h-screen w-full flex flex-col lg:gap-y-16 gap-y-8 lg:pt-8 pt-4"
             >
               <Header />
               <FeatureShowcase containerVariants={containerVariants} />
@@ -68,34 +68,34 @@ const Page = () => {
               <>
                 <section
                   id="training-ecosystem"
-                  className="scroll-snap-section w-full pt-6 "
+                  className="scroll-snap-section w-full lg:pt-6 "
                 >
                   <TrainingEcosystem />
                 </section>
-                <section className="pt-20 z-20">
+                <section className="lg:pt-20 z-20">
                   <Partnered containerVariants={containerVariants} />
                 </section>
                 <section
                   id="lifecycle-management"
-                  className="scroll-snap-section  w-full pt-6"
+                  className="scroll-snap-section  w-full lg:pt-6 hidden lg:block"
                 >
                   <LifeCycleManagement />
                 </section>
                 <section
                   id="customer-engagement"
-                  className="scroll-snap-section w-full pt-6"
+                  className="scroll-snap-section w-full lg:pt-6"
                 >
                   <CustomerEngagement />
                 </section>
                 <section
                   id="one-platform"
-                  className="scroll-snap-section  w-full pt-6"
+                  className="scroll-snap-section  w-full lg:pt-6"
                 >
                   <OnePlatform />
                 </section>
                 <section
                   id="carousel-section"
-                  className="scroll-snap-section w-full pt-6"
+                  className="scroll-snap-section w-full lg:pt-6"
                 >
                   <Carousel
                     itemVariants={itemVariants}
@@ -106,23 +106,25 @@ const Page = () => {
             )}
           </div>
         </Wrapper>
-        <div className=" flex flex-col gap-y-16 mt-16">
-          <section
-            id="evolve-retention"
-            className="scroll-snap-section w-full "
-          >
-            <EvolveRetention />
-          </section>
+        {!loading && (
+          <div className=" flex flex-col gap-y-16 lg:mt-16">
+            <section
+              id="evolve-retention"
+              className="scroll-snap-section w-full "
+            >
+              <EvolveRetention />
+            </section>
 
-          {/* Copyright - Centered */}
-          <Wrapper>
-            <div className="flex-1 text-center pb-4">
-              <p className="text-gray-600 dark:text-gray-300">
-                © {new Date().getFullYear()} PROCARMA. All rights reserved.
-              </p>
-            </div>
-          </Wrapper>
-        </div>
+            {/* Copyright - Centered */}
+            <Wrapper>
+              <div className="flex-1 text-center pb-4">
+                <p className="text-gray-600 dark:text-gray-300">
+                  © {new Date().getFullYear()} PROCARMA. All rights reserved.
+                </p>
+              </div>
+            </Wrapper>
+          </div>
+        )}
       </div>
     </ScrollWrapper>
   );
