@@ -112,10 +112,10 @@ const Page = () => {
           </div>
         </Wrapper>
         {!loading && (
-          <div className=" flex flex-col gap-y-16 lg:mt-16">
+          <div className=" flex flex-col lg:gap-y-16 mt-4 gap-y-8 lg:mt-16">
             <section
               id="evolve-retention"
-              className="scroll-snap-section w-full overflow-hidden"
+              className="lg:scroll-snap-section w-full  overflow-hidden"
             >
               <EvolveRetention />
             </section>

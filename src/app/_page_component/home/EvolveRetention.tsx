@@ -9,7 +9,7 @@ import { Wrapper } from "@/components/Layout";
 export function EvolveRetention() {
   return (
     <footer
-      className={` w-screen relative h-[950px] md:h-[1050px] lg:h-[800px] xl:h-[850px] overflow-hidden `}
+      className={` w-screen relative h-[850px] sm:h-[950px] md:h-[1050px] lg:h-[800px] xl:h-[850px] overflow-hidden `}
     >
       {/* Curved Background Container */}
       <div className=" ">
