@@ -2,6 +2,8 @@
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { LottieWeb } from "@/components/Animation/lottie-web"; // Assuming this path is correct
+import { ClassNameType } from "@/utils/types";
+import { cn } from "@/lib/utils";
 
 interface Section {
   id: string;
@@ -40,14 +42,20 @@ const ScrollNav = ({ activeSection, sections }: ScrollNavProps) => {
 
 interface ScrollIndicatorProps {
   showIndicator: boolean;
+  className?: ClassNameType;
 }
 
 // Scroll Indicator
-const ScrollIndicator = ({ showIndicator }: ScrollIndicatorProps) => (
+export const ScrollIndicator = ({
+  showIndicator,
+  className,
+}: ScrollIndicatorProps) => (
   <div
-    className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 transition-opacity duration-500 ${
-      showIndicator ? "opacity-100" : "opacity-0"
-    }`}
+    className={cn(
+      `fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 transition-opacity duration-500`,
+      showIndicator ? "opacity-100" : "opacity-0",
+      className
+    )}
   >
     <div className="flex flex-col items-center text-gray-600">
       <div className="w-full h-20">

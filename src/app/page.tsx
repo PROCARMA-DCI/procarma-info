@@ -12,9 +12,12 @@ import Carousel from "./_page_component/home/Carousel";
 import { EvolveRetention } from "./_page_component/home/EvolveRetention";
 import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
 import Partnered from "./_page_component/home/Partnered";
-import ScrollWrapper from "./_page_component/home/ScrollWrapper";
+import ScrollWrapper, {
+  ScrollIndicator,
+} from "./_page_component/home/ScrollWrapper";
 import { FadeIn } from "@/components/motionAnimation/FadeIn";
 import BackToTop from "@/components/backtoTop";
+import ScrollBottomIndicator from "@/components/scrollBottomIndicator";
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -54,6 +57,7 @@ const Page = () => {
   return (
     <ScrollWrapper loading={loading}>
       <BackToTop />
+      {/* <ScrollBottomIndicator /> */}
       <div className=" bg-[#f5f5f5] transition-colors">
         <SpinnerCenterScreen loading={loading} />
         <Wrapper>
