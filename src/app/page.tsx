@@ -14,6 +14,7 @@ import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
 import Partnered from "./_page_component/home/Partnered";
 import ScrollWrapper from "./_page_component/home/ScrollWrapper";
 import { FadeIn } from "@/components/motionAnimation/FadeIn";
+import BackToTop from "@/components/backtoTop";
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -52,6 +53,7 @@ const Page = () => {
 
   return (
     <ScrollWrapper loading={loading}>
+      <BackToTop />
       <div className=" bg-[#f5f5f5] transition-colors">
         <SpinnerCenterScreen loading={loading} />
         <Wrapper>
