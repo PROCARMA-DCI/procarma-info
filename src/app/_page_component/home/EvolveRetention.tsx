@@ -56,7 +56,7 @@ export function EvolveRetention() {
                 />
               </div>
               <div
-                className="z-30 absolute bottom-0 bg-white/90 md:mb-24 left-0 w-full lg:h-52 2xl:h-64 md:h-32 sm:h-48 h-32  bg-gradient-to-t from-white to-transparent pointer-events-none"
+                className="z-30 absolute bottom-0 bg-white/90 md:mb-24 left-0 w-full lg:h-52 xl:h-72 2xl:h-96 md:h-32 sm:h-48 h-32  bg-gradient-to-t from-white to-transparent pointer-events-none"
                 style={{ filter: "blur(20px)", zIndex: 30 }}
               />
             </div>
