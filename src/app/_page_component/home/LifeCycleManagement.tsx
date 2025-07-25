@@ -8,7 +8,7 @@ const LifeCycleManagement = () => {
       <div className="text-center z-10 relative">
         <Title>LIFE CYCLE MANAGEMENT</Title>
       </div>
-      <div className="-mt-32 ">
+      <div className="xl:-mt-32 lg:-mt-20 ">
         <Suspense>
           <LottieWeb src={"/json/lifecycle.json"} />
         </Suspense>
