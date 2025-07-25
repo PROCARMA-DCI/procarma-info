@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 
 const MyComponent = () => {
   const [showIndicator, setShowIndicator] = useState(true);
-  const timeoutRef = useRef(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleActivity = () => {
@@ -32,7 +32,9 @@ const MyComponent = () => {
       window.removeEventListener("keydown", handleActivity);
       window.removeEventListener("wheel", handleActivity);
       window.removeEventListener("touchstart", handleActivity);
-      clearTimeout(timeoutRef.current);
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, []);
 
