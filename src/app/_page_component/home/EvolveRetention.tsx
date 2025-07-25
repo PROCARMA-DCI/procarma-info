@@ -5,35 +5,23 @@ import { ContactForm } from "@/components/form/contact-form";
 import { motion } from "framer-motion";
 import { Heading, Paragraph } from "@/components/typography/Typography";
 import { Wrapper } from "@/components/Layout";
+import Image from "next/image";
 
 export function EvolveRetention() {
   return (
     <footer
-      className={` w-screen relative h-[850px] sm:h-[950px] md:h-[1050px] lg:h-[800px] xl:h-[850px] overflow-hidden `}
+      className={` w-screen relative h-[700px]  sm:h-[850px] md:h-[800px] lg:h-[920px] xl:h-[950px] 2xl:h-[1100px] overflow-hidden `}
     >
       {/* Curved Background Container */}
       <div className=" ">
         {/* Curved Background */}
-        <div className="relative rounded-3xl lg:p-12  ">
+        <div className="relative rounded-3xl lg:p-12 ">
           {/* Background Layer */}
           {/* <div className="absolute inset-0 z-10 bg-black/10 dark:bg-card clip-left-shape rounded-3xl" /> */}
-          {/* Background Layer with Rotated Car */}
-          <div className="absolute  inset-0 z-10">
-            {/* Car Image */}
-            <div
-              className="absolute top-1/2 left-0 w-full h-full max-h-[900px] max-w-[1700px] bg-[url(/images/car.png)] bg-contain lg:bg-cover bg-no-repeat bg-center opacity-70 scale-200 lg:scale-100"
-              style={{
-                transform: "translate(-15%, 5%) scaleX(-1) scale(1)",
-                filter: "blur(0.5px)",
-              }}
-            />
-
-            {/* Bottom Blur/Fade */}
-          </div>
 
           {/* Foreground Content */}
           <Wrapper>
-            <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2  h-full  ">
+            <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2  h-full w-full ">
               {/* Left */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -56,12 +44,37 @@ export function EvolveRetention() {
               </div>
             </div>
           </Wrapper>
+          <div className="w-full    absolute 2xl:top-0  lg:top:2/12 md:top-2/6 bottom-0 top-2/3  -scale-x-100 -left-1/12">
+            <div className="relative">
+              <div>
+                <Image
+                  src="/images/car.png"
+                  alt="car"
+                  width={2000}
+                  height={2000}
+                  className="w-full max-w-[1920px] m-auto h-full object-cover scale-125 z-10"
+                />
+              </div>
+              <div
+                className="z-30 absolute bottom-0 bg-white/90 md:mb-24 left-0 w-full lg:h-52 2xl:h-64 md:h-32 sm:h-48 h-32  bg-gradient-to-t from-white to-transparent pointer-events-none"
+                style={{ filter: "blur(20px)", zIndex: 30 }}
+              />
+            </div>
+          </div>
         </div>
+        {/* Background Layer with Rotated Car */}
+
+        {/* Car Image */}
+        {/* <div
+          className="top-1/2 left-0 w-full h-full max-h-[900px] max-w-[1700px] bg-[url(/images/car.png)] bg-contain lg:bg-cover bg-no-repeat bg-center opacity-70 scale-200 lg:scale-100"
+          style={{
+            transform: "translate(-15%, 5%) scaleX(-1) scale(1)",
+            filter: "blur(0.5px)",
+          }}
+        /> */}
+
+        {/* Bottom Blur/Fade */}
       </div>
-      <div
-        className="absolute bottom-0 bg-white/90  left-0 w-full lg:h-52 md:h-40 h-32  bg-gradient-to-t from-white to-transparent pointer-events-none"
-        style={{ filter: "blur(40px)", zIndex: 30 }}
-      />
     </footer>
   );
 }

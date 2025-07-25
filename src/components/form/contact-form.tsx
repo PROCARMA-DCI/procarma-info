@@ -137,7 +137,7 @@ export function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="border-gray-200 bg-white text-gray-900"
+            className="border-gray-200 bg-white/90 text-gray-900"
           />
         </div>
         <div>
@@ -148,7 +148,7 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="border-gray-200 bg-white text-gray-900"
+            className="border-gray-200 bg-white/90 text-gray-900"
           />
         </div>
         <div>
@@ -158,7 +158,7 @@ export function ContactForm() {
             placeholder="Phone Number"
             value={formData.phone}
             onChange={handleChange}
-            className="border-gray-200 bg-white text-gray-900"
+            className="border-gray-200 bg-white/90 text-gray-900"
           />
         </div>
         <div>
@@ -168,7 +168,7 @@ export function ContactForm() {
             value={formData.message}
             onChange={handleChange}
             required
-            className="min-h-[120px] border-gray-200 bg-white text-gray-900"
+            className="min-h-[120px] border-gray-200 bg-white/90 text-gray-900"
           />
         </div>
         <div className="flex items-center space-x-2">

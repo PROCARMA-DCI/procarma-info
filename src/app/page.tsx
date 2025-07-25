@@ -121,19 +121,19 @@ const Page = () => {
           <div className=" flex flex-col lg:gap-y-16 mt-4 gap-y-8 lg:mt-16">
             <section
               id="evolve-retention"
-              className="lg:scroll-snap-section w-full  overflow-hidden"
+              className="lg:scroll-snap-section w-full  "
             >
               <EvolveRetention />
             </section>
 
             {/* Copyright - Centered */}
-            <Wrapper>
-              <div className="flex-1 text-center pb-4">
+            {/* <Wrapper>
+              <div className="flex-1 text-center pb-4 bg-transparent">
                 <p className="text-gray-600 dark:text-gray-300">
                   © {new Date().getFullYear()} PROCARMA. All rights reserved.
                 </p>
               </div>
-            </Wrapper>
+            </Wrapper> */}
           </div>
         )}
       </div>
