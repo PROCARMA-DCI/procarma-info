@@ -6,7 +6,12 @@ const OnePlatform = () => {
   return (
     <section className="w-full">
       <div className="text-center lg:mb-18 mb-10">
-        <Title>ONE PLATFORM FOR EVERYTHING</Title>
+        <Title>
+          ONE PLATFORM{" "}
+          <span className="block lg:inline font-bold lg:font-extralight">
+            FOR EVERYTHING
+          </span>
+        </Title>
       </div>
       {/* small screen */}
       <div className="w-full h-auto lg:hidden block">
