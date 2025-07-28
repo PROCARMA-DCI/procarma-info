@@ -100,7 +100,7 @@ const Page = () => {
                 </section>
                 <section
                   id="one-platform"
-                  className="scroll-snap-section  w-full lg:pt-6"
+                  className="scroll-snap-section  w-full lg:pt-6 lg:mb-[200px] mb-[120px]"
                 >
                   <OnePlatform />
                 </section>

@@ -5,10 +5,10 @@ import React, { Suspense } from "react";
 const LifeCycleManagement = () => {
   return (
     <section className="w-full">
-      <div className="text-center z-10 relative">
+      <div className="text-center z-10 relative ">
         <Title>LIFE CYCLE MANAGEMENT</Title>
       </div>
-      <div className="xl:-mt-32 lg:-mt-20 ">
+      <div className=" lg:-mt-10 ">
         <Suspense>
           <LottieWeb src={"/json/lifecycle.json"} />
         </Suspense>

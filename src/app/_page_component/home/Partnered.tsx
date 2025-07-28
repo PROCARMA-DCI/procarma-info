@@ -42,13 +42,13 @@ const Partnered = ({ containerVariants }: any) => {
             onTouchEnd={plugin.current.reset}
           >
             <CarouselContent className="">
-              {Array.from({ length: 5 }).map((_, index) => (
+              {Array.from({ length: 14 }).map((_, index) => (
                 <CarouselItem
                   key={index}
                   className="lg:basis-1/5 basis-1/4 ml-4 lg:ml-20 select-none "
                 >
                   <Image
-                    src={`/partners/${index + 1}.png`}
+                    src={`/partners/PARTNERED-WITH-${index + 1}.png`}
                     alt={`partners ${index + 1}`}
                     width={2000}
                     height={2000}
