@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const OnePlatform = () => {
   return (
     <section className="w-full">
-      <div className="text-center lg:mb-12 mb-4">
+      <div className="text-center lg:mb-18 mb-10">
         <Title>ONE PLATFORM FOR EVERYTHING</Title>
       </div>
       {/* small screen */}
