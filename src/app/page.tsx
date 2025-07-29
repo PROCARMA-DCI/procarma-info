@@ -128,13 +128,12 @@ const Page = () => {
             </section>
 
             {/* Copyright - Centered */}
-            {/* <Wrapper>
-              <div className="flex-1 text-center pb-4 bg-transparent">
-                <p className="text-gray-600 dark:text-gray-300">
-                  © {new Date().getFullYear()} PROCARMA. All rights reserved.
-                </p>
-              </div>
-            </Wrapper> */}
+
+            <div className="flex-1 text-center pb-4 ">
+              <p className="text-gray-600 lg:text-sm text-xs">
+                © {new Date().getFullYear()} PROCARMA. All rights reserved.
+              </p>
+            </div>
           </div>
         )}
       </div>

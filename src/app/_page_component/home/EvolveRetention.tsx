@@ -14,11 +14,8 @@ export function EvolveRetention() {
       <div className=" ">
         {/* Curved Background */}
         <div className="relative rounded-3xl lg:p-12 ">
-          {/* Background Layer */}
-          {/* <div className="absolute inset-0 z-10 bg-black/10 dark:bg-card clip-left-shape rounded-3xl" /> */}
-
           {/* Foreground Content */}
-          <div>
+          <Wrapper>
             <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2  h-full w-full ">
               {/* Left */}
               <motion.div
@@ -41,7 +38,7 @@ export function EvolveRetention() {
                 <ContactForm />
               </div>
             </div>
-          </div>
+          </Wrapper>
           {/* 2xl:top-0  lg:top:2/12 md:top-2/6 bottom-0 top-2/3  */}
           <div className="w-full   -scale-x-100 ">
             <div className="relative w-full h-full  scale-125 -mt-28">
@@ -51,56 +48,17 @@ export function EvolveRetention() {
                   alt="car"
                   width={2000}
                   height={2000}
-                  className="w-full   lg:ml-36 max-w-[1920px] m-auto h-full object-cover scale-100 z-10"
+                  className="w-full lg:ml-36 max-w-[1920px] m-auto h-full object-cover scale-100 z-10"
                 />
               </div>
               <div
-                className="!w-screen max-w-[1920px] z-30 absolute bottom-0 -mb-8  bg-white/95 lg:h-48 sm:h-32 h-20  bg-gradient-to-t from-white to-transparent pointer-events-none"
+                className="!w-screen max-w-[1920px] z-30 absolute bottom-0 -mb-8  bg-[#f5f5f5]/95 lg:h-48 sm:h-32 h-20  bg-gradient-to-t from-[#f5f5f5] to-transparent pointer-events-none"
                 style={{ filter: "blur(20px)", zIndex: 30 }}
               />
             </div>
           </div>
         </div>
-        {/* Background Layer with Rotated Car */}
-
-        {/* Car Image */}
-        {/* <div
-          className="top-1/2 left-0 w-full h-full max-h-[900px] max-w-[1700px] bg-[url(/images/car.png)] bg-contain lg:bg-cover bg-no-repeat bg-center opacity-70 scale-200 lg:scale-100"
-          style={{
-            transform: "translate(-15%, 5%) scaleX(-1) scale(1)",
-            filter: "blur(0.5px)",
-          }}
-        /> */}
-
-        {/* Bottom Blur/Fade */}
       </div>
     </footer>
   );
 }
-
-// <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-
-//         <div className="flex space-x-4">
-//           <a
-//             href="#"
-//             className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
-//             aria-label="Facebook"
-//           >
-//             <Facebook className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-//           </a>
-//           <a
-//             href="#"
-//             className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
-//             aria-label="Instagram"
-//           >
-//             <Instagram className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-//           </a>
-//           <a
-//             href="#"
-//             className="bg-white dark:bg-gray-800 p-3 rounded-full shadow-md hover:shadow-lg transition-shadow"
-//             aria-label="Twitter"
-//           >
-//             <Twitter className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-//           </a>
-//         </div>
-//       </div>
