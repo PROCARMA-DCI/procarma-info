@@ -172,3 +172,25 @@ html {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
   }
 }
+
+/* Footer Car Picture */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px; /* adjust blur height */
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    white
+  ); /* change `white` to match your bg */
+  pointer-events: none;
+  z-index: 20;
+}

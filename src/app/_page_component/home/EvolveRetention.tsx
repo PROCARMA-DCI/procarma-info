@@ -41,14 +41,14 @@ export function EvolveRetention() {
           </Wrapper>
           {/* 2xl:top-0  lg:top:2/12 md:top-2/6 bottom-0 top-2/3  */}
           <div className="w-full   -scale-x-100 ">
-            <div className="relative w-full h-full  scale-125 -mt-28">
-              <div className="">
+            <div className="relative w-full h-full sm:scale-110  md:scale-125 -mt-28">
+              <div className="image-wrapper">
                 <Image
                   src="/images/car.webp"
                   alt="car"
                   width={2000}
                   height={2000}
-                  className="w-full lg:ml-36 max-w-[1920px] m-auto h-full object-cover scale-100 z-10"
+                  className="w-full  ml-10 sm:ml-16 md:ml-36 md:max-w-[calc(100vh)/10%] m-auto h-full object-cover scale-100 z-10"
                 />
               </div>
               <div
