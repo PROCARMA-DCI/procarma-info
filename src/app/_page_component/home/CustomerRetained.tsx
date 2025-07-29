@@ -127,8 +127,10 @@ export const CustomerRetained = () => {
 
   const LiveActivity = ({ index, item }: any) => {
     return (
-      <div className="flex flex-col gap-1">
-        <LottieWeb src={item.src} />
+      <div className="flex flex-col">
+        <div className=" mt-2">
+          <LottieWeb src={item.src} />
+        </div>
         <div
           className={`border p-2 rounded-lg bg-white transition-all duration-500 hover:shadow-md ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -178,35 +180,18 @@ export const CustomerRetained = () => {
     <section className="w-full ">
       {/* Header */}
 
-      <div className="bg-card lg:p-4">
+      <div className=" lg:p-4">
         {/* Dashboard Layout */}
         <div className="grid grid-cols-1  items-center  ">
           {/* Left Side - Static Image/Animation */}
-          <div className="   flex justify-center lg:justify-start">
+          <div className="  hidden lg:flex justify-center lg:justify-start">
             <div className="w-full  rounded-lg p-2 hidden lg:block">
               <LottieWeb src="/json/customer_retained.json" />
             </div>
-            {/* <div className="w-full  rounded-lg  lg:hidden block">
-              <LottieWeb src="/mobile_animations/bigdata/data.json" />
-            </div> */}
           </div>
 
           {/* Right Side - Live Activity Data */}
-          <div className="space-y-2 col-span-12 lg:col-span-5">
-            {/* <div className="flex items-center justify-between ">
-              <h3 className="text-lg font-semibold text-foreground">
-                LIVE ACTIVITY
-              </h3>
-              <Badge variant="outline" className="text-xs">
-                REAL-TIME
-              </Badge>
-            </div> */}
-
-            {/* <div className="hidden lg:block space-y-1">
-                {dashboardData.liveActivity.map((item, index) => (
-                  <LiveActivity key={index} index={index} item={item} />
-                ))}
-              </div> */}
+          <div className=" col-span-12 lg:col-span-5">
             <div className="lg:hidden ">
               <Carousel
                 opts={{

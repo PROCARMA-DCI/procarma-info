@@ -9,9 +9,7 @@ import Image from "next/image";
 
 export function EvolveRetention() {
   return (
-    <footer
-      className={` w-screen relative h-[700px]  sm:h-[850px] md:h-[800px] lg:h-[920px] xl:h-[950px] 2xl:h-[1100px] overflow-hidden `}
-    >
+    <footer className={` w-screen relative overflow-hidden `}>
       {/* Curved Background Container */}
       <div className=" ">
         {/* Curved Background */}
@@ -20,7 +18,7 @@ export function EvolveRetention() {
           {/* <div className="absolute inset-0 z-10 bg-black/10 dark:bg-card clip-left-shape rounded-3xl" /> */}
 
           {/* Foreground Content */}
-          <Wrapper>
+          <div>
             <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2  h-full w-full ">
               {/* Left */}
               <motion.div
@@ -43,20 +41,21 @@ export function EvolveRetention() {
                 <ContactForm />
               </div>
             </div>
-          </Wrapper>
-          <div className="w-full    absolute 2xl:top-0  lg:top:2/12 md:top-2/6 bottom-0 top-2/3  -scale-x-100 -left-1/12">
-            <div className="relative">
-              <div>
+          </div>
+          {/* 2xl:top-0  lg:top:2/12 md:top-2/6 bottom-0 top-2/3  */}
+          <div className="w-full   -scale-x-100 ">
+            <div className="relative w-full h-full  scale-125 -mt-28">
+              <div className="">
                 <Image
-                  src="/images/car.png"
+                  src="/images/car.webp"
                   alt="car"
                   width={2000}
                   height={2000}
-                  className="w-full max-w-[1920px] m-auto h-full object-cover scale-125 z-10"
+                  className="w-full   lg:ml-36 max-w-[1920px] m-auto h-full object-cover scale-100 z-10"
                 />
               </div>
               <div
-                className="z-30 absolute bottom-0 bg-white/90 md:mb-24 left-0 w-full lg:h-52 xl:h-72 2xl:h-96 md:h-32 sm:h-48 h-32  bg-gradient-to-t from-white to-transparent pointer-events-none"
+                className="!w-screen max-w-[1920px] z-30 absolute bottom-0 -mb-8  bg-white/95 lg:h-48 sm:h-32 h-20  bg-gradient-to-t from-white to-transparent pointer-events-none"
                 style={{ filter: "blur(20px)", zIndex: 30 }}
               />
             </div>

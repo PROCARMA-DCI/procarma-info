@@ -35,7 +35,7 @@ export function FeatureShowcase({ containerVariants }: any) {
       description:
         "Dealer / Customer centric approach to product visibility and engagement touch points.",
       file: "/json/smallanimation/2/data.json",
-      // fileClass: "scale-150",
+      fileClass: "scale-150",
     },
     {
       title: "AGNOSTIC",
@@ -48,7 +48,7 @@ export function FeatureShowcase({ containerVariants }: any) {
   ];
   const mainCard = (feature: any) => (
     <div className="w-full flex flex-col gap-4 transition-all duration-300">
-      <Card className="border-none  shadow-none bg-white w-full transition-all duration-200  h-20 p-0 flex justify-center overflow-hidden">
+      <Card className="border-none  shadow-none bg-white w-full transition-all duration-200  h-[84px] lg:h-20 p-2 flex justify-center overflow-hidden">
         <CardHeader className="flex justify-between items-center p-0 m-0 px-6 ">
           <CardTitle className="text-xl font-bold  text-[#294559]">
             {feature.title}
@@ -58,7 +58,7 @@ export function FeatureShowcase({ containerVariants }: any) {
           </CardTitle>
           <div className={feature.title === "AGNOSTIC" ? "lg:hidden" : "block"}>
             <div
-              className={`flex h-20 w-20 items-center justify-center flex-shrink-0 ${feature.fileClass}`}
+              className={`flex h-[84px] lg:h-20 w-20 items-center justify-center flex-shrink-0 ${feature.fileClass}`}
             >
               <Suspense>
                 <LottieWeb src={feature.file} />
@@ -99,7 +99,7 @@ export function FeatureShowcase({ containerVariants }: any) {
           className="w-full mx-auto lg:hidden"
           plugins={[
             Autoplay({
-              delay: 4000,
+              delay: 5000,
             }),
           ]}
           onMouseEnter={plugin.current.stop}

@@ -17,8 +17,8 @@ const Partnered = ({ containerVariants }: any) => {
 
   return (
     <section className="w-full ">
-      <div className="text-center lg:mb-16 mb-8 ">
-        <Title className=" lg:font-bold   lg:tracking-wide tracking-widest lg:text-[#294559] text-[#607A94]">
+      <div className="text-center lg:mb-8 mb-8 ">
+        <Title className=" lg:font-bold lg:!text-2xl md:!text-2xl  lg:tracking-[0.3em] tracking-[0.2em] lg:text-[#294559] text-[#607A94]">
           PARTNERED WITH THE BEST
         </Title>
       </div>
@@ -45,14 +45,14 @@ const Partnered = ({ containerVariants }: any) => {
               {Array.from({ length: 14 }).map((_, index) => (
                 <CarouselItem
                   key={index}
-                  className="lg:basis-1/5 basis-1/4 ml-4 lg:ml-20 select-none "
+                  className="lg:basis-1/5 basis-1/4 ml-4  select-none "
                 >
                   <Image
                     src={`/partners/PARTNERED-WITH-${index + 1}.png`}
                     alt={`partners ${index + 1}`}
                     width={2000}
                     height={2000}
-                    className="w-full rounded-lg grayscale opacity-70 hover:grayscale-0 transition-all duration-300 lg:scale-75 scale-100"
+                    className="w-full rounded-lg grayscale opacity-70 hover:grayscale-0 transition-all duration-300 lg:scale-100 scale-105"
                   />
                 </CarouselItem>
               ))}

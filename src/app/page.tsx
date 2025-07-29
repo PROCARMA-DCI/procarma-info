@@ -64,11 +64,12 @@ const Page = () => {
           <div className=" flex flex-col lg:gap-y-16 gap-y-14">
             <section
               id="first-screen"
-              className="scroll-snap-section min-h-screen w-full flex flex-col lg:gap-y-16 gap-y-8 lg:pt-8 pt-4"
+              className="scroll-snap-section min-h-screen w-full flex flex-col lg:gap-y-16  lg:pt-8 pt-4"
             >
               <Header />
-              <FeatureShowcase containerVariants={containerVariants} />
-
+              <div className="mt-5 lg:mt-0">
+                <FeatureShowcase containerVariants={containerVariants} />
+              </div>
               <CustomerRetained />
             </section>
             {!loading && (
@@ -86,7 +87,7 @@ const Page = () => {
                 </section>
                 <section
                   id="lifecycle-management"
-                  className="scroll-snap-section  w-full lg:pt-6 hidden lg:block"
+                  className="scroll-snap-section  w-full lg:pt-12 hidden lg:block"
                 >
                   <LifeCycleManagement />
                 </section>
@@ -118,7 +119,7 @@ const Page = () => {
           </div>
         </Wrapper>
         {!loading && (
-          <div className=" flex flex-col lg:gap-y-16 mt-4 gap-y-8 lg:mt-16">
+          <div className=" flex flex-col lg:gap-y-16 gap-y-8  mt-4 lg:mt-16">
             <section
               id="evolve-retention"
               className="lg:scroll-snap-section w-full  "

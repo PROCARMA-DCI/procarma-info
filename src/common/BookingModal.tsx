@@ -17,8 +17,13 @@ export function BookingModal({ className }: { className?: ClassNameType }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className={cn("text-primary-foreground ", className)}>
-          Schedule a Demo
+        <Button
+          className={cn(
+            "text-primary-foreground font-bold text-xs md:text-sm",
+            className
+          )}
+        >
+          Schedule Demo
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-5xl p-0 overflow-hidden border-4 border-[#00aeef] rounded-xl">
