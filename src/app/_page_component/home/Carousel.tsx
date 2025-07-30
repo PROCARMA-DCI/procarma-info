@@ -47,8 +47,6 @@ const carouselSlides = [
     id: "6",
     title: "ENGAGEMENT PLATFORM",
     subtitle: "CONNECTING DEALERS WITH CUSTOMERS",
-    videoUrl: "https://player.vimeo.com/video/347119375",
-    videoType: "vimeo" as const,
     image:
       "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=675&fit=crop&crop=center",
   },
@@ -56,7 +54,7 @@ const carouselSlides = [
 ];
 const Carousel = ({ sectionVariants, itemVariants }: any) => {
   const validSlides = carouselSlides.filter(
-    (slide) =>
+    (slide: any) =>
       slide &&
       slide.id &&
       slide.title &&
