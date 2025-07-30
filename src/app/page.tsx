@@ -60,8 +60,8 @@ const Page = () => {
       {/* <ScrollBottomIndicator /> */}
       <div className=" bg-[#f5f5f5] transition-colors">
         <SpinnerCenterScreen loading={loading} />
-        <Wrapper>
-          <div className=" flex flex-col lg:gap-y-16 gap-y-14">
+        <div className=" flex flex-col lg:gap-y-16 gap-y-14">
+          <Wrapper>
             <section
               id="first-screen"
               className="scroll-snap-section min-h-screen w-full flex flex-col lg:gap-y-16  lg:pt-8 pt-4"
@@ -72,8 +72,10 @@ const Page = () => {
               </div>
               <CustomerRetained />
             </section>
-            {!loading && (
-              <>
+          </Wrapper>
+          {!loading && (
+            <>
+              <Wrapper>
                 <section
                   id="training-ecosystem"
                   className="scroll-snap-section w-full lg:pt-6 "
@@ -82,9 +84,11 @@ const Page = () => {
                     <TrainingEcosystem />
                   </FadeIn>
                 </section>
-                <section className="lg:pt-20 z-20">
-                  <Partnered containerVariants={containerVariants} />
-                </section>
+              </Wrapper>
+              <section className="lg:pt-20 z-20">
+                <Partnered containerVariants={containerVariants} />
+              </section>
+              <Wrapper>
                 <section
                   id="lifecycle-management"
                   className="scroll-snap-section  w-full lg:pt-12 hidden lg:block"
@@ -114,10 +118,11 @@ const Page = () => {
                     sectionVariants={sectionVariants}
                   />
                 </section>
-              </>
-            )}
-          </div>
-        </Wrapper>
+              </Wrapper>
+            </>
+          )}
+        </div>
+
         {!loading && (
           <div className=" flex flex-col lg:gap-y-16 gap-y-8  mt-4 lg:mt-16">
             <section

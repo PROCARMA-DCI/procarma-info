@@ -1,16 +1,14 @@
 "use client";
 import React, { useState, useEffect, Suspense } from "react";
-import { Badge } from "@/components/ui/badge";
 
 import { LottieWeb } from "@/components/Animation/lottie-web";
-import { Wrapper } from "@/components/Layout";
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 // Mock data structure that would come from API
 const mockDashboardData = {

@@ -22,6 +22,7 @@ const Partnered = ({ containerVariants }: any) => {
           PARTNERED WITH THE BEST
         </Title>
       </div>
+
       <div className="w-full">
         <motion.div
           className="w-full "
@@ -29,35 +30,24 @@ const Partnered = ({ containerVariants }: any) => {
           initial="hidden"
           animate="visible"
         >
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true, // ✅ Enable smooth infinite looping
-            }}
-            className="w-full "
-            plugins={[plugin.current]}
-            // onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
-            // onTouchStart={plugin.current.stop} // 👈 Stops on mobile touch
-            onTouchEnd={plugin.current.reset}
-          >
-            <CarouselContent className="">
-              {Array.from({ length: 14 }).map((_, index) => (
-                <CarouselItem
+          <div className="overflow-hidden">
+            <div className="flex animate-scroll whitespace-nowrap">
+              {Array.from({ length: 28 }).map((_, index) => (
+                <div
                   key={index}
-                  className="lg:basis-1/5 basis-1/4 ml-4  select-none "
+                  className="lg:basis-1/5 basis-1/4 ml-4 select-none flex-shrink-0"
                 >
                   <Image
-                    src={`/partners/PARTNERED-WITH-${index + 1}.png`}
-                    alt={`partners ${index + 1}`}
+                    src={`/partners/PARTNERED-WITH-${(index % 14) + 1}.png`}
+                    alt={`partner ${(index % 14) + 1}`}
                     width={2000}
                     height={2000}
                     className="w-full rounded-lg grayscale opacity-70 hover:grayscale-0 transition-all duration-300 lg:scale-100 scale-105"
                   />
-                </CarouselItem>
+                </div>
               ))}
-            </CarouselContent>
-          </Carousel>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
