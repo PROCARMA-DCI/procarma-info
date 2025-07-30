@@ -16,7 +16,7 @@ const Partnered = ({ containerVariants }: any) => {
   );
 
   return (
-    <section className="w-full ">
+    <section className="w-full  ">
       <div className="text-center lg:mb-8 mb-8 ">
         <Title className=" lg:font-bold lg:!text-2xl md:!text-2xl  lg:tracking-[0.3em] tracking-[0.2em] lg:text-[#294559] text-[#607A94]">
           PARTNERED WITH THE BEST
@@ -35,14 +35,14 @@ const Partnered = ({ containerVariants }: any) => {
               {Array.from({ length: 28 }).map((_, index) => (
                 <div
                   key={index}
-                  className="lg:basis-1/5 basis-1/4 ml-4 select-none flex-shrink-0"
+                  className="lg:basis-1/5 basis-1/4 ml-4 select-none flex-shrink-0   lg:max-h-32"
                 >
                   <Image
                     src={`/partners/PARTNERED-WITH-${(index % 14) + 1}.png`}
                     alt={`partner ${(index % 14) + 1}`}
                     width={2000}
                     height={2000}
-                    className="w-full rounded-lg grayscale opacity-70 hover:grayscale-0 transition-all duration-300 lg:scale-100 scale-105"
+                    className="w-full  rounded-lg grayscale opacity-70 hover:grayscale-0 transition-all duration-300 lg:scale-100 scale-105"
                   />
                 </div>
               ))}

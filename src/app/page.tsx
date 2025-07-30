@@ -74,7 +74,7 @@ const Page = () => {
             </section>
           </Wrapper>
           {!loading && (
-            <>
+            <div className="flex flex-col lg:gap-y-16 gap-y-14">
               <Wrapper>
                 <section
                   id="training-ecosystem"
@@ -85,16 +85,18 @@ const Page = () => {
                   </FadeIn>
                 </section>
               </Wrapper>
-              <section className="lg:pt-20 z-20">
+              <section className="lg:pt-20 z-20 ">
                 <Partnered containerVariants={containerVariants} />
               </section>
-              <Wrapper>
+              <Wrapper className="hidden lg:block ">
                 <section
                   id="lifecycle-management"
-                  className="scroll-snap-section  w-full lg:pt-12 hidden lg:block"
+                  className="scroll-snap-section lg:mt-16 w-full hidden lg:block"
                 >
                   <LifeCycleManagement />
                 </section>
+              </Wrapper>
+              <Wrapper>
                 <section
                   id="customer-engagement"
                   className="scroll-snap-section w-full lg:pt-6"
@@ -103,12 +105,16 @@ const Page = () => {
                     <CustomerEngagement />
                   </FadeIn>
                 </section>
+              </Wrapper>
+              <Wrapper>
                 <section
                   id="one-platform"
                   className="scroll-snap-section  w-full lg:pt-6 lg:mb-[200px] mb-[120px]"
                 >
                   <OnePlatform />
                 </section>
+              </Wrapper>
+              <Wrapper>
                 <section
                   id="carousel-section"
                   className="scroll-snap-section w-full lg:pt-6"
@@ -119,7 +125,7 @@ const Page = () => {
                   />
                 </section>
               </Wrapper>
-            </>
+            </div>
           )}
         </div>
 
