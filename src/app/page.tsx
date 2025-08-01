@@ -12,12 +12,10 @@ import Carousel from "./_page_component/home/Carousel";
 import { EvolveRetention } from "./_page_component/home/EvolveRetention";
 import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
 import Partnered from "./_page_component/home/Partnered";
-import ScrollWrapper, {
-  ScrollIndicator,
-} from "./_page_component/home/ScrollWrapper";
+import ScrollWrapper from "./_page_component/home/ScrollWrapper";
 import { FadeIn } from "@/components/motionAnimation/FadeIn";
 import BackToTop from "@/components/backtoTop";
-import ScrollBottomIndicator from "@/components/scrollBottomIndicator";
+
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -60,11 +58,11 @@ const Page = () => {
       {/* <ScrollBottomIndicator /> */}
       <div className=" bg-[#f5f5f5] transition-colors">
         <SpinnerCenterScreen loading={loading} />
-        <div className=" flex flex-col lg:gap-y-16 gap-y-14">
+        <div className=" flex flex-col lg:gap-y-16 gap-y-12">
           <Wrapper>
             <section
               id="first-screen"
-              className="scroll-snap-section min-h-screen w-full flex flex-col lg:gap-y-16  lg:pt-8 pt-4"
+              className="scroll-snap-section lg:min-h-screen w-full flex flex-col lg:gap-y-16  lg:pt-8 pt-4"
             >
               <Header />
               <div className="mt-5 lg:mt-0">
@@ -74,7 +72,7 @@ const Page = () => {
             </section>
           </Wrapper>
           {!loading && (
-            <div className="flex flex-col lg:gap-y-16 gap-y-14">
+            <div className="flex flex-col lg:gap-y-16 gap-y-12">
               <Wrapper>
                 <section
                   id="training-ecosystem"

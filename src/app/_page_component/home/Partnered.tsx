@@ -35,13 +35,13 @@ const Partnered = ({ containerVariants }: any) => {
               {Array.from({ length: 28 }).map((_, index) => (
                 <div
                   key={index}
-                  className="lg:basis-1/5 basis-1/4 ml-4 select-none flex-shrink-0   lg:max-h-32"
+                  className="lg:basis-1/5 basis-1/4 ml-4 select-none flex-shrink-0   lg:max-h-32 h-12"
                 >
                   <Image
                     src={`/partners/PARTNERED-WITH-${(index % 14) + 1}.png`}
                     alt={`partner ${(index % 14) + 1}`}
-                    width={2000}
-                    height={2000}
+                    width={1000}
+                    height={1000}
                     className="w-full  rounded-lg grayscale opacity-70 hover:grayscale-0 transition-all duration-300 lg:scale-100 scale-105"
                   />
                 </div>
