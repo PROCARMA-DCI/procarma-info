@@ -9,7 +9,10 @@ export default {
   theme: {
     extend: {
       animation: {
-        scroll: "scroll 40s linear infinite",
+        scroll: "scroll 20s linear infinite",
+        "scroll-slow": "scroll 30s linear infinite",
+        "scroll-medium": "scroll 10s linear infinite",
+        "scroll-fast": "scroll 5s linear infinite",
       },
       keyframes: {
         scroll: {

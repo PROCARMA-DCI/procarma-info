@@ -1,20 +1,8 @@
-import { Heading, Title } from "@/components/typography/Typography";
-import React from "react";
+import { Title } from "@/components/typography/Typography";
 import { motion } from "framer-motion";
-import Autoplay from "embla-carousel-autoplay";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
 import Image from "next/image";
 const Partnered = ({ containerVariants }: any) => {
-  const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false })
-  );
-
   return (
     <section className="w-full  ">
       <div className="text-center lg:mb-8 mb-8 ">
@@ -31,7 +19,7 @@ const Partnered = ({ containerVariants }: any) => {
           animate="visible"
         >
           <div className="overflow-hidden">
-            <div className="flex animate-scroll whitespace-nowrap">
+            <div className="flex animate-scroll-medium whitespace-nowrap">
               {Array.from({ length: 28 }).map((_, index) => (
                 <div
                   key={index}
