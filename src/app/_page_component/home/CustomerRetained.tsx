@@ -1,14 +1,7 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
+import { useEffect, useState } from "react";
 
 import { LottieWeb } from "@/components/Animation/lottie-web";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 // Mock data structure that would come from API
 const mockDashboardData = {
@@ -181,16 +174,18 @@ export const CustomerRetained = () => {
       <div className=" lg:p-4">
         {/* Dashboard Layout */}
         <div className="grid grid-cols-1  items-center  ">
-          {/* Left Side - Static Image/Animation */}
+          {/* long screen */}
           <div className="  hidden lg:flex justify-center lg:justify-start">
             <div className="w-full  rounded-lg p-2 hidden lg:block">
               <LottieWeb src="/json/customer_retained.json" />
             </div>
           </div>
 
-          {/* Right Side - Live Activity Data */}
-          <div className=" col-span-12 lg:col-span-5">
-            <div className="lg:hidden ">
+          {/* mobile */}
+          <div className="lg:hidden w-full ">
+            <LottieWeb src="/mobile_animation/3inone_opt.json" />
+
+            {/* <div className=" ">
               <Carousel
                 opts={{
                   align: "start",
@@ -211,7 +206,7 @@ export const CustomerRetained = () => {
                   ))}
                 </CarouselContent>
               </Carousel>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

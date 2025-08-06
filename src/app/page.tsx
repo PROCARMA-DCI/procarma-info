@@ -1,20 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import BackToTop from "@/components/backtoTop";
 import Header from "@/components/header";
-import { FeatureShowcase } from "./_page_component/home/feature_showcase";
-import { TrainingEcosystem } from "./_page_component/home/TrainingEcosystem";
-import LifeCycleManagement from "./_page_component/home/LifeCycleManagement";
-import { CustomerEngagement } from "./_page_component/home/CustomerEngagement";
-import OnePlatform from "./_page_component/home/OnePlatform";
-import { CustomerRetained } from "./_page_component/home/CustomerRetained";
 import { Wrapper } from "@/components/Layout";
-import Carousel from "./_page_component/home/Carousel";
-import { EvolveRetention } from "./_page_component/home/EvolveRetention";
 import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
+import { FadeIn } from "@/components/motionAnimation/FadeIn";
+import { useState } from "react";
+import Carousel from "./_page_component/home/Carousel";
+import { CustomerEngagement } from "./_page_component/home/CustomerEngagement";
+import { CustomerRetained } from "./_page_component/home/CustomerRetained";
+import { EvolveRetention } from "./_page_component/home/EvolveRetention";
+import { FeatureShowcase } from "./_page_component/home/feature_showcase";
+import LifeCycleManagement from "./_page_component/home/LifeCycleManagement";
+import OnePlatform from "./_page_component/home/OnePlatform";
 import Partnered from "./_page_component/home/Partnered";
 import ScrollWrapper from "./_page_component/home/ScrollWrapper";
-import { FadeIn } from "@/components/motionAnimation/FadeIn";
-import BackToTop from "@/components/backtoTop";
+import { TrainingEcosystem } from "./_page_component/home/TrainingEcosystem";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -55,6 +55,7 @@ const Page = () => {
   return (
     <ScrollWrapper loading={loading}>
       <BackToTop />
+   
       {/* <ScrollBottomIndicator /> */}
       <div className=" bg-[#f5f5f5] transition-colors">
         <SpinnerCenterScreen loading={loading} />
