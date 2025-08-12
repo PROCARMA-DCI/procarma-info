@@ -2,6 +2,12 @@
 import { useEffect, useState } from "react";
 
 import { LottieWeb } from "@/components/Animation/lottie-web";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 // Mock data structure that would come from API
 const mockDashboardData = {
@@ -119,9 +125,9 @@ export const CustomerRetained = () => {
   const LiveActivity = ({ index, item }: any) => {
     return (
       <div className="flex flex-col">
-        <div className=" mt-2">
+        {/* <div className=" mt-2">
           <LottieWeb src={item.src} />
-        </div>
+        </div> */}
         <div
           className={`border p-2 rounded-lg bg-white transition-all duration-500 hover:shadow-md ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -185,7 +191,7 @@ export const CustomerRetained = () => {
           <div className="lg:hidden w-full ">
             <LottieWeb src="/mobile_animation/3inone_opt.json" />
 
-            {/* <div className=" ">
+            <div className=" ">
               <Carousel
                 opts={{
                   align: "start",
@@ -206,7 +212,7 @@ export const CustomerRetained = () => {
                   ))}
                 </CarouselContent>
               </Carousel>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 const Partnered = ({ containerVariants }: any) => {
   return (
     <section className="w-full  ">
-      <div className="text-center lg:mb-8 mb-8 ">
+      <div className="text-center lg:mb-8 mb-2 ">
         <Title className=" lg:font-bold lg:!text-2xl md:!text-2xl  lg:tracking-[0.3em] tracking-[0.2em] lg:text-[#294559] text-[#607A94]">
           PARTNERED WITH THE BEST
         </Title>
