@@ -1,10 +1,8 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { EnhancedStackedCarousel } from "@/components/carousel/EnhancedStackedCarousel";
-import { Heading, Paragraph, Title } from "@/components/typography/Typography";
 import { BookingModal } from "@/common/BookingModal";
+import { EnhancedStackedCarousel } from "@/components/carousel/EnhancedStackedCarousel";
+import { Paragraph, Title } from "@/components/typography/Typography";
+import { motion } from "framer-motion";
 
 const carouselSlides = [
   {

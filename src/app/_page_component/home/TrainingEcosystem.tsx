@@ -1,7 +1,6 @@
 import { LottieWeb } from "@/components/Animation/lottie-web";
 // import animationData from "@/utils/animation/trainingecosystem.json";
 
-import { Suspense } from "react";
 import { Heading, Paragraph, Title } from "@/components/typography/Typography";
 import {
   Carousel,
@@ -9,6 +8,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { Suspense } from "react";
 
 export const TrainingEcosystem = () => {
   const contents = [
@@ -51,7 +51,7 @@ export const TrainingEcosystem = () => {
             </div>
           </div>
           {/*Mobile */}
-          <div className="absolute  lg:hidden block bottom-0 w-full m-auto  ">
+          <div className="absolute lg:hidden block bottom-0 w-full m-auto  ">
             <Carousel
               opts={{
                 align: "start",
@@ -67,7 +67,7 @@ export const TrainingEcosystem = () => {
               <CarouselContent className="">
                 {contents.map((item, index) => (
                   <CarouselItem key={index} className=" basis-full ">
-                    <div className="space-y-4">
+                    <div className="space-y-4 px-2">
                       <Heading className="text-xl md:text-4xl font-bold text-primary">
                         {item.heading}
                       </Heading>

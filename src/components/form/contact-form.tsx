@@ -1,12 +1,12 @@
 "use client";
 
-import type React from "react";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
 import { motion } from "framer-motion";
+import type React from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function ContactForm() {
@@ -123,7 +123,7 @@ export function ContactForm() {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      className="lg:bg-white/70 bg-white/50 p-8 rounded-lg shadow-lg w-full max-w-lg"
+      className="lg:bg-white/70 bg-white/50 py-8 px-4 rounded-lg shadow-lg w-full max-w-lg"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

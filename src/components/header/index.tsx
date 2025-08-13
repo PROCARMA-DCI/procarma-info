@@ -1,13 +1,10 @@
 "use client";
-import React from "react";
-import { Button } from "../ui/button";
-import ToggleTheme from "../toggleTheme";
-import Image from "next/image";
 import { BookingModal } from "@/common/BookingModal";
+import Image from "next/image";
 const Header = () => {
   return (
     <>
-      <div className="flex items-center justify-between   ">
+      <div className="flex items-center justify-between   px-2 lg:px-0">
         {/* Logo Container */}
         <div className="w-36 md:w-52 flex items-center ">
           <Image

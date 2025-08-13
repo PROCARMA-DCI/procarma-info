@@ -1,23 +1,21 @@
 "use client";
-import { motion } from "framer-motion";
 import { LottieWeb } from "@/components/Animation/lottie-web";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { motion } from "framer-motion";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import React, { Suspense } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
+import React, { Suspense } from "react";
 
 export function FeatureShowcase({ containerVariants }: any) {
   const features = [
@@ -35,7 +33,7 @@ export function FeatureShowcase({ containerVariants }: any) {
       description:
         "Dealer / Customer centric approach to product visibility and engagement touch points.",
       file: "/json/smallanimation/2/data.json",
-      fileClass: "scale-150",
+      fileClass: "scale-150 mr-4",
     },
     {
       title: "AGNOSTIC",
@@ -43,22 +41,24 @@ export function FeatureShowcase({ containerVariants }: any) {
       description:
         "Partnered with top tier administrators and agencies nationwide to display your information across our platform.",
       file: "/json/smallanimation/2/data.json",
-      fileClass: "scale-150",
+      fileClass: "scale-150 mr-4",
     },
   ];
   const mainCard = (feature: any) => (
     <div className="w-full flex flex-col gap-4 transition-all duration-300">
       <Card className="border-none  shadow-none bg-white w-full transition-all duration-200  h-[84px] lg:h-20 p-2 flex justify-center overflow-hidden">
-        <CardHeader className="flex justify-between items-center p-0 m-0 px-6 ">
-          <CardTitle className="text-xl font-bold  text-[#294559]">
+        <CardHeader className="flex justify-between items-center p-0 m-0 px-2">
+          <CardTitle className="text-xl font-bold  text-[#294559] ">
             {feature.title}
-            <CardDescription className="text-xs  font-medium text-[#3e5266]">
+            <CardDescription className="text-xs  font-medium text-[#3e5266] max-w-[200px]">
               {feature.subtitle}
             </CardDescription>
           </CardTitle>
           <div className={feature.title === "AGNOSTIC" ? "lg:hidden" : "block"}>
             <div
-              className={`flex h-[84px] lg:h-20 w-20 items-center justify-center flex-shrink-0 ${feature.fileClass}`}
+              className={cn(
+                `flex h-[84px] lg:h-20 w-20  items-center justify-center flex-shrink-0 ${feature.fileClass}`
+              )}
             >
               <Suspense>
                 <LottieWeb src={feature.file} />
@@ -68,7 +68,7 @@ export function FeatureShowcase({ containerVariants }: any) {
         </CardHeader>
       </Card>
 
-      <p className="text-sm text-[#607A94] leading-relaxed mx-6 mr-20 hidden lg:block">
+      <p className="text-sm text-[#607A94] leading-relaxed mx-4 mr-20 hidden lg:block">
         {feature.description}
       </p>
     </div>

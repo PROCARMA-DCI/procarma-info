@@ -1,15 +1,14 @@
 "use client";
 
-import { Facebook, Instagram, Twitter } from "lucide-react";
 import { ContactForm } from "@/components/form/contact-form";
-import { motion } from "framer-motion";
-import { Heading, Paragraph } from "@/components/typography/Typography";
 import { Wrapper } from "@/components/Layout";
+import { Heading, Paragraph } from "@/components/typography/Typography";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export function EvolveRetention() {
   return (
-    <footer className={` w-screen relative overflow-hidden `}>
+    <footer className={` w-screen relative overflow-hidden  `}>
       {/* Curved Background Container */}
       <div className=" ">
         {/* Curved Background */}
@@ -23,7 +22,7 @@ export function EvolveRetention() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className=""
+                className="px-4"
               >
                 <Heading className="lg:text-5xl px text-3xl max-w-xl font-bold mb-3 mt-10">
                   Stop losing customers you already have.

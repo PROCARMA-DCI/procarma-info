@@ -23,7 +23,6 @@ const mockDashboardData = {
       status_sub: "60,000mi",
       status2: "TRADE OPS",
       status_sub2: "6 MONTHS",
-      src: "/mobile_animations/bigdata/data.json",
     },
     {
       id: 2,
@@ -36,7 +35,6 @@ const mockDashboardData = {
       status_sub: "100,000mi",
       status2: "TRADE OPS",
       status_sub2: "3 MONTHS",
-      src: "/mobile_animations/genai/data.json",
     },
     {
       id: 3,
@@ -48,7 +46,6 @@ const mockDashboardData = {
       status_sub: "60,000mi",
       status2: "TRADE OPS",
       status_sub2: "6 MONTHS",
-      src: "/mobile_animations/tailored/data.json",
     },
     {
       id: 4,
@@ -61,7 +58,6 @@ const mockDashboardData = {
       status_sub: "100,000mi",
       status2: "TRADE OPS",
       status_sub2: "3 MONTHS",
-      src: "/mobile_animations/bigdata/data.json",
     },
     {
       id: 5,
@@ -74,7 +70,6 @@ const mockDashboardData = {
       status_sub: "60,000mi",
       status2: "TRADE OPS",
       status_sub2: "6 MONTHS",
-      src: "/mobile_animations/genai/data.json",
     },
     {
       id: 6,
@@ -87,7 +82,6 @@ const mockDashboardData = {
       status_sub: "100,000mi",
       status2: "TRADE OPS",
       status_sub2: "3 MONTHS",
-      src: "/mobile_animations/tailored/data.json",
     },
     {
       id: 7,
@@ -100,7 +94,6 @@ const mockDashboardData = {
       status_sub: "60,000mi",
       status2: "TRADE OPS",
       status_sub2: "6 MONTHS",
-      src: "/mobile_animations/genai/data.json",
     },
   ],
 };
@@ -129,34 +122,36 @@ export const CustomerRetained = () => {
           <LottieWeb src={item.src} />
         </div> */}
         <div
-          className={`border p-2 rounded-lg bg-white transition-all duration-500 hover:shadow-md ${
+          className={`border p-2 py-4 rounded-lg bg-white transition-all duration-500 hover:shadow-md ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{
             transitionDelay: `${index * 100}ms`,
           }}
         >
-          <div className="flex items-start justify-between gap-4">
-            <div className=" font-semibold text-xs text-foreground w-30">
-              <div className="flex flex-col gap-[1px]">
-                <span className="text-[0.8em]">{item.label}</span>
-                <span className="text-lg">{item.value}</span>
-                <span className="text-primary text-[0.8em]">
+          <div className="w-full flex items-start justify-between gap-4 px-2 h-20 ">
+            <div className=" font-semibold text-xs text-foreground w-1/3 h-20 ">
+              <div className="flex flex-col h-full justify-between ">
+                <span className="text-[0.9em] truncate font-bold">
+                  {item.label}
+                </span>
+                <span className="text-[23px] font-bold">{item.value} MI</span>
+                <span className="text-primary text-[0.9em]">
                   {item.value_sub}
                 </span>
               </div>
             </div>
 
-            <div className=" font-semibold text-[0.7em] text-foreground w-30">
-              <span className="flex flex-col  ">
+            <div className=" font-bold text-[0.7em] text-foreground w-1/3 h-20">
+              <span className="flex flex-col h-20 ">
                 {item.point.map((item: any, index: number) => (
                   <span key={index}>{item}</span>
                 ))}
               </span>
             </div>
 
-            <div className="  text-foreground w-30 text-[0.7em]">
-              <div className="flex flex-col gap-[1px]">
+            <div className="  text-foreground w-1/3 text-[0.7em] h-20 ">
+              <div className="flex flex-col justify-between h-full">
                 <div className="flex flex-col">
                   <span className="whitespace-nowrap">{item.status}</span>
                   <span className=" ">{item.status_sub}</span>

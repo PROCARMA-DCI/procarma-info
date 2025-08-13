@@ -1,12 +1,12 @@
 import { LottieWeb } from "@/components/Animation/lottie-web";
 import { Heading, Paragraph, Title } from "@/components/typography/Typography";
-import { Suspense } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { Suspense } from "react";
 export const CustomerEngagement = () => {
   const contents = [
     {
@@ -61,7 +61,7 @@ export const CustomerEngagement = () => {
               <CarouselContent className="">
                 {contents.map((item, index) => (
                   <CarouselItem key={index} className=" basis-full ">
-                    <div className="space-y-4">
+                    <div className="space-y-4 px-2">
                       <Heading className="text-xl md:text-4xl font-bold text-primary">
                         {item.heading}
                       </Heading>
