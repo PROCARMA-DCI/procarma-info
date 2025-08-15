@@ -1,11 +1,13 @@
-import { Paragraph, Title } from "@/components/typography/Typography";
+import { Title } from "@/components/typography/Typography";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { LottieWeb } from "@/components/Animation/lottie-web";
 const OnePlatform = () => {
   return (
     <section className="w-full">
-      <div className="text-center lg:mb-18 mb-10">
+      <div className="text-center ">
         <Title>
           ONE PLATFORM{" "}
           <span className="block lg:inline font-bold lg:font-extralight">
@@ -13,7 +15,11 @@ const OnePlatform = () => {
           </span>
         </Title>
       </div>
+      <div className="max-w-2xl m-auto">
+        <LottieWeb src="json/PROCARMA2.0-MOBILE-APP-ANIMATION.json" />
+      </div>
       {/* small screen */}
+
       <div className="w-full h-auto lg:hidden block relative">
         <Image
           src="/images/oneplatformsmall.png"

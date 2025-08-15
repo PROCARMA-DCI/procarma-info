@@ -9,7 +9,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
 import { ClassNameType } from "@/utils/types";
 import { cn } from "@/lib/utils";
 

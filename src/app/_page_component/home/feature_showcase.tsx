@@ -45,12 +45,12 @@ export function FeatureShowcase({ containerVariants }: any) {
     },
   ];
   const mainCard = (feature: any) => (
-    <div className="w-full flex flex-col gap-4 transition-all duration-300">
-      <Card className="border-none  shadow-none bg-white w-full transition-all duration-200  h-[84px] lg:h-20 p-2 flex justify-center overflow-hidden">
+    <div className="w-full flex flex-col gap-4 transition-all duration-300 ">
+      <Card className="border-none  shadow-none bg-white  w-full transition-all duration-200  h-[84px] lg:h-20 p-2 flex justify-center overflow-hidden">
         <CardHeader className="flex justify-between items-center p-0 m-0 px-2">
-          <CardTitle className="text-xl font-bold  text-[#294559] ">
+          <CardTitle className="text-xl font-bold  text-[#012733] lg:text-[#294559]">
             {feature.title}
-            <CardDescription className="text-xs  font-medium text-[#3e5266] max-w-[200px]">
+            <CardDescription className="text-xs  font-normal max-w-[200px] text-[#012733] lg:text-[#294559]">
               {feature.subtitle}
             </CardDescription>
           </CardTitle>
@@ -68,7 +68,7 @@ export function FeatureShowcase({ containerVariants }: any) {
         </CardHeader>
       </Card>
 
-      <p className="text-sm text-[#607A94] leading-relaxed mx-4 mr-20 hidden lg:block">
+      <p className="text-sm leading-relaxed font-normal mx-4 mr-20 hidden lg:block text-[#012733] lg:text-[#294559]">
         {feature.description}
       </p>
     </div>

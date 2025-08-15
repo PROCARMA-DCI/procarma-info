@@ -122,17 +122,17 @@ export const CustomerRetained = () => {
           <LottieWeb src={item.src} />
         </div> */}
         <div
-          className={`border p-2 py-4 rounded-lg bg-white transition-all duration-500 hover:shadow-md ${
+          className={`border p-2 py-3 rounded-lg bg-white transition-all duration-500 hover:shadow-md ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{
             transitionDelay: `${index * 100}ms`,
           }}
         >
-          <div className="w-full flex items-start justify-between gap-4 px-2 h-20 ">
-            <div className=" font-semibold text-xs text-foreground w-1/3 h-20 ">
-              <div className="flex flex-col h-full justify-between ">
-                <span className="text-[0.9em] truncate font-bold">
+          <div className="w-full flex items-start justify-between gap-4 px-2 h-[62px] text-[#012733] lg:text-[#294559]">
+            <div className=" font-semibold text-xs text-foreground w-1/3 h-[62px] ">
+              <div className="flex flex-col h-full justify-between leading-none">
+                <span className="text-[0.9em] truncate font-bold ">
                   {item.label}
                 </span>
                 <span className="text-[23px] font-bold">{item.value} MI</span>
@@ -142,21 +142,23 @@ export const CustomerRetained = () => {
               </div>
             </div>
 
-            <div className=" font-bold text-[0.7em] text-foreground w-1/3 h-20">
-              <span className="flex flex-col h-20 ">
+            <div className=" font-bold text-[0.7em] text-foreground w-1/3 h-[62px] ">
+              <span className="flex flex-col h-[62px] leading-none">
                 {item.point.map((item: any, index: number) => (
-                  <span key={index}>{item}</span>
+                  <span key={index} className="block leading-none mb-[2px]">
+                    {item}
+                  </span>
                 ))}
               </span>
             </div>
 
-            <div className="  text-foreground w-1/3 text-[0.7em] h-20 ">
-              <div className="flex flex-col justify-between h-full">
-                <div className="flex flex-col">
+            <div className="  text-foreground w-1/3 text-[0.7em] h-[62px] ">
+              <div className="flex flex-col justify-between h-[62px]">
+                <div className="flex flex-col leading-none gap-[1px]">
                   <span className="whitespace-nowrap">{item.status}</span>
                   <span className=" ">{item.status_sub}</span>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col leading-none gap-[1px] ">
                   <span>{item.status2}</span>
                   <span className=" ">{item.status_sub2}</span>
                 </div>
@@ -184,7 +186,7 @@ export const CustomerRetained = () => {
 
           {/* mobile */}
           <div className="lg:hidden w-full ">
-            <LottieWeb src="/mobile_animation/3inone_opt.json" />
+            <LottieWeb src="/mobile_animation/3inone-optimized.json" />
 
             <div className=" ">
               <Carousel

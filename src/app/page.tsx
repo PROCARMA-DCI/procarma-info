@@ -55,9 +55,9 @@ const Page = () => {
   return (
     <ScrollWrapper loading={loading}>
       <BackToTop />
-   
+
       {/* <ScrollBottomIndicator /> */}
-      <div className=" bg-[#f5f5f5] transition-colors">
+      <div className=" bg-[#f5f5f5] transition-colors ">
         <SpinnerCenterScreen loading={loading} />
         <div className=" flex flex-col lg:gap-y-16 gap-y-12">
           <Wrapper>
@@ -140,7 +140,7 @@ const Page = () => {
             {/* Copyright - Centered */}
 
             <div className="flex-1 text-center pb-4 ">
-              <p className="text-gray-600 lg:text-sm text-xs">
+              <p className="text-[#012733] lg:text-[#294559] lg:text-sm text-xs">
                 © {new Date().getFullYear()} PROCARMA. All rights reserved.
               </p>
             </div>

@@ -72,7 +72,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
         {/* Section Header */}
         <motion.div className="text-center mb-8" variants={itemVariants}>
           <Title className="">Engagement Evolved</Title>
-          <Paragraph className="text-center  max-w-2xl mx-auto mt-4 lg:text-lg px-4  lg:px-0  ">
+          <Paragraph className="text-center !text-[#607A94]  max-w-2xl mx-auto mt-4 lg:text-lg px-4  lg:px-0  ">
             From gaming tournaments referral programs, we help dealers reach
             their customers in new and innovative ways. This is not your average
             CRM. We will tailor a retention program to meet your
