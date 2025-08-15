@@ -2,12 +2,12 @@ import { Title } from "@/components/typography/Typography";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+
 import { LottieWeb } from "@/components/Animation/lottie-web";
 const OnePlatform = () => {
   return (
-    <section className="w-full">
-      <div className="text-center ">
+    <section className="w-full ">
+      <div className="text-center lg:mb-20 ">
         <Title>
           ONE PLATFORM{" "}
           <span className="block lg:inline font-bold lg:font-extralight">
@@ -15,12 +15,12 @@ const OnePlatform = () => {
           </span>
         </Title>
       </div>
-      <div className="max-w-2xl m-auto">
+      <div className="max-w-2xl m-auto lg:hidden block ">
         <LottieWeb src="json/PROCARMA2.0-MOBILE-APP-ANIMATION.json" />
       </div>
       {/* small screen */}
 
-      <div className="w-full h-auto lg:hidden block relative">
+      {/* <div className="w-full h-auto lg:hidden  relative">
         <Image
           src="/images/oneplatformsmall.png"
           alt={"one-platform-everything"}
@@ -28,7 +28,6 @@ const OnePlatform = () => {
           height={2000}
           className="w-full rounded-lg"
         />
-        {/* Reflection */}
         <div className="absolute top-full left-0 w-full overflow-hidden h-[120px] lg:hidden">
           <Image
             src="/images/oneplatformsmall.png"
@@ -38,7 +37,7 @@ const OnePlatform = () => {
             className="w-full scale-y-[-1] opacity-30 mask-gradient"
           />
         </div>
-      </div>
+      </div> */}
 
       {/* large screen */}
 

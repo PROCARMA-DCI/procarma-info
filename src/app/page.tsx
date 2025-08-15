@@ -108,7 +108,7 @@ const Page = () => {
               <Wrapper>
                 <section
                   id="one-platform"
-                  className="scroll-snap-section  w-full lg:pt-6 lg:mb-[200px] mb-[120px]"
+                  className="scroll-snap-section  w-full lg:pt-6 lg:mb-[200px] "
                 >
                   <OnePlatform />
                 </section>
