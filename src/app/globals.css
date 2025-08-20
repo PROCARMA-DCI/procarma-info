@@ -129,12 +129,6 @@ html {
   overflow-x: hidden;
 }
 
-/* Scroll snap for sections */
-.scroll-snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -172,6 +166,12 @@ html {
 @media (min-width: 1024px) {
   .clip-left-shape {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 100%);
+  }
+  /* Scroll snap for sections */
+  /* Only apply scroll snap on large screens (≥1024px) */
+  .scroll-snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
 

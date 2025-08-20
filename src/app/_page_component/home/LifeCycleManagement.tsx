@@ -1,8 +1,6 @@
-
+import { LottieWeb } from "@/components/Animation/lottie-web";
 import { Title } from "@/components/typography/Typography";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Suspense } from "react";
-
 const LifeCycleManagement = () => {
   return (
     <section className="w-full">
@@ -10,9 +8,8 @@ const LifeCycleManagement = () => {
         <Title>LIFE CYCLE MANAGEMENT</Title>
       </div>
       <div className="  ">
-        <Suspense>
-          <DotLottieReact src="lottie/lifecycle.lottie" loop autoplay />
-          
+        <Suspense fallback={<div>Loading animation...</div>}>
+          <LottieWeb src={"/json/lifecycle.json"} />
         </Suspense>
       </div>
     </section>

@@ -53,101 +53,103 @@ const Page = () => {
   }, 3000);
 
   return (
-    <ScrollWrapper loading={loading}>
-      <BackToTop />
+    <>
+      <ScrollWrapper loading={loading}>
+        <BackToTop />
 
-      {/* <ScrollBottomIndicator /> */}
-      <div className=" bg-[#f5f5f5] transition-colors ">
-        <SpinnerCenterScreen loading={loading} />
-        <div className=" flex flex-col lg:gap-y-16 gap-y-12">
-          <Wrapper>
-            <section
-              id="first-screen"
-              className="scroll-snap-section lg:min-h-screen w-full flex flex-col lg:gap-y-16  lg:pt-8 pt-4"
-            >
-              <Header />
-              <div className="mt-5 lg:mt-0">
-                <FeatureShowcase containerVariants={containerVariants} />
-              </div>
-              <CustomerRetained />
-            </section>
-          </Wrapper>
-          {!loading && (
-            <div className="flex flex-col lg:gap-y-16 gap-y-12">
-              <Wrapper>
-                <section
-                  id="training-ecosystem"
-                  className="scroll-snap-section w-full lg:pt-6 "
-                >
-                  <FadeIn>
-                    <TrainingEcosystem />
-                  </FadeIn>
-                </section>
-              </Wrapper>
-              <section className="lg:pt-20 z-20 ">
-                <Partnered containerVariants={containerVariants} />
+        {/* <ScrollBottomIndicator /> */}
+        <div className=" bg-[#f5f5f5] transition-colors ">
+          <SpinnerCenterScreen loading={loading} />
+          <div className=" flex flex-col lg:gap-y-16 gap-y-12">
+            <Wrapper>
+              <section
+                id="first-screen"
+                className="scroll-snap-section lg:min-h-screen w-full flex flex-col lg:gap-y-16  lg:pt-8 pt-4"
+              >
+                <Header />
+                <div className="mt-5 lg:mt-0">
+                  <FeatureShowcase containerVariants={containerVariants} />
+                </div>
+                <CustomerRetained />
               </section>
-              <Wrapper className="hidden lg:block ">
-                <section
-                  id="lifecycle-management"
-                  className="scroll-snap-section lg:mt-16 w-full hidden lg:block"
-                >
-                  <LifeCycleManagement />
+            </Wrapper>
+            {!loading && (
+              <div className="flex flex-col lg:gap-y-16 gap-y-12">
+                <Wrapper>
+                  <section
+                    id="training-ecosystem"
+                    className="scroll-snap-section w-full lg:pt-6 "
+                  >
+                    <FadeIn>
+                      <TrainingEcosystem />
+                    </FadeIn>
+                  </section>
+                </Wrapper>
+                <section className="lg:pt-20 z-20 ">
+                  <Partnered containerVariants={containerVariants} />
                 </section>
-              </Wrapper>
-              <Wrapper>
-                <section
-                  id="customer-engagement"
-                  className="scroll-snap-section w-full lg:pt-6"
-                >
-                  <FadeIn from="right">
-                    <CustomerEngagement />
-                  </FadeIn>
-                </section>
-              </Wrapper>
-              <Wrapper>
+                <Wrapper className="hidden lg:block ">
+                  <section
+                    id="lifecycle-management"
+                    className="scroll-snap-section lg:mt-16 w-full hidden lg:block"
+                  >
+                    <LifeCycleManagement />
+                  </section>
+                </Wrapper>
+                <Wrapper>
+                  <section
+                    id="customer-engagement"
+                    className="scroll-snap-section w-full lg:pt-6"
+                  >
+                    <FadeIn from="right">
+                      <CustomerEngagement />
+                    </FadeIn>
+                  </section>
+                </Wrapper>
+
                 <section
                   id="one-platform"
-                  className="scroll-snap-section  w-full lg:pt-6 lg:mb-[200px] "
+                  className="scroll-snap-section  w-full lg:pt-6 lg:mb-[200px] max-w-[1900px] mx-auto lg:px-10 2xl:px-[120px] "
                 >
                   <OnePlatform />
                 </section>
-              </Wrapper>
-              <Wrapper>
-                <section
-                  id="carousel-section"
-                  className="scroll-snap-section w-full lg:pt-6"
-                >
-                  <Carousel
-                    itemVariants={itemVariants}
-                    sectionVariants={sectionVariants}
-                  />
-                </section>
-              </Wrapper>
+
+                <Wrapper>
+                  <section
+                    id="carousel-section"
+                    className="scroll-snap-section w-full lg:pt-6"
+                  >
+                    <Carousel
+                      itemVariants={itemVariants}
+                      sectionVariants={sectionVariants}
+                    />
+                  </section>
+                </Wrapper>
+              </div>
+            )}
+          </div>
+
+          {!loading && (
+            <div className=" flex flex-col lg:gap-y-16 gap-y-8  mt-4 lg:mt-16">
+              <section
+                id="evolve-retention"
+                className="scroll-snap-section w-full  "
+              >
+                <EvolveRetention />
+              </section>
+
+              {/* Copyright - Centered */}
+
+              <div className="flex-1 text-center pb-4 ">
+                <p className="text-[#012733] lg:text-[#294559] lg:text-sm text-xs">
+                  © {new Date().getFullYear()} PROCARMA. All rights reserved.
+                </p>
+              </div>
             </div>
           )}
         </div>
-
-        {!loading && (
-          <div className=" flex flex-col lg:gap-y-16 gap-y-8  mt-4 lg:mt-16">
-            <section
-              id="evolve-retention"
-              className="lg:scroll-snap-section w-full  "
-            >
-              <EvolveRetention />
-            </section>
-
-            {/* Copyright - Centered */}
-
-            <div className="flex-1 text-center pb-4 ">
-              <p className="text-[#012733] lg:text-[#294559] lg:text-sm text-xs">
-                © {new Date().getFullYear()} PROCARMA. All rights reserved.
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
-    </ScrollWrapper>
+      </ScrollWrapper>
+    </>
   );
 };
 
