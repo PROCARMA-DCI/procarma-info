@@ -29,8 +29,8 @@ export const TrainingEcosystem = () => {
         <Title className="">PRODUCT / TRAINING ECOSYSTEM</Title>
       </div>
       <div className="border shadow-lg lg:shadow-none  p-2 rounded-lg lg:border-none lg:p-0 ">
-        <div className="w-full flex lg:flex-row justify-center items-center  relative   lg:h-[600px] z-10  ">
-          <div className="w-full lg:max-w-[20%] h-full lg:flex flex-col justify-around  z-10 hidden  ">
+        <div className="w-full flex lg:flex-row justify-center lg:justify-between items-center  relative   lg:h-[600px] z-10  ">
+          <div className="w-full lg:max-w-[20%]  h-full lg:flex flex-col justify-around  z-10 hidden  ">
             {contents.map((item, index) => (
               <div className="space-y-4" key={index}>
                 <Heading className="text-2xl md:text-4xl font-bold ">
@@ -40,8 +40,8 @@ export const TrainingEcosystem = () => {
               </div>
             ))}
           </div>
-
-          <div className="lg:max-w-[70%] m-auto lg:-mt-36  2xl:-mt-52 -mt-8 w-full flex-1 scale-110  pr-4 z-0 rounded-lg lg:col-span-10 overflow-hidden  flex items-center justify-center">
+          <div className="lg:w-[10%] hidden lg:block"></div>
+          <div className="w-full lg:max-w-[70%]  m-auto lg:-mt-36  2xl:-mt-52 -mt-8  flex-1 scale-110   z-0 rounded-lg lg:col-span-10 overflow-hidden  ">
             <div className=" origin-center ">
               <Suspense>
                 <div className="">

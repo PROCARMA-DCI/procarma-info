@@ -41,13 +41,13 @@ const carouselSlides = [
     image: "/carousel/pcpportal.png",
     videoUrl: "https://vimeo.com/1067148917",
   },
-  {
-    id: "6",
-    title: "ENGAGEMENT PLATFORM",
-    subtitle: "CONNECTING DEALERS WITH CUSTOMERS",
-    image:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=675&fit=crop&crop=center",
-  },
+  // {
+  //   id: "6",
+  //   title: "ENGAGEMENT PLATFORM",
+  //   subtitle: "CONNECTING DEALERS WITH CUSTOMERS",
+  //   image:
+  //     "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=675&fit=crop&crop=center",
+  // },
   // Add more slides as needed
 ];
 const Carousel = ({ sectionVariants, itemVariants }: any) => {

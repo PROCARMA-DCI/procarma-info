@@ -4,7 +4,7 @@ import { Suspense } from "react";
 const LifeCycleManagement = () => {
   return (
     <section className="w-full">
-      <div className="text-center z-10 relative  mb-20">
+      <div className="text-center z-10 relative  mb-32">
         <Title>LIFE CYCLE MANAGEMENT</Title>
       </div>
       <div className="  ">
