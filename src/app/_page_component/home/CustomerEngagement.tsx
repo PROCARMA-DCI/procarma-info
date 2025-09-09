@@ -27,10 +27,13 @@ export const CustomerEngagement = () => {
       </div>
       <div className="border shadow-lg lg:border-none lg:shadow-none rounded-lg p-2">
         <div className="flex flex-col lg:flex-row  items-center overflow-hidden relative min-h-[350px]  max-h-full">
-          <div className=" max-w-full lg:max-w-[70%] flex-1   rounded-lg    flex  ">
-            <div className=" origin-center    scale-100 lg:scale-100 mb-20 lg:mb-0">
+          <div className=" max-w-full  lg:max-w-[70%] flex-1   rounded-lg    flex  ">
+            <div className="origin-center  scale-100 lg:scale-100 mb-20 lg:mb-0">
               <Suspense>
-                <LottieWeb src={"/json/customer-engagement.json"} />
+                <LottieWeb
+                  className=" lg:-ml-10"
+                  src={"/json/customer-engagement.json"}
+                />
               </Suspense>
             </div>
           </div>
