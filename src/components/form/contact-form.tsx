@@ -18,17 +18,17 @@ const sendMail = async (
 ) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SENDGRID_SMTP || "smtp.sendgrid.net",
+      host: process.env.NEXT_PUBLIC_SENDGRID_SMTP || "smtp.sendgrid.net",
       port: 587,
       secure: false,
       auth: {
-        user: process.env.SENDGRID_USER, // usually 'apikey'
-        pass: process.env.SENDGRID_PASS, // actual API key
+        user: process.env.NEXT_PUBLIC_SENDGRID_USER, // usually 'apikey'
+        pass: process.env.NEXT_PUBLIC_SENDGRID_PASS, // actual API key
       },
     });
 
     const mailOptions = {
-      from: process.env.DEFAULT_FROM_EMAIL,
+      from: process.env.NEXT_PUBLIC_DEFAULT_FROM_EMAIL,
       to: email, // or your desired recipient
       subject: `New message from ${name}`,
       text: `
