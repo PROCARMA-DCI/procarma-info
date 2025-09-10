@@ -1,4 +1,4 @@
-const ecosystemConfig = {
+module.exports = {
   apps: [
     {
       name: "procarma-info-4001",
@@ -11,5 +11,3 @@ const ecosystemConfig = {
     },
   ],
 };
-
-export default ecosystemConfig;
