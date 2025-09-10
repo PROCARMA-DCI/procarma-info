@@ -1,49 +1,48 @@
-// pages/api/send-email.ts
-import type { NextApiRequest, NextApiResponse } from "next";
+// app/api/send-email/route.ts
+import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
-
-  const { name, email, phone, message } = req.body;
-
-  if (!name || !email || !message) {
-    return res.status(400).json({ message: "Missing required fields" });
-  }
-
+export async function POST(req: Request) {
   try {
-    // Create reusable transporter using SendGrid SMTP
+    const { name, email, phone, message } = await req.json();
+
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { message: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       host: process.env.SENDGRID_SMTP || "smtp.sendgrid.net",
       port: 587,
       secure: false,
       auth: {
-        user: process.env.SENDGRID_USER, // often 'apikey'
+        user: process.env.SENDGRID_USER, // usually 'apikey'
         pass: process.env.SENDGRID_PASS, // actual API key
       },
     });
 
     const mailOptions = {
       from: process.env.DEFAULT_FROM_EMAIL,
-      to: email, // change to your recipient
+      to: email, // or your desired recipient
       subject: `New message from ${name}`,
       text: `
-     Name: ${name}
-     Phone: ${phone}
-         ${message}
+Name: ${name}
+Phone: ${phone || "N/A"}
+
+${message}
       `,
     };
 
     await transporter.sendMail(mailOptions);
 
-    return res.status(200).json({ message: "Email sent successfully" });
-  } catch (err: any) {
+    return NextResponse.json({ message: "Email sent successfully" });
+  } catch (err) {
     console.error("Email error:", err);
-    return res.status(500).json({ message: "Failed to send email" });
+    return NextResponse.json(
+      { message: "Failed to send email" },
+      { status: 500 }
+    );
   }
 }
