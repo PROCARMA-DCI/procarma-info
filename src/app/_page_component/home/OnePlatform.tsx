@@ -1,13 +1,12 @@
 import { Title } from "@/components/typography/Typography";
-import Image from "next/image";
-import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import { LottieWeb } from "@/components/Animation/lottie-web";
 const OnePlatform = () => {
   return (
     <section className="w-full ">
-      <div className="text-center lg:mb-20 ">
+      <div className="text-center lg:mb-32 ">
         <Title>
           ONE PLATFORM{" "}
           <span className="block lg:inline font-bold lg:font-extralight">

@@ -99,7 +99,7 @@ const Page = () => {
                 <Wrapper>
                   <section
                     id="customer-engagement"
-                    className="scroll-snap-section w-full lg:pt-6"
+                    className="scroll-snap-section w-full lg:pt-16"
                   >
                     <FadeIn from="right">
                       <CustomerEngagement />
@@ -109,7 +109,7 @@ const Page = () => {
 
                 <section
                   id="one-platform"
-                  className="scroll-snap-section  w-full lg:pt-6 lg:mb-[200px] max-w-[1900px] mx-auto lg:px-10 2xl:px-[120px] "
+                  className="scroll-snap-section  w-full lg:pt-16 lg:mb-[200px] max-w-[1900px] mx-auto lg:px-10 2xl:px-[120px] "
                 >
                   <OnePlatform />
                 </section>
@@ -117,7 +117,7 @@ const Page = () => {
                 <Wrapper>
                   <section
                     id="carousel-section"
-                    className="scroll-snap-section w-full lg:pt-6"
+                    className="scroll-snap-section w-full lg:pt-16"
                   >
                     <Carousel
                       itemVariants={itemVariants}
