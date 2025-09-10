@@ -48,25 +48,27 @@ export function ContactForm() {
           },
           body: JSON.stringify(formData),
         });
-
-        data = await response.json();
-        console.log("API Response:", data);
+        console.log(response);
         if (response.ok) {
-          setSubmitSuccess(true);
-          toast.success("Your message has been sent successfully!");
+          data = await response.json();
+          console.log("API Response:", data);
+          if (response.ok) {
+            setSubmitSuccess(true);
+            toast.success("Your message has been sent successfully!");
 
-          // Reset form after success
-          setTimeout(() => {
-            setSubmitSuccess(false);
-            setFormData({
-              name: "",
-              email: "",
-              phone: "",
-              message: "",
-              privacyPolicy: false,
-            });
-          }, 3000);
-          return;
+            // Reset form after success
+            setTimeout(() => {
+              setSubmitSuccess(false);
+              setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
+                privacyPolicy: false,
+              });
+            }, 3000);
+            return;
+          }
         }
 
         // If response is not ok, handle the error
