@@ -5,47 +5,46 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
 import type React from "react";
 import { useState } from "react";
-import { toast } from "sonner";
 
-const sendMail = async (
-  name: string,
-  email: string,
-  phone: string,
-  message: string
-) => {
-  try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.NEXT_PUBLIC_SENDGRID_SMTP || "smtp.sendgrid.net",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.NEXT_PUBLIC_SENDGRID_USER, // usually 'apikey'
-        pass: process.env.NEXT_PUBLIC_SENDGRID_PASS, // actual API key
-      },
-    });
+// const sendMail = async (
+//   name: string,
+//   email: string,
+//   phone: string,
+//   message: string
+// ) => {
+//   try {
+//     const transporter = nodemailer.createTransport({
+//       host: process.env.NEXT_PUBLIC_SENDGRID_SMTP || "smtp.sendgrid.net",
+//       port: 587,
+//       secure: false,
+//       auth: {
+//         user: process.env.NEXT_PUBLIC_SENDGRID_USER, // usually 'apikey'
+//         pass: process.env.NEXT_PUBLIC_SENDGRID_PASS, // actual API key
+//       },
+//     });
 
-    const mailOptions = {
-      from: process.env.NEXT_PUBLIC_DEFAULT_FROM_EMAIL,
-      to: email, // or your desired recipient
-      subject: `New message from ${name}`,
-      text: `
-        Name: ${name}
-        Phone: ${phone || "N/A"}
-  
-        ${message}
-        `,
-    };
+//     const mailOptions = {
+//       from: process.env.NEXT_PUBLIC_DEFAULT_FROM_EMAIL,
+//       to: email, // or your desired recipient
+//       subject: `New message from ${name}`,
+//       text: `
+//         Name: ${name}
+//         Phone: ${phone || "N/A"}
 
-    await transporter.sendMail(mailOptions);
-    toast.success("Your message has been sent successfully!");
-  } catch (err) {
-    console.log(err);
-    toast.success("Server Error");
-  }
-};
+//         ${message}
+//         `,
+//     };
+
+//     await transporter.sendMail(mailOptions);
+//     toast.success("Your message has been sent successfully!");
+//   } catch (err) {
+//     console.log(err);
+//     toast.success("Server Error");
+//   }
+// };
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -76,7 +75,7 @@ export function ContactForm() {
     setIsSubmitting(true);
     setError(null);
     const { name, email, phone, message } = formData;
-    await sendMail(name, email, phone, message);
+    // await sendMail(name, email, phone, message);
     // try {
     //   let data;
     //   try {
