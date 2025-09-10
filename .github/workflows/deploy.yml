@@ -35,9 +35,9 @@ jobs:
       - name: Deploy files to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ vars.EC2_HOST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
-          key: ${{ vars.EC2_SSH_KEY }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           source: "./"
           target: "/home/ubuntu/workspace/procarma-info/_work/procarma-info/procarma-info"
           overwrite: true
@@ -45,9 +45,9 @@ jobs:
       - name: SSH and restart app with PM2
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ vars.EC2_HOST }}
+          host: ${{ secrets.EC2_HOST }}
           username: ubuntu
-          key: ${{ vars.EC2_SSH_KEY }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/ubuntu/workspace/procarma-info/_work/procarma-info/procarma-info
 
