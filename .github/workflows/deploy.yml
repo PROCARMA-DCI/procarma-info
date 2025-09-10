@@ -59,6 +59,11 @@ jobs:
             echo "🧹 Cleaning previous build..."
             rm -rf .next
 
+
+            echo "🔧 Loading fnm..."
+            export PATH="/home/ubuntu/.local/share/fnm:$PATH"
+            eval "$(/home/ubuntu/.local/share/fnm/fnm env)"
+
             echo "🔨 Building app..."
             npm run build
 
