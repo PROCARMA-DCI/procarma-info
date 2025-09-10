@@ -10,9 +10,14 @@ jobs:
     name: Deploy via SSH
     runs-on: ubuntu-latest
 
-    environment: Production
+    environment: production
 
     steps:
+      - name: Debug secrets (safe)
+        run: |
+          if [ -z "${{ secrets.EC2_HOST }}" ]; then echo "EC2_HOST is empty"; else echo "EC2_HOST is set"; fi
+          if [ -z "${{ secrets.EC2_SSH_KEY }}" ]; then echo "EC2_SSH_KEY is empty"; else echo "EC2_SSH_KEY is set"; fi
+
       - name: Checkout code
         uses: actions/checkout@v3
 
