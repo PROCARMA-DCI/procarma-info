@@ -6,12 +6,11 @@ const font = Poppins({
   subsets: ["latin"],
 });
 
+import { Layout } from "@/components/Layout";
+import { Toaster } from "@/components/ui/sonner";
 import indivisible from "./fonts/indivisible/indivisible";
 import "./globals.css";
-import { Layout } from "@/components/Layout";
 import { ThemeProvider } from "./theme-provider";
-import localFont from "next/font/local";
-
 // const indivisible = localFont({
 //   src: "./fonts/indivisible/indivisible.otf",
 //   display: "swap",
@@ -39,6 +38,7 @@ export default function RootLayout({
           forcedTheme="light"
         >
           <Layout>{children}</Layout>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

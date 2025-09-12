@@ -1,11 +1,9 @@
 // app/api/send-email/route.ts
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-
 export async function POST(req: Request) {
   try {
     const { name, email, phone, message } = await req.json();
-
     if (!name || !email || !message) {
       return NextResponse.json(
         { message: "Missing required fields" },
@@ -23,25 +21,27 @@ export async function POST(req: Request) {
       },
     });
 
+    await transporter.verify();
+    console.log("SMTP server is ready to send messages");
     const mailOptions = {
       from: process.env.DEFAULT_FROM_EMAIL,
       to: email, // or your desired recipient
       subject: `New message from ${name}`,
       text: `
-Name: ${name}
-Phone: ${phone || "N/A"}
+    Name: ${name}
+    Phone: ${phone || "N/A"}
 
-${message}
-      `,
+    ${message}
+          `,
     };
 
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ message: "Email sent successfully" });
-  } catch (err) {
-    console.error("Email error:", err);
+  } catch (err: any) {
+    console.error("Email error:", err.message, err.stack);
     return NextResponse.json(
-      { message: "Failed to send email" },
+      { message: "Failed to send email", error: err.message },
       { status: 500 }
     );
   }

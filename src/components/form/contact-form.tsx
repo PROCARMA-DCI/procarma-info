@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 // import nodemailer from "nodemailer";
 import type React from "react";
 import { useState } from "react";
-
+import { toast } from "sonner";
 // const sendMail = async (
 //   name: string,
 //   email: string,
@@ -74,90 +74,76 @@ export function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    const { name, email, phone, message } = formData;
-    // await sendMail(name, email, phone, message);
-    // try {
-    //   let data;
-    //   try {
-    //     const response = await fetch("/api/send-email", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(formData),
-    //     });
-    //     console.log(response);
-    //     if (response.ok) {
-    //       data = await response.json();
-    //       console.log("API Response:", data);
-    //       if (response.ok) {
-    //         setSubmitSuccess(true);
-    //         toast.success("Your message has been sent successfully!");
 
-    //         // Reset form after success
-    //         setTimeout(() => {
-    //           setSubmitSuccess(false);
-    //           setFormData({
-    //             name: "",
-    //             email: "",
-    //             phone: "",
-    //             message: "",
-    //             privacyPolicy: false,
-    //           });
-    //         }, 3000);
-    //         return;
-    //       }
-    //     }
+    try {
+      let data;
+      try {
+        const response = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        console.log(response);
+        if (response.ok) {
+          data = await response.json();
+          console.log("API Response:", data);
 
-    //     // If response is not ok, handle the error
-    //     const errorMessage =
-    //       data.message || data.error || "Failed to send message";
-    //     let toastTitle = "Error";
+          setSubmitSuccess(true);
+          toast.success("Your message has been sent successfully!");
 
-    //     switch (response.status) {
-    //       case 401:
-    //         toastTitle = "Authentication Error";
-    //         break;
-    //       case 429:
-    //         toastTitle = "Too Many Requests";
-    //         break;
-    //       case 400:
-    //         toastTitle = "Validation Error";
-    //         break;
-    //       case 500:
-    //         toastTitle = "Server Error";
-    //         break;
-    //     }
+          // Reset form after success
+          setTimeout(() => {
+            setSubmitSuccess(false);
+            setFormData({
+              name: "",
+              email: "",
+              phone: "",
+              message: "",
+              privacyPolicy: false,
+            });
+          }, 3000);
+        } else {
+          data = await response.json();
+          // If response is not ok, handle the error
+          const errorMessage =
+            data.message || data.error || "Failed to send message";
+          let toastTitle = "Error";
 
-    //     toast.error(errorMessage, {
-    //       description: toastTitle,
-    //     });
-    //   } catch (apiError) {
-    //     // Handle fetch or JSON parsing errors
-    //     console.error("API Error:", apiError);
-    //     toast.error("Could not connect to the server. Please try again.", {
-    //       description: "Connection Error",
-    //     });
-    //   }
+          switch (response.status) {
+            case 401:
+              toastTitle = "Authentication Error";
+              break;
+            case 429:
+              toastTitle = "Too Many Requests";
+              break;
+            case 400:
+              toastTitle = "Validation Error";
+              break;
+            case 500:
+              toastTitle = "Server Error";
+              break;
+          }
 
-    //   // Reset form after success
-    //   setTimeout(() => {
-    //     setSubmitSuccess(false);
-    //     setFormData({
-    //       name: "",
-    //       email: "",
-    //       phone: "",
-    //       message: "",
-    //       privacyPolicy: false,
-    //     });
-    //   }, 3000);
-    // } catch (error: any) {
-    //   console.error("Form submission error:", error);
-    //   setError("Failed to send message. Please try again.");
-    //   setSubmitSuccess(false);
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+          toast.error(errorMessage, {
+            description: toastTitle,
+          });
+        }
+      } catch (apiError) {
+        // Handle fetch or JSON parsing errors
+        console.error("API Error:", apiError);
+        toast.error("Could not connect to the server. Please try again.", {
+          description: "Connection Error",
+        });
+      }
+    } catch (error: any) {
+      console.error("Form submission error:", error);
+      setError("Failed to send message. Please try again.");
+      setSubmitSuccess(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
