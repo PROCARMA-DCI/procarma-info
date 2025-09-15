@@ -25,13 +25,12 @@ export const TrainingEcosystem = () => {
   ];
   return (
     <section className="w-full z-0 2xl:mb-36">
-      <div className="text-center lg:mb-16 mb-4">
+      <div className="text-center lg:mb-20 mb-4">
         <Title className="">PRODUCT / TRAINING ECOSYSTEM</Title>
       </div>
       <div className="border shadow-lg lg:shadow-none  p-2 rounded-lg lg:border-none lg:p-0 ">
-        <div className="w-full flex lg:flex-row justify-center items-center  relative   lg:h-[600px] z-10  ">
-          <div className="lg:w-[5%] hidden lg:block"></div>
-          <div className="w-full lg:max-w-[20%]  h-full lg:flex flex-col justify-around  z-10 hidden  ">
+        <div className="w-full flex lg:flex-row justify-center  items-center  relative   z-10 gap-4  ">
+          <div className="w-full lg:max-w-72  h-full lg:flex lg:space-y-20 flex-col justify-around  z-10 hidden  ">
             {contents.map((item, index) => (
               <div className="space-y-4" key={index}>
                 <Heading className="text-2xl md:text-4xl font-bold ">
@@ -42,7 +41,7 @@ export const TrainingEcosystem = () => {
             ))}
           </div>
           {/* <div className="lg:w-[10%] hidden lg:block"></div> */}
-          <div className="w-full lg:max-w-[70%]  m-auto flex-1   z-0 rounded-lg lg:col-span-10 overflow-hidden  ">
+          <div className="w-full lg:max-w-max flex-1   z-0 rounded-lg lg:col-span-10 overflow-hidden  ">
             <div className=" origin-center ">
               <Suspense>
                 <div className="">
@@ -51,7 +50,7 @@ export const TrainingEcosystem = () => {
               </Suspense>
             </div>
           </div>
-          <div className="lg:w-[5%] hidden lg:block"></div>
+
           {/*Mobile */}
           <div className="absolute lg:hidden block bottom-0 w-full m-auto  ">
             <Carousel
