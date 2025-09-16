@@ -24,14 +24,21 @@ export async function POST(req: Request) {
     await transporter.verify();
     console.log("SMTP server is ready to send messages");
     const mailOptions = {
-      from: process.env.DEFAULT_FROM_EMAIL,
-      to: email, // or your desired recipient
+      from: email,
+      to: process.env.DEFAULT_TO_EMAIL, // or your desired recipient
       subject: `New message from ${name}`,
       text: `
+    Hello Support,
+    
+    Message from Procarma.info contact form:
+
     Name: ${name}
     Phone: ${phone || "N/A"}
-
+    Email: ${email}
     ${message}
+
+    Thank you,
+    PROCARMA TEAM
           `,
     };
 
