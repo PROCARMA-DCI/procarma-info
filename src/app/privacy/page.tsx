@@ -421,7 +421,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="space-y-4 text-lg">
                 <h1 className="font-bold text-foreground underline hover:text-blue-500 cursor-pointer duration-300 transition-all">
-                  <Link href="/#evolve-retention">CONTACT</Link>
+                  <Link href="/#contact-form">CONTACT</Link>
                 </h1>
               </div>
             </CardContent>
