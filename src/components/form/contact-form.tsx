@@ -5,6 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
+import Link from "next/link";
 // import nodemailer from "nodemailer";
 import type React from "react";
 import { useState } from "react";
@@ -193,6 +194,8 @@ export function ContactForm() {
             placeholder="Message"
             value={formData.message}
             onChange={handleChange}
+            minLength={10}
+            maxLength={1000}
             required
             className="min-h-[120px] border-gray-200 bg-white/90 text-[#012733] lg:text-[#294559]"
           />
@@ -209,9 +212,9 @@ export function ContactForm() {
             className="text-sm text-[#012733] lg:text-[#294559]"
           >
             I have read and accept the{" "}
-            <a href="#" className="text-cyan-500 hover:underline">
+            <Link href="/privacy" className="text-cyan-500 hover:underline">
               privacy policy
-            </a>
+            </Link>
           </label>
         </div>
         <div className="w-max">
