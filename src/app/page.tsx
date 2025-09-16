@@ -4,7 +4,6 @@ import Header from "@/components/header";
 import { Wrapper } from "@/components/Layout";
 import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
 import { FadeIn } from "@/components/motionAnimation/FadeIn";
-import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Carousel from "./_page_component/home/Carousel";
 import { CustomerEngagement } from "./_page_component/home/CustomerEngagement";
@@ -48,22 +47,16 @@ const containerVariants = {
   },
 };
 
-function scrollToHash(hash: string) {
-  if (!hash) return;
-  const el = document.querySelector(hash);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-  }
-}
 const Page = () => {
   const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+
   setTimeout(() => {
     setLoading(false);
   }, 3000);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const hash = window.location.hash;
     if (!hash) return;
 
@@ -77,10 +70,10 @@ const Page = () => {
         }
       }
       tries++;
-    }, 100); // retry every 100ms
+    }, 100);
 
     return () => clearInterval(timer);
-  }, [pathname, searchParams]);
+  }, []); // only run on mount
   return (
     <>
       <ScrollWrapper loading={loading}>
