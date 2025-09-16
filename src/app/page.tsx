@@ -4,7 +4,8 @@ import Header from "@/components/header";
 import { Wrapper } from "@/components/Layout";
 import SpinnerCenterScreen from "@/components/loader/SpinnerCenterScreen";
 import { FadeIn } from "@/components/motionAnimation/FadeIn";
-import { useEffect, useState } from "react";
+import useScrollToHash from "@/customHooks/useScrollToHash";
+import { useState } from "react";
 import Carousel from "./_page_component/home/Carousel";
 import { CustomerEngagement } from "./_page_component/home/CustomerEngagement";
 import { CustomerRetained } from "./_page_component/home/CustomerRetained";
@@ -53,27 +54,7 @@ const Page = () => {
   setTimeout(() => {
     setLoading(false);
   }, 3000);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const hash = window.location.hash;
-    if (!hash) return;
-
-    let tries = 0;
-    const timer = setInterval(() => {
-      const el = document.querySelector(hash);
-      if (el || tries > 20) {
-        clearInterval(timer);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-      tries++;
-    }, 100);
-
-    return () => clearInterval(timer);
-  }, []); // only run on mount
+  useScrollToHash(-80);
   return (
     <>
       <ScrollWrapper loading={loading}>
