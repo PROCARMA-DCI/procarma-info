@@ -95,16 +95,14 @@ export function ContactForm() {
           toast.success("Your message has been sent successfully!");
 
           // Reset form after success
-          setTimeout(() => {
-            setSubmitSuccess(false);
-            setFormData({
-              name: "",
-              email: "",
-              phone: "",
-              message: "",
-              privacyPolicy: false,
-            });
-          }, 3000);
+          setSubmitSuccess(false);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+            privacyPolicy: false,
+          });
         } else {
           data = await response.json();
           // If response is not ok, handle the error
@@ -137,13 +135,16 @@ export function ContactForm() {
         toast.error("Could not connect to the server. Please try again.", {
           description: "Connection Error",
         });
+        setSubmitSuccess(false);
       }
     } catch (error: any) {
       console.error("Form submission error:", error);
       setError("Failed to send message. Please try again.");
       setSubmitSuccess(false);
     } finally {
-      setIsSubmitting(false);
+      setTimeout(() => {
+        setIsSubmitting(false);
+      }, 1000);
     }
   };
 
@@ -224,7 +225,7 @@ export function ContactForm() {
             className={`w-full font-medium rounded-md mt-4 ${
               error ? "bg-red-500 hover:bg-red-600 text-white" : ""
             }`}
-            // disabled={isSubmitting || !formData.privacyPolicy}
+            disabled={isSubmitting}
           >
             {isSubmitting
               ? "Sending..."
