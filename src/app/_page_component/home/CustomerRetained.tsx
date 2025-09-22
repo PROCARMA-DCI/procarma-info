@@ -143,7 +143,7 @@ export const CustomerRetained = () => {
             </div>
 
             {/* Middle column - Services */}
-            <div className="font-bold text-[0.65rem] sm:text-[0.7em] text-foreground w-1/3 min-h-[62px]">
+            <div className=" font-bold text-[0.65rem] sm:text-[0.7em] text-foreground w-1/3 min-h-[62px]">
               <div className="flex flex-col h-[62px] leading-tight justify-start">
                 {item.point.map((pointItem: any, pointIndex: number) => (
                   <span
@@ -157,7 +157,7 @@ export const CustomerRetained = () => {
             </div>
 
             {/* Right column - Status info */}
-            <div className="text-foreground w-1/3 text-[0.65rem] sm:text-[0.7em] min-h-[62px]">
+            <div className="text-foreground w-1/3 text-[0.55rem] xs:text-[0.7em] min-h-[62px]">
               <div className="flex flex-col justify-between h-[62px]">
                 <div className="flex flex-col leading-tight gap-[1px]">
                   <span className="whitespace-nowrap font-semibold">

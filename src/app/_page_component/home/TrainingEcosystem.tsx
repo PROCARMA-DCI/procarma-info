@@ -28,8 +28,8 @@ export const TrainingEcosystem = () => {
       <div className="text-center lg:mb-20 mb-4">
         <Title className="">PRODUCT / TRAINING ECOSYSTEM</Title>
       </div>
-      <div className="border shadow-lg lg:shadow-none  p-2 rounded-lg lg:border-none lg:p-0 ">
-        <div className="w-full flex lg:flex-row justify-center  items-center  relative   z-10 gap-4  ">
+      <div className="border shadow-lg lg:shadow-none  p-2  rounded-lg lg:border-none lg:p-0 ">
+        <div className="relative w-full flex lg:flex-row lg:justify-center  lg:items-center z-10 gap-4 min-h-[250px] md:min-h-[600px] sm:min-h-[450px] ">
           <div className="w-full lg:max-w-72  h-full lg:flex lg:space-y-20 flex-col justify-around  z-10 hidden  ">
             {contents.map((item, index) => (
               <div className="space-y-4" key={index}>
@@ -52,7 +52,7 @@ export const TrainingEcosystem = () => {
           </div>
 
           {/*Mobile */}
-          <div className="absolute lg:hidden block bottom-0 w-full m-auto  ">
+          <div className="absolute lg:hidden block bottom-0  w-full m-auto ">
             <Carousel
               opts={{
                 align: "start",
