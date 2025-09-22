@@ -26,7 +26,7 @@ export const CustomerEngagement = () => {
         <Title>CUSTOMER ENGAGEMENT</Title>
       </div>
       <div className="border shadow-lg lg:border-none lg:shadow-none rounded-lg p-2">
-        <div className="flex flex-col lg:flex-row  items-center overflow-hidden relative min-h-[350px]  max-h-full">
+        <div className="relative flex flex-col lg:flex-row  items-center overflow-hidden  min-h-[350px]  max-h-full">
           <div className=" max-w-full  lg:max-w-[70%] flex-1   rounded-lg    flex  ">
             <div className="origin-center  scale-100 lg:scale-100 mb-20 lg:mb-0">
               <Suspense>

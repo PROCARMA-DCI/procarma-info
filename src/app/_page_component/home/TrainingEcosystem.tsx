@@ -29,7 +29,7 @@ export const TrainingEcosystem = () => {
         <Title className="">PRODUCT / TRAINING ECOSYSTEM</Title>
       </div>
       <div className="border shadow-lg lg:shadow-none  p-2  rounded-lg lg:border-none lg:p-0 ">
-        <div className="relative w-full flex lg:flex-row lg:justify-center  lg:items-center z-10 gap-4 min-h-[250px] md:min-h-[600px] sm:min-h-[450px] ">
+        <div className="relative w-full flex lg:flex-row lg:justify-center  lg:items-center z-10 gap-4 min-h-[280px] md:min-h-[600px] sm:min-h-[450px] ">
           <div className="w-full lg:max-w-72  h-full lg:flex lg:space-y-20 flex-col justify-around  z-10 hidden  ">
             {contents.map((item, index) => (
               <div className="space-y-4" key={index}>
