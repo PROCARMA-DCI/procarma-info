@@ -20,6 +20,11 @@ import { ThemeProvider } from "./theme-provider";
 export const metadata: Metadata = {
   title: "Procarma Info",
   description: "Procarma Info",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    // apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
