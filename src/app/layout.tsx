@@ -21,8 +21,10 @@ export const metadata: Metadata = {
   title: "Procarma Info",
   description: "Procarma Info",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" }, // fallback for all browsers
+      { url: "/favicon.png", type: "image/png" }, // modern browsers
+    ],
     // apple: "/apple-touch-icon.png",
   },
 };
