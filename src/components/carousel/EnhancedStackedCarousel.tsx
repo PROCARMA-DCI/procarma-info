@@ -1,9 +1,9 @@
 "use client";
-import type React from "react";
-import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import type React from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface CarouselSlide {
   id: string;
@@ -178,12 +178,16 @@ export function EnhancedStackedCarousel({
   // Helper function to get embed URL
   const getEmbedUrl = (slide: CarouselSlide): string => {
     if (!slide.videoUrl) return "";
+    if (slide.videoUrl.startsWith("https://player.vimeo.com")) {
+      return slide.videoUrl;
+    }
     const videoType = slide.videoType || getVideoType(slide.videoUrl);
     switch (videoType) {
       case "vimeo":
         if (slide.videoUrl.includes("player.vimeo.com")) {
           return `${slide.videoUrl}?autoplay=1&muted=1&controls=1&loop=1`;
         }
+
         const vimeoId = extractVideoId(slide.videoUrl, "vimeo");
         return `https://player.vimeo.com/video/${vimeoId}?autoplay=1&muted=1&controls=1&loop=1`;
       case "youtube":

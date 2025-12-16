@@ -14,10 +14,12 @@ const carouselSlides = [
     videoThumbnail: false,
   },
   {
+    // <iframe title="vimeo-player" src="https://player.vimeo.com/video/848141244?h=f1e09e6574" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"   allowfullscreen></iframe>
     id: "2",
     title: "GAMING REVOLUTION",
     subtitle: "NEXT GENERATION MOBILE EXPERIENCE",
-    videoUrl: "https://vimeo.com/1092135627/44fd4b829b",
+    videoUrl:
+      "https://player.vimeo.com/video/848141244?h=f1e09e6574&autoplay=1&muted=1&controls=1&loop=1",
     image: "/carousel/everest.png",
   },
   {
