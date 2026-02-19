@@ -132,7 +132,7 @@ export function ScrollVideo({
         {/* ── Dark vignette — covers the FULL width including content ── */}
         <motion.div
           style={{ opacity: useTransform(smoothProgress, [0, 0.25], [1, 0]) }}
-          className="absolute inset-0 bg-black/50 pointer-events-none z-20"
+          className="absolute inset-0 bg-black/10 pointer-events-none z-20"
         />
 
         <motion.div
