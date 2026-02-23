@@ -41,7 +41,7 @@ export const CustomerEngagement = () => {
               </Suspense>
             </div>
           </div>
-          <div className="w-full lg:max-w-[30%] h-full lg:flex flex-col  lg:space-y-20 z-10  ">
+          <div className="w-full lg:max-w-[30%] h-full lg:flex flex-col  lg:space-y-20 z-10 hidden ">
             {contents.map((item, index) => (
               <div className="space-y-4" key={index}>
                 <Heading className="text-2xl md:text-4xl font-bold ">
