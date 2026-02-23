@@ -8,7 +8,6 @@ import useScrollToHash from "@/customHooks/useScrollToHash";
 import { useState } from "react";
 import Carousel from "./_page_component/home/Carousel";
 import { CustomerEngagement } from "./_page_component/home/CustomerEngagement";
-import { ScrollVideo } from "./_page_component/home/Customerengagementvideo";
 import { CustomerRetained } from "./_page_component/home/CustomerRetained";
 import { EvolveRetention } from "./_page_component/home/EvolveRetention";
 import { FeatureShowcase } from "./_page_component/home/feature_showcase";
@@ -100,13 +99,13 @@ const Page = () => {
                     <LifeCycleManagement />
                   </section>
                 </Wrapper>
-                <div className="hidden lg:block">
+                {/* <div className="hidden lg:block">
                   <ScrollVideo
                     src="/video/customer-engagement.mp4"
                     className="flex-1"
                   />
-                </div>
-                <Wrapper className="lg:hidden">
+                </div> */}
+                <Wrapper className="">
                   <section
                     id="customer-engagement"
                     className="scroll-snap-section w-full lg:pt-16"
