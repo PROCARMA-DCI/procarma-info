@@ -14,7 +14,6 @@ const carouselSlides = [
     videoThumbnail: false,
   },
   {
-    // <iframe title="vimeo-player" src="https://player.vimeo.com/video/848141244?h=f1e09e6574" width="640" height="360" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"   allowfullscreen></iframe>
     id: "2",
     title: "GAMING REVOLUTION",
     subtitle: "NEXT GENERATION MOBILE EXPERIENCE",
@@ -59,7 +58,7 @@ const Carousel = ({ sectionVariants, itemVariants }: any) => {
       slide.id &&
       slide.title &&
       slide.subtitle &&
-      (slide.image || slide.videoUrl)
+      (slide.image || slide.videoUrl),
   );
 
   return (
