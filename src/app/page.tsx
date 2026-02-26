@@ -102,7 +102,7 @@ const Page = () => {
                 </Wrapper>
                 <div className="hidden lg:block">
                   <ScrollVideo
-                    src="/video/customer-engagements.mp4"
+                    src="/video/customer-engagements.webm"
                     className="flex-1"
                   />
                 </div>
