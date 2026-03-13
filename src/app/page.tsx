@@ -100,7 +100,7 @@ const Page = () => {
                     <LifeCycleManagement />
                   </section>
                 </Wrapper>
-                <div className="hidden lg:block">
+                <div className="hidden lg:block mb-16" id="customer-engagement">
                   <ScrollVideo
                     src="/video/customer-engagements.webm"
                     className="flex-1"

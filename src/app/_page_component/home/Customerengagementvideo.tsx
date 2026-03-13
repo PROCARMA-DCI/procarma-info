@@ -47,7 +47,7 @@ interface ScrollVideoProps {
  */
 export function ScrollVideo({
   src,
-  scrollLength = 8,
+  scrollLength = 15,
   videoDuration,
   videoClassName = "",
   className = "",
@@ -128,14 +128,14 @@ export function ScrollVideo({
       className={`relative w-full ${className}`}
       style={{ height: `${scrollLength * 100}vh` }}
     >
-      <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-background">
-        <div className="text-center   ">
+      <div className="sticky top-0 w-full h-screen flex flex-col items-center bg-background ">
+        <div className="text-center relative z-30 pt-4">
           <Title>CUSTOMER ENGAGEMENT</Title>
         </div>
         {/* ── Dark vignette — covers the FULL width including content ── */}
         <motion.div
           style={{ opacity: useTransform(smoothProgress, [0, 0.25], [1, 0]) }}
-          className="absolute inset-0 bg-black/10 pointer-events-none z-20 py-10"
+          className="absolute inset-0 bg-black/10 pointer-events-none z-20 "
         />
 
         <motion.div
