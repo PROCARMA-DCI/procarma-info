@@ -30,52 +30,23 @@ export function ScrollImageSequence({
   className = "",
 }: ScrollImageSequenceProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const currentFrameRef = useRef(0);
   const targetFrameRef = useRef(0);
   const rafRef = useRef<number | null>(null);
+  const imgElRef = useRef<HTMLImageElement>(null);
   const [loadedCount, setLoadedCount] = useState(0);
   const [ready, setReady] = useState(false);
   const [activeContent, setActiveContent] = useState(0);
+  const [currentSrc, setCurrentSrc] = useState<string>("");
 
-  const drawFrame = useCallback((index: number) => {
-    const canvas = canvasRef.current;
-    const img = imagesRef.current[index];
-    if (!canvas || !img?.complete || !img.naturalWidth) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const cw = canvas.width;
-    const ch = canvas.height;
-    const scale = Math.min(cw / img.naturalWidth, ch / img.naturalHeight);
-    const w = img.naturalWidth * scale;
-    const h = img.naturalHeight * scale;
-    const x = (cw - w) / 2;
-    const y = (ch - h) / 2;
-
-    ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(img, x, y, w, h);
-  }, []);
-
-  const resizeCanvas = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    const ctx = canvas.getContext("2d");
-    if (ctx) ctx.scale(dpr, dpr);
-    drawFrame(currentFrameRef.current);
-  }, [drawFrame]);
-
+  // Smooth frame interpolation — just updates the img src
   const animateToTarget = useCallback(() => {
     const diff = targetFrameRef.current - currentFrameRef.current;
     if (Math.abs(diff) < 0.5) {
       currentFrameRef.current = targetFrameRef.current;
-      drawFrame(Math.round(currentFrameRef.current));
+      const img = imagesRef.current[Math.round(currentFrameRef.current)];
+      if (img) setCurrentSrc(img.src);
       rafRef.current = null;
       return;
     }
@@ -84,10 +55,12 @@ export function ScrollImageSequence({
       0,
       Math.min(totalFrames - 1, Math.round(currentFrameRef.current)),
     );
-    drawFrame(frameIndex);
+    const img = imagesRef.current[frameIndex];
+    if (img) setCurrentSrc(img.src);
     rafRef.current = requestAnimationFrame(animateToTarget);
-  }, [drawFrame, totalFrames]);
+  }, [totalFrames]);
 
+  // Scroll handler
   useEffect(() => {
     const onScroll = () => {
       const container = containerRef.current;
@@ -108,15 +81,7 @@ export function ScrollImageSequence({
     return () => window.removeEventListener("scroll", onScroll);
   }, [totalFrames, animateToTarget]);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ro = new ResizeObserver(() => resizeCanvas());
-    ro.observe(canvas);
-    resizeCanvas();
-    return () => ro.disconnect();
-  }, [resizeCanvas]);
-
+  // Preload all frames
   useEffect(() => {
     const imgs: HTMLImageElement[] = [];
     let loaded = 0;
@@ -128,8 +93,7 @@ export function ScrollImageSequence({
         loaded++;
         setLoadedCount(loaded);
         if (loaded === 1) {
-          resizeCanvas();
-          drawFrame(0);
+          setCurrentSrc(imgs[0].src);
         }
         if (loaded === totalFrames) setReady(true);
       };
@@ -140,7 +104,7 @@ export function ScrollImageSequence({
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [totalFrames, getFrameUrl, resizeCanvas, drawFrame]);
+  }, [totalFrames, getFrameUrl]);
 
   const progress = Math.round((loadedCount / totalFrames) * 100);
 
@@ -162,21 +126,32 @@ export function ScrollImageSequence({
           height: "100vh",
           overflow: "hidden",
         }}
-        className="w-full max-w-[1900px] mx-auto px-2 lg:px-10 [@media(min-width:1500px)]:px-[120px]"
+        className="w-full max-w-[1900px] mx-auto px-2 lg:px-10 [@media(min-width:1500px)]:px-[120px] flex flex-col"
       >
         {/* Title */}
-        <div className="text-center relative z-30 pt-4">
+        <div className="text-center relative z-30 pt-4 flex-shrink-0">
           <Title>CUSTOMER ENGAGEMENT</Title>
         </div>
 
         {/* Image left, content right */}
-        <div className="flex w-full h-[calc(100vh-4rem)]">
-          {/* Canvas — left side, takes remaining width */}
-          <div className="flex-1 min-w-0 h-full">
-            <canvas
-              ref={canvasRef}
-              style={{ display: "block", width: "100%", height: "100%" }}
-            />
+        <div className="flex w-full flex-1 min-h-0">
+          {/* Image — left side, naturally responsive */}
+          <div className="flex-1 min-w-0 min-h-0 flex items-center justify-center overflow-hidden">
+            {currentSrc && (
+              <img
+                ref={imgElRef}
+                src={currentSrc}
+                alt="frame"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            )}
           </div>
 
           {/* Content — right side */}
