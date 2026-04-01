@@ -8,13 +8,13 @@ import useScrollToHash from "@/customHooks/useScrollToHash";
 import { useState } from "react";
 import Carousel from "./_page_component/home/Carousel";
 import { CustomerEngagement } from "./_page_component/home/CustomerEngagement";
-import { ScrollVideo } from "./_page_component/home/Customerengagementvideo";
 import { CustomerRetained } from "./_page_component/home/CustomerRetained";
 import { EvolveRetention } from "./_page_component/home/EvolveRetention";
 import { FeatureShowcase } from "./_page_component/home/feature_showcase";
 import LifeCycleManagement from "./_page_component/home/LifeCycleManagement";
 import OnePlatform from "./_page_component/home/OnePlatform";
 import Partnered from "./_page_component/home/Partnered";
+import { ScrollImageSequence } from "./_page_component/home/ScrollimagesSequence";
 import ScrollWrapper from "./_page_component/home/ScrollWrapper";
 import { TrainingEcosystem } from "./_page_component/home/TrainingEcosystem";
 
@@ -101,10 +101,15 @@ const Page = () => {
                   </section>
                 </Wrapper>
                 <div className="hidden lg:block mb-16" id="customer-engagement">
-                  <ScrollVideo
+                  <ScrollImageSequence
+                    totalFrames={93}
+                    getFrameUrl={(i) => `/frames/${i}.jpg`}
+                    scrollLength={600}
+                  />
+                  {/* <ScrollVideo
                     src="/video/customer-engagements.webm"
                     className="flex-1"
-                  />
+                  /> */}
                 </div>
                 <Wrapper className="lg:hidden">
                   <section
