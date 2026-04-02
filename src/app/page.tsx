@@ -14,7 +14,7 @@ import { FeatureShowcase } from "./_page_component/home/feature_showcase";
 import LifeCycleManagement from "./_page_component/home/LifeCycleManagement";
 import OnePlatform from "./_page_component/home/OnePlatform";
 import Partnered from "./_page_component/home/Partnered";
-import { ScrollImageSequence } from "./_page_component/home/ScrollimagesSequence";
+import { ScrollVideos } from "./_page_component/home/ScrollVideos";
 import ScrollWrapper from "./_page_component/home/ScrollWrapper";
 import { TrainingEcosystem } from "./_page_component/home/TrainingEcosystem";
 
@@ -101,12 +101,13 @@ const Page = () => {
                   </section>
                 </Wrapper>
                 <div className="hidden lg:block mb-16" id="customer-engagement">
-                  <ScrollImageSequence
+                  <ScrollVideos />
+                  {/* <ScrollImageSequence
                     totalFrames={93}
                     getFrameUrl={(i) => `/frames/${i}.jpg`}
                     scrollLength={600}
                   />
-                  {/* <ScrollVideo
+                  <ScrollVideo
                     src="/video/customer-engagements.webm"
                     className="flex-1"
                   /> */}
