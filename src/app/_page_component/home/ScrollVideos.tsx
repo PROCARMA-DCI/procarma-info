@@ -3,6 +3,7 @@
 import { Wrapper } from "@/components/Layout";
 import { Heading, Paragraph, Title } from "@/components/typography/Typography";
 import { Suspense, useEffect, useRef, useState } from "react";
+import { customerEngagementContents } from "./CustomerEngagement";
 
 export const ScrollVideos = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -10,19 +11,6 @@ export const ScrollVideos = () => {
   const vid1Ref = useRef<HTMLVideoElement>(null);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const contents = [
-    {
-      heading: "Loyalty Programs",
-      paragraph:
-        "Reward repeat visits, service appointments, and referrals—keeping your dealership top of mind. They create a sense of value and connection that drives long-term customer retention and brand loyalty.",
-    },
-    {
-      heading: "Gamification",
-      paragraph:
-        "By incorporating game-elements—such as challenges, badges, leaderboards, and point systems—dealerships can increase customer visits, boost brand loyalty, and encourage repeat service appointments.",
-    },
-  ];
 
   const videoRefs = [vid0Ref, vid1Ref];
 
@@ -134,7 +122,7 @@ export const ScrollVideos = () => {
 
                 {/* Content */}
                 <div className="w-full lg:max-w-[30%] h-full lg:flex flex-col lg:space-y-20 z-10 hidden">
-                  {contents.map((item, index) => (
+                  {customerEngagementContents.map((item, index) => (
                     <div
                       key={index}
                       className="space-y-4 transition-all duration-500"
