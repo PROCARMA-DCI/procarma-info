@@ -65,17 +65,17 @@ export function EnhancedStackedCarousel({
   // Extract video ID from URL
   const extractVideoId = (
     url: string,
-    type: "vimeo" | "youtube"
+    type: "vimeo" | "youtube",
   ): string | null => {
     switch (type) {
       case "vimeo":
         const vimeoMatch = url.match(
-          /(?:vimeo\.com\/|player\.vimeo\.com\/video\/)(\d+)/
+          /(?:vimeo\.com\/|player\.vimeo\.com\/video\/)(\d+)/,
         );
         return vimeoMatch ? vimeoMatch[1] : null;
       case "youtube":
         const youtubeMatch = url.match(
-          /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/
+          /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
         );
         return youtubeMatch ? youtubeMatch[1] : null;
       default:
@@ -86,7 +86,7 @@ export function EnhancedStackedCarousel({
   // Get thumbnail from video URL
   const getVideoThumbnail = async (
     videoUrl: string,
-    videoType: "vimeo" | "youtube" | "direct"
+    videoType: "vimeo" | "youtube" | "direct",
   ): Promise<string | null> => {
     try {
       switch (videoType) {
@@ -111,9 +111,10 @@ export function EnhancedStackedCarousel({
           if (vimeoId) {
             try {
               const response = await fetch(
-                `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${vimeoId}`
+                `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${vimeoId}`,
               );
               const data = await response.json();
+
               return data.thumbnail_url || null;
             } catch (error) {
               console.warn("Failed to fetch Vimeo thumbnail:", error);
@@ -174,7 +175,6 @@ export function EnhancedStackedCarousel({
     };
     loadThumbnails();
   }, [slides, videoThumbnails, thumbnailsLoading]);
-
   // Helper function to get embed URL
   const getEmbedUrl = (slide: CarouselSlide): string => {
     if (!slide.videoUrl) return "";
@@ -432,7 +432,7 @@ export function EnhancedStackedCarousel({
               "w-2 h-2 rounded-full transition-all duration-300",
               selectedIndex === index
                 ? "bg-primary scale-125"
-                : "bg-gray-400 hover:bg-gray-300"
+                : "bg-gray-400 hover:bg-gray-300",
             )}
             onClick={() => scrollTo(index)}
           />

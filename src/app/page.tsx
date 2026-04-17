@@ -14,6 +14,7 @@ import { FeatureShowcase } from "./_page_component/home/feature_showcase";
 import LifeCycleManagement from "./_page_component/home/LifeCycleManagement";
 import OnePlatform from "./_page_component/home/OnePlatform";
 import Partnered from "./_page_component/home/Partnered";
+import { ScrollVideos } from "./_page_component/home/ScrollVideos";
 import ScrollWrapper from "./_page_component/home/ScrollWrapper";
 import { TrainingEcosystem } from "./_page_component/home/TrainingEcosystem";
 
@@ -99,13 +100,19 @@ const Page = () => {
                     <LifeCycleManagement />
                   </section>
                 </Wrapper>
-                {/* <div className="hidden lg:block">
-                  <ScrollVideo
-                    src="/video/customer-engagement.mp4"
-                    className="flex-1"
+                <div className="hidden lg:block mb-16" id="customer-engagement">
+                  <ScrollVideos />
+                  {/* <ScrollImageSequence
+                    totalFrames={93}
+                    getFrameUrl={(i) => `/frames/${i}.jpg`}
+                    scrollLength={600}
                   />
-                </div> */}
-                <Wrapper className="">
+                  <ScrollVideo
+                    src="/video/customer-engagements.webm"
+                    className="flex-1"
+                  /> */}
+                </div>
+                <Wrapper className="lg:hidden">
                   <section
                     id="customer-engagement"
                     className="scroll-snap-section w-full lg:pt-16"

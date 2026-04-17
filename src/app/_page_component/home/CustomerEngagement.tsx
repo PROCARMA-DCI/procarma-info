@@ -7,19 +7,20 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Suspense } from "react";
+
+export const customerEngagementContents = [
+  {
+    heading: "Loyalty Programs",
+    paragraph:
+      "Reward repeat visits, service appointments, and referrals—keeping your dealership top of mind. They create a sense of value and connection that drives long-term customer retention and brand loyalty.",
+  },
+  {
+    heading: "Dealership Experience",
+    paragraph:
+      "Our Kiosks enhances the in-store experience with engagement built into each rooftop as well as training to keep sales and service teams abreast of what is offered to customers at each store.",
+  },
+];
 export const CustomerEngagement = () => {
-  const contents = [
-    {
-      heading: "Loyalty Programs",
-      paragraph:
-        "Reward repeat visits, service appointments, and referrals—keeping your dealership top of mind. They create a sense of value and connection that drives long-term customer retention and brand loyalty.",
-    },
-    {
-      heading: "Gamification",
-      paragraph:
-        "By incorporating game-elements—such as challenges, badges, leaderboards, and point systems—dealerships can increase customer visits, boost brand loyalty, and encourage repeat service appointments.",
-    },
-  ];
   return (
     <section className="w-full">
       <div className="text-center lg:mb-18 mb-10">
@@ -41,8 +42,8 @@ export const CustomerEngagement = () => {
               </Suspense>
             </div>
           </div>
-          <div className="w-full lg:max-w-[30%] h-full lg:flex flex-col  lg:space-y-20 z-10  ">
-            {contents.map((item, index) => (
+          <div className="w-full lg:max-w-[30%] h-full lg:flex flex-col  lg:space-y-20 z-10 hidden ">
+            {customerEngagementContents.map((item, index) => (
               <div className="space-y-4" key={index}>
                 <Heading className="text-2xl md:text-4xl font-bold ">
                   {item.heading}
@@ -66,7 +67,7 @@ export const CustomerEngagement = () => {
               ]}
             >
               <CarouselContent className="">
-                {contents.map((item, index) => (
+                {customerEngagementContents.map((item, index) => (
                   <CarouselItem key={index} className=" basis-full ">
                     <div className="space-y-4 px-2">
                       <Heading className="text-xl md:text-4xl font-bold text-primary">
